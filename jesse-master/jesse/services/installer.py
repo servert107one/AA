@@ -30,7 +30,6 @@ def install(is_live_plugin_already_installed: bool, strict: bool):
     # if no value is set for LICENSE_API_TOKEN, then no need to continue
     if not ENV_VALUES['LICENSE_API_TOKEN']:
         if strict:
-            print("No license API token set. Please set the LICENSE_API_TOKEN environment variable to continue. If you don't have one yet, create one at https://jesse.trade/user/api-tokens" )
         return
     else:
         access_token = ENV_VALUES['LICENSE_API_TOKEN']
@@ -79,7 +78,6 @@ def install(is_live_plugin_already_installed: bool, strict: bool):
         )
     except requests.exceptions.RequestException:
         response = requests.post(
-            'https://api1.jesse.trade/api/download-release',
             headers={'Authorization': 'Bearer ' + access_token},
             params={
                 'os': formatted_os_name,

@@ -1,7 +1,5 @@
 //
 // Copyright 2018-2020, Artur Zas
-// https://www.az-invest.eu 
-// https://www.mql5.com/en/users/arturz
 //
 
 #include <AZ-INVEST/SDK/TradeFunctions.mqh>

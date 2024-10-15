@@ -1,16 +1,13 @@
 Data
 ====
 
-Please see `Data Collector <https://github.com/nkaz001/hftbacktest/tree/master/collector>`_ or
 :doc:`Data Preparation <tutorials/Data Preparation>` regarding collecting and converting the feed data.
 
 Format
 ------
 
 `hftbacktest` can digest a `numpy` structured array. The data has 8 fields in the following order.
-You can also find details in `Event <https://docs.rs/hftbacktest/0.3.1/hftbacktest/types/struct.Event.html>`_.
 
-* ev (u64): You can find the possible flag combinations in `Constants <https://docs.rs/hftbacktest/0.3.1/hftbacktest/types/index.html#constants>`_.
 * exch_ts (i64): Exchange timestamp, which is the time at which the event occurs on the exchange.
 * local_ts (i64): Local timestamp, which is the time at which the event is received by the local.
 * px (f64): Price

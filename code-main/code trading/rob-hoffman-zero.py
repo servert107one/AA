@@ -4,7 +4,6 @@ Rob Hoffman strategy
 This is a strategy from the CodingTrading Youtube Channel. It has only been refactored.
 
 Date: 2023-07-24
-Source: https://www.youtube.com/watch?v=TiWjTpuL21w&list=PLwEOixRFAUxZmM26EYI1uYtJG39HDW1zm&index=24
 
 Disclaimer: We want to emphasize that this is purely for educational purposes only. We do not offer any financial advice, recommendations, or make any guarantees of profit or success. 
 Trading carries a risk of loss, and it is important to always consult with a qualified professional before making any trading decisions.

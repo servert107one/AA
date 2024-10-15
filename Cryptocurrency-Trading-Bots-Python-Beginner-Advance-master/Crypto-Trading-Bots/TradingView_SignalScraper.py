@@ -38,7 +38,6 @@ def mlog(market, *text):
 
 def get_signal(market, candle):
 	headers = {'User-Agent': 'Mozilla/5.0'}
-	url = "https://scanner.tradingview.com/crypto/scan"
 
 	payload =	{
 					"symbols": {

@@ -185,7 +185,6 @@ class ReplacePieceBuilder {
  * $n			=> Where n is a non-negative integer lesser than 100, inserts the nth parenthesized submatch string
  * everything else stays untouched
  *
- * Also see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#Specifying_a_string_as_a_parameter
  */
 export function parseReplaceString(replaceString) {
     if (!replaceString || replaceString.length === 0) {

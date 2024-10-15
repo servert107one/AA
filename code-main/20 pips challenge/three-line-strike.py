@@ -1,12 +1,10 @@
 """
 Date           : 2023-04-22
 Author         : Zetra Team 
-YouTube Channel: https://www.youtube.com/@zetratrading/featured
 
 This is a script that implements a strategy for the 20pips challenge. 
 The challenge is a way to grow your small Forex account.
 
-Here is the YouTube channel for the source of the strategy: https://www.youtube.com/@TheMovingAverage
 
 Here is the link to the Youtube video about growing your small account:
 

@@ -1,7 +1,4 @@
 #property copyright "Copyright 2017-2021, Artur Zas"
-// GNU General Public License v3.0 -> https://github.com/9nix6/Median-and-Turbo-Renko-indicator-bundle/blob/master/LICENSE
-// Video guide: https://youtu.be/XiXY-uk6X9o
-#property link      "https://www.az-invest.eu"
 #define VERSION "1.21"
 #property version VERSION
 #property description "Example EA: Trading based on 2 moving average crossover." 
@@ -11,11 +8,6 @@
 #property description " "
 #property description "GNU General Public License v3.0"
 
-//#define RANGEBAR_LICENSE // uncomment when used on a Tick & Volume bar chart from https://www.az-invest.eu/rangebars-for-metatrader-5
-//#define ULTIMATE_RENKO_LICENSE // uncomment when used on Ultimate Renko chart from https://www.az-invest.eu/ultimate-renko-indicator-generator-for-metatrader-5
-//#define VOLUMECHART_LICENSE // uncomment when used on a Tick & Volume bar chart from https://www.az-invest.eu/Tick-chart-and-volume-chart-for-mt5
-//#define SECONDSCHART_LICENSE // uncomment when used on a Seconds TF bar chart from https://www.az-invest.eu/seconds-timeframe-chart-for-metatrader-5
-//#define LINEBREAKCHART_LICENSE // uncomment when used on a Line Break chart from https://www.az-invest.eu/linebreak-chart-for-metatrader-5
 //
 // Uncomment only ONE of the 5 directives listed below and recompile
 // -----------------------------------------------------------------

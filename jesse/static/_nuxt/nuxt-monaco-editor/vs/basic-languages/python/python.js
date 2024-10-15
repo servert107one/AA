@@ -2,7 +2,6 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Version: 0.50.0(c321d0fbecb50ab8a5365fa1965476b0ae63fc87)
  * Released under the MIT license
- * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
  *-----------------------------------------------------------------------------*/
 
 var __defProp = Object.defineProperty;
@@ -309,7 +308,6 @@ var language = {
     fStringDetail: [
       [/[:][^}]+/, "string"],
       [/[!][ars]/, "string"],
-      // only !a, !r, !s are supported by f-strings: https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals
       [/=/, "string"],
       [/\}/, "identifier", "@pop"]
     ]

@@ -26,7 +26,6 @@ function extractKeyCode(e) {
                 }
                 break;
             case 61: return 86 /* KeyCode.Equal */;
-            // based on: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode#numpad_keys
             case 107: return 109 /* KeyCode.NumpadAdd */;
             case 109: return 111 /* KeyCode.NumpadSubtract */;
             case 173: return 88 /* KeyCode.Minus */;

@@ -232,7 +232,6 @@ export class TypeOperations {
     }
     static _compositionType(model, selection, text, replacePrevCharCnt, replaceNextCharCnt, positionDelta) {
         if (!selection.isEmpty()) {
-            // looks like https://github.com/microsoft/vscode/issues/2773
             // where a cursor operation occurred before a canceled composition
             // => ignore composition
             return null;

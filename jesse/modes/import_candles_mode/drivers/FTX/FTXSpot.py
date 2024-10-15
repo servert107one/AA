@@ -9,6 +9,5 @@ class FTXSpot(FTXMain):
 
         super().__init__(
             name=exchanges.FTX_SPOT,
-            rest_endpoint='https://ftx.com',
             backup_exchange_class=BitfinexSpot
         )

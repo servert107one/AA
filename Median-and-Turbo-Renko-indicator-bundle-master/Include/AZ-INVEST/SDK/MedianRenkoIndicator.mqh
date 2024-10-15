@@ -1,5 +1,4 @@
 #property copyright "Copyright 2018-2020, Level Up Software"
-#property link      "http://www.az-invest.eu"
 #property version   "3.00"
 
 input bool UseOnRenkoChart = true; // Use this indicator on Renko chart handle

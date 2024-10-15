@@ -1,6 +1,5 @@
 """
 The Purpose of the RoibalBot Python Program is to create an automated trading bot (functionality) on Binance
-Beginner Version Utilized Python-Binance ( https://github.com/sammchardy/python-binance )
 Advanced-Version capable of all exchanges, all coins (using ccxt)
 
 Created 4/14/2018 by Joaquin Roibal
@@ -166,8 +165,6 @@ def arbitrage(cycle_num=5, cycle_time=240):
             print("Rate A: {} \n Rate B: {} \n Rate C: {} \n".format(rateA, rateB, rateB_fee))
             #Visualize with Matplotlib
             #use matplotlib to plot data
-            #from https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot
-        #Extended 3 axis functionality - https://matplotlib.org/gallery/ticks_and_spines/multiple_yaxis_with_spines.html#sphx-glr-gallery-ticks-and-spines-multiple-yaxis-with-spines-py
             #fig, ax = plt.subplots()
             fig, host = plt.subplots()
             fig.subplots_adjust(right=0.75)
@@ -403,7 +400,6 @@ def scalping_orders(exchange = ccxt.binance(), coin='BTC/USDT', wait=1, tot_time
     print("Spread: {} % Projected Spread {} %".format(spread, proj_spread))
     print("Max Bid: {} Min Ask: {}".format(max_bid, min_ask))
     #Place Orders based on calculated bid-ask orders if projected > 0.05% (transaction fee)
-    #Documentation: http://python-binance.readthedocs.io/en/latest/account.html#orders
     """
     if proj_spread > 0.05:
         quant1=100          #Determine Code Required to calculate 'minimum' quantity

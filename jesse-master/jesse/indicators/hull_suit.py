@@ -11,7 +11,6 @@ HullSuit = namedtuple('HullSuit', ['s_hull', 'm_hull', 'signal'])
 def hull_suit(candles: np.ndarray, mode_switch: str = 'Hma', length: int = 55, length_mult: float = 1.0, source_type: str = 'close', sequential: bool = False) -> HullSuit:
     """
     @author InSilico
-    credits: https://www.tradingview.com/script/hg92pFwS-Hull-Suite/
 
     HullSuit - Hull Suit
 

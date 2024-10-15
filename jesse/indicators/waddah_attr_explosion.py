@@ -13,7 +13,6 @@ WaddahAttarExplosionTuple = namedtuple(
 def waddah_attar_explosion(candles: np.ndarray, sensitivity: int = 150, fast_length: int = 20, slow_length: int = 40, channel_length: int = 20, mult: float = 2.0, source_type: str = "close") -> WaddahAttarExplosionTuple:
     """
     @author LazyBear 
-    credits: https://www.tradingview.com/v/iu3kKWDI/
 
     WADDAH_ATTAR_EXPLOSION - Waddah Attar Explosion
 

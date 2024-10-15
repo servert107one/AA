@@ -2,7 +2,6 @@
 Date 20230119
 
 This scripts get the Triple Top and Bottom Chart Patterns
-Source: https://www.youtube.com/watch?v=Mxk8PP3vbuA
 """
 
 import mplfinance as mpf 

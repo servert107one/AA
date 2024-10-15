@@ -37,7 +37,6 @@ It's the most basic model that uses constant latencies. You just set the latenci
 
 You can find details below.
 
-* `ConstantLatency <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/struct.ConstantLatency.html>`_
   and :meth:`constant_latency <hftbacktest.BacktestAsset.constant_latency>`
 
 IntpOrderLatency
@@ -48,7 +47,6 @@ You can collect the latency data by submitting unexecutable orders regularly.
 
 You can find details below.
 
-* `IntpOrderLatency <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/struct.IntpOrderLatency.html>`_
   and :meth:`intp_order_latency <hftbacktest.BacktestAsset.intp_order_latency>`
 
 **Data example**
@@ -68,6 +66,4 @@ Implement your own order latency model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You need to implement the following trait.
 
-* `LatencyModel <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/trait.LatencyModel.html>`_
 
-Please refer to `the latency model implementation <https://github.com/nkaz001/hftbacktest/blob/master/hftbacktest/src/backtest/models/latency.rs>`_.

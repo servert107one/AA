@@ -2,7 +2,6 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Version: 0.50.0(c321d0fbecb50ab8a5365fa1965476b0ae63fc87)
  * Released under the MIT license
- * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
  *-----------------------------------------------------------------------------*/
 
 
@@ -429,7 +428,6 @@ var language = {
     ],
     numbers: [
       // Decimal float literals
-      // https://www.w3.org/TR/WGSL/#syntax-decimal_float_literal
       // 0, with type-specifying suffix.
       [/0[fh]/, "number.float"],
       // Other decimal integer, with type-specifying suffix.
@@ -441,15 +439,12 @@ var language = {
       // Has at least one digit, and has an exponent.
       [/[0-9]+[eE][+-]?[0-9]+[fh]?/, "number.float"],
       // Hex float literals
-      // https://www.w3.org/TR/WGSL/#syntax-hex_float_literal
       [/0[xX][0-9a-fA-F]*\.[0-9a-fA-F]+(?:[pP][+-]?[0-9]+[fh]?)?/, "number.hex"],
       [/0[xX][0-9a-fA-F]+\.[0-9a-fA-F]*(?:[pP][+-]?[0-9]+[fh]?)?/, "number.hex"],
       [/0[xX][0-9a-fA-F]+[pP][+-]?[0-9]+[fh]?/, "number.hex"],
       // Hexadecimal integer literals
-      // https://www.w3.org/TR/WGSL/#syntax-hex_int_literal
       [/0[xX][0-9a-fA-F]+[iu]?/, "number.hex"],
       // Decimal integer literals
-      // https://www.w3.org/TR/WGSL/#syntax-decimal_int_literal
       // We need two rules here because 01 is not valid.
       [/[1-9][0-9]*[iu]?/, "number"],
       [/0[iu]?/, "number"]

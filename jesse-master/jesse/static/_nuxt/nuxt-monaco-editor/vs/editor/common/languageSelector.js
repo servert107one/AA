@@ -91,7 +91,6 @@ export function score(selector, candidateUri, candidateLanguage, candidateIsSync
                 // to normalize this path first before passing it on
                 // because we will compare it against `Uri.fsPath`
                 // which uses platform specific separators.
-                // Refs: https://github.com/microsoft/vscode/issues/99938
                 normalizedPattern = { ...pattern, base: normalize(pattern.base) };
             }
             if (normalizedPattern === candidateUri.fsPath || matchGlobPattern(normalizedPattern, candidateUri.fsPath)) {

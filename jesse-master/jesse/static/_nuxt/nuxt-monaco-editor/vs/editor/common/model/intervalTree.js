@@ -297,7 +297,6 @@ export function nodeAcceptEdit(node, start, end, textLength, forceMoveMarkers) {
     }
 }
 function searchForEditing(T, start, end) {
-    // https://en.wikipedia.org/wiki/Interval_tree#Augmented_tree
     // Now, it is known that two intervals A and B overlap only when both
     // A.low <= B.high and A.high >= B.low. When searching the trees for
     // nodes overlapping with a given interval, you can immediately skip:
@@ -361,7 +360,6 @@ function searchForEditing(T, start, end) {
     return result;
 }
 function noOverlapReplace(T, start, end, textLength) {
-    // https://en.wikipedia.org/wiki/Interval_tree#Augmented_tree
     // Now, it is known that two intervals A and B overlap only when both
     // A.low <= B.high and A.high >= B.low. When searching the trees for
     // nodes overlapping with a given interval, you can immediately skip:
@@ -537,7 +535,6 @@ function search(T, filterOwnerId, filterOutValidation, cachedVersionId, onlyMarg
     return result;
 }
 function intervalSearch(T, intervalStart, intervalEnd, filterOwnerId, filterOutValidation, cachedVersionId, onlyMarginDecorations) {
-    // https://en.wikipedia.org/wiki/Interval_tree#Augmented_tree
     // Now, it is known that two intervals A and B overlap only when both
     // A.low <= B.high and A.high >= B.low. When searching the trees for
     // nodes overlapping with a given interval, you can immediately skip:

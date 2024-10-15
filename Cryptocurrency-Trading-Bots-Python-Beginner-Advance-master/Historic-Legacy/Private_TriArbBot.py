@@ -1,16 +1,13 @@
 """
 The Purpose of the PrivateBinance Arbitrage Bot (based on RoibalBot) Python Program is to create an automated trading bot (functionality) on Binance
-Utilized Python-Binance ( https://github.com/sammchardy/python-binance )
 Advanced-Version capable of all exchanges, all coins (using cctx)
 
 This 'bot' will run a functionality which seeks profitable triangular arbitrage opportunities on Binance
 Weekly/Daily/Hourly reports created on profit/loss
 
-Instructional Youtube Video: https://www.youtube.com/watch?v=8AAN03M8QhA - Additional Videos Available on youtube
 
 Created 4/14/2018 by Joaquin Roibal
 V 0.01 - Updated 4/20/2018
-v 0.02 - Updated 5/30/2018 - Converted to Advanced Version: https://github.com/Roibal/Cryptocurrency-Trading-Bots-Python-Beginner-Advance
 v 0.03 - Created 6/18/2018 - Binance Arbitrage Bot
 v 0.04 - 6/21/2018 - Changed Name to CryptoTriangularArbitrageBinanceBot.py
 v 1.00 - 6/24/2018 - Converted to Private_TriArbBot.py for Private Trader Group
@@ -43,7 +40,6 @@ api_secret = BinanceKey1['api_secret']
 client = Client(api_key, api_secret)
 """
 
-#Found Code To Remove 1000ms error - https://github.com/sammchardy/python-binance/issues/249
 class Binance:
     def __init__(self, public_key = '', secret_key = '', sync = False):
         self.time_offset = -3199
@@ -448,8 +444,6 @@ def viz_arb_data(list_exch_rate_list, arb_market, start_time, end_time):
     print(viz_msg2)
     data_log_to_file(viz_msg2)
 
-            #from https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot
-        #Extended 3 axis functionality - https://matplotlib.org/gallery/ticks_and_spines/multiple_yaxis_with_spines.html#sphx-glr-gallery-ticks-and-spines-multiple-yaxis-with-spines-py
             #fig, ax = plt.subplots()
     fig, host = plt.subplots()
     fig.subplots_adjust(right=0.75)

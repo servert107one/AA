@@ -2,11 +2,8 @@
  
 This script is inspired by a reddit user by the name of 47dollars. This one is 42 dollars because it only
 consists of 42 pairs.
-Here is the link: https://www.reddit.com/r/Forex/comments/zx80go/animation_showing_the_correlations_between_the/
-                  https://www.reddit.com/r/Forex/comments/zwr0ck/i_created_a_heat_map_showing_the_correlations/
 
 
-@author Zetra. See our YouTube Channel: https://www.youtube.com/channel/UC87AaqcveNqlkodJrr5zUsw
 LICENSE: MIT
 DATA SOURCE is Yahoo Finance 
 """
@@ -168,7 +165,6 @@ if __name__ == "__main__":
     fig.show()
 
     # Calculate the correlations for all pairs
-    corr_matrix = df_all.corr(numeric_only=True) # method is pearson #see https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html for more info
 
     # Top 10 positive correlations
     top_n = 10

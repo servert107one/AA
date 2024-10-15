@@ -35,7 +35,6 @@ def run():
     print("\nExchange Info (Limits): ", info)
 
     # place a test market buy order, to place an actual order use the create_order function
-    # if '1000 ms ahead of server time' error encountered, visit https://github.com/sammchardy/python-binance/issues/249
     """order = client.create_test_order(
         symbol='BNBBTC',
         side=Client.SIDE_BUY,
@@ -100,7 +99,6 @@ def date_to_milliseconds(date_str):
 
     If using offset strings add "UTC" to date string e.g. "now UTC", "11 hours ago UTC"
 
-    See dateparse docs for formats http://dateparser.readthedocs.io/en/latest/
 
     :param date_str: date in readable format, i.e. "January 01, 2018", "11 hours ago UTC", "now UTC"
     :type date_str: str
@@ -165,7 +163,6 @@ def convert_time_binance(gt):
 def get_historical_klines(symbol, interval, start_str, end_str=None):
     """Get Historical Klines from Binance
 
-    See dateparse docs for valid start and end string formats http://dateparser.readthedocs.io/en/latest/
 
     If using offset strings for dates add "UTC" to date string e.g. "now UTC", "11 hours ago UTC"
 
@@ -280,7 +277,6 @@ def save_historic_klines_csv(symbol, start, end, interval):
                 ten_period_moving_ave.append(float(price10/10))
                 time10.append(time1)
 
-    #Matplotlib visualization how-to from: https://pythonprogramming.net/candlestick-ohlc-graph-matplotlib-tutorial/
     fig, ax = plt.subplots()
     mpl_finance.candlestick_ochl(ax, ochl, width=1)
     plt.plot(time3, three_period_moving_ave, color='green', label='3 Period MA - Open')

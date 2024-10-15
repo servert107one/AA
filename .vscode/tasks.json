@@ -5,7 +5,7 @@
       "label": "Run Python File on Open",
       "type": "shell",
       "command": "python",
-      "args": ["printdata.py"],
+      "args": ["showprocess.py"],
       "group": {
         "kind": "build",
         "isDefault": true

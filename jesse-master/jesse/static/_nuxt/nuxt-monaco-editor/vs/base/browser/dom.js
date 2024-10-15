@@ -160,16 +160,12 @@ export function addDisposableGenericMouseUpListener(node, handler, useCapture) {
  * callback but queue it on the regular event loop (like setTimeout). Typically
  * this should not be used.
  *
- * [IdleDeadline]: https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline
- * [requestIdleCallback]: https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback
- * [setTimeout]: https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout
  */
 export function runWhenWindowIdle(targetWindow, callback, timeout) {
     return _runWhenIdle(targetWindow, callback, timeout);
 }
 /**
  * An implementation of the "idle-until-urgent"-strategy as introduced
- * here: https://philipwalton.com/articles/idle-until-urgent/
  */
 export class WindowIdleValue extends AbstractIdleValue {
     constructor(targetWindow, executor) {
@@ -949,8 +945,6 @@ export function reset(parent, ...children) {
 const SELECTOR_REGEX = /([\w\-]+)?(#([\w\-]+))?((\.([\w\-]+))*)/;
 export var Namespace;
 (function (Namespace) {
-    Namespace["HTML"] = "http://www.w3.org/1999/xhtml";
-    Namespace["SVG"] = "http://www.w3.org/2000/svg";
 })(Namespace || (Namespace = {}));
 function _$(namespace, description, attrs, ...children) {
     const match = SELECTOR_REGEX.exec(description);
@@ -1035,17 +1029,13 @@ export function computeScreenAwareSize(window, cssPx) {
  * if the window was opened or if it was blocked by the browser's popup blocker.
  * If you want to tell if the browser blocked the new window, use {@link windowOpenWithSuccess}.
  *
- * See https://github.com/microsoft/monaco-editor/issues/601
  * To protect against malicious code in the linked site, particularly phishing attempts,
  * the window.opener should be set to null to prevent the linked site from having access
  * to change the location of the current page.
- * See https://mathiasbynens.github.io/rel-noopener/
  */
 export function windowOpenNoOpener(url) {
     // By using 'noopener' in the `windowFeatures` argument, the newly created window will
     // not be able to use `window.opener` to reach back to the current page.
-    // See https://stackoverflow.com/a/46958731
-    // See https://developer.mozilla.org/en-US/docs/Web/API/Window/open#noopener
     // However, this also doesn't allow us to realize if the browser blocked
     // the creation of the window.
     mainWindow.open(url, '_blank', 'noopener');
@@ -1091,7 +1081,6 @@ export function asCssValueWithDefault(cssPropertyValue, dflt) {
  * attributes are valid.
  */
 export function hookDomPurifyHrefAndSrcSanitizer(allowedProtocols, allowDataImages = false) {
-    // https://github.com/cure53/DOMPurify/blob/main/demos/hooks-scheme-allowlist.html
     // build an anchor to map URLs to
     const anchor = document.createElement('a');
     dompurify.addHook('afterSanitizeAttributes', (node) => {
@@ -1327,7 +1316,6 @@ export class DragAndDropObserver extends Disposable {
         this.element = element;
         this.callbacks = callbacks;
         // A helper to fix issues with repeated DRAG_ENTER / DRAG_LEAVE
-        // calls see https://github.com/microsoft/vscode/issues/14470
         // when the element has child elements where the events are fired
         // repeadedly.
         this.counter = 0;
@@ -1356,7 +1344,6 @@ export class DragAndDropObserver extends Disposable {
         }));
         this._register(addDisposableListener(this.element, EventType.DRAG_OVER, (e) => {
             var _a, _b;
-            e.preventDefault(); // needed so that the drop event fires (https://stackoverflow.com/questions/21339924/drop-event-not-firing-in-chrome)
             (_b = (_a = this.callbacks).onDragOver) === null || _b === void 0 ? void 0 : _b.call(_a, e, e.timeStamp - this.dragStartTime);
         }));
         this._register(addDisposableListener(this.element, EventType.DRAG_LEAVE, (e) => {

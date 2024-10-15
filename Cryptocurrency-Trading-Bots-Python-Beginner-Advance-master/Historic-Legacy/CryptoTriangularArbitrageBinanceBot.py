@@ -1,16 +1,13 @@
 """
 The Purpose of the Binance Arbitrage Bot (based on RoibalBot) Python Program is to create an automated trading bot (functionality) on Binance
-Utilized Python-Binance ( https://github.com/sammchardy/python-binance )
 Advanced-Version capable of all exchanges, all coins (using cctx)
 
 Created 4/14/2018 by Joaquin Roibal
 V 0.01 - Updated 4/20/2018
-v 0.02 - Updated 5/30/2018 - Converted to Advanced Version: https://github.com/Roibal/Cryptocurrency-Trading-Bots-Python-Beginner-Advance
 v 0.03 - Created 6/18/2018 - Binance Arbitrage Bot
 v 0.04 - 6/21/2018 - Changed Name to CryptoTriangularArbitrageBinanceBot.py
 Licensed under MIT License
 
-Instructional Youtube Video: https://www.youtube.com/watch?v=8AAN03M8QhA
 
 Did you enjoy the functionality of this bot? Tips always appreciated.
 
@@ -359,8 +356,6 @@ def viz_arb_data(list_exch_rate_list, arb_market, start_time, end_time):
     print(viz_msg2)
     data_log_to_file(viz_msg2)
 
-            #from https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot
-        #Extended 3 axis functionality - https://matplotlib.org/gallery/ticks_and_spines/multiple_yaxis_with_spines.html#sphx-glr-gallery-ticks-and-spines-multiple-yaxis-with-spines-py
             #fig, ax = plt.subplots()
     fig, host = plt.subplots()
     fig.subplots_adjust(right=0.75)

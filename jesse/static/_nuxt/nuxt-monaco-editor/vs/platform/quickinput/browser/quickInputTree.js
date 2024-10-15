@@ -895,7 +895,6 @@ let QuickInputTree = class QuickInputTree extends Disposable {
         this._tree.setChildren(null, elements);
         this._onChangedVisibleCount.fire(visibleCount);
         // Accessibility hack, unfortunately on next tick
-        // https://github.com/microsoft/vscode/issues/211976
         if (this.accessibilityService.isScreenReaderOptimized()) {
             setTimeout(() => {
                 const focusedElement = this._tree.getHTMLElement().querySelector(`.monaco-list-row.focused`);

@@ -111,7 +111,6 @@ function createScrollObserver(contextKeyService, widget) {
     const update = () => {
         const atTop = widget.scrollTop === 0;
         // We need a threshold `1` since scrollHeight is rounded.
-        // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight#determine_if_an_element_has_been_totally_scrolled
         const atBottom = widget.scrollHeight - widget.renderHeight - widget.scrollTop < 1;
         if (atTop && atBottom) {
             listScrollAt.set('both');

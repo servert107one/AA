@@ -16,7 +16,6 @@ use tracing::{error, warn};
 
 pub async fn fetch_symbol_list() -> Result<Vec<String>, reqwest::Error> {
     Ok(reqwest::Client::new()
-        .get("https://dapi.binance.com/dapi/v1/exchangeInfo")
         .header("Accept", "application/json")
         .send()
         .await?
@@ -42,7 +41,6 @@ pub async fn fetch_symbol_list() -> Result<Vec<String>, reqwest::Error> {
 pub async fn fetch_depth_snapshot(symbol: &str) -> Result<String, reqwest::Error> {
     reqwest::Client::new()
         .get(format!(
-            "https://dapi.binance.com/dapi/v1/depth?symbol={symbol}&limit=1000"
         ))
         .header("Accept", "application/json")
         .send()

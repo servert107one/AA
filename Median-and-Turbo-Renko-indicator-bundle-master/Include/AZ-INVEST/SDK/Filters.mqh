@@ -1,7 +1,5 @@
 //
 // Copyright 2018, Artur Zas
-// https://www.az-invest.eu 
-// https://www.mql5.com/en/users/arturz
 //
 
 enum ENUM_FILTER_MODE

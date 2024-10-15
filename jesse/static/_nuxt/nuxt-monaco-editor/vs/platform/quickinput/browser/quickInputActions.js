@@ -136,7 +136,6 @@ registerQuickPickCommandAndKeybindingRule({
     when: ContextKeyExpr.and(defaultCommandAndKeybindingRule.when, ContextKeyExpr.or(InputFocusedContext.negate(), endOfQuickInputBoxContext)),
     primary: 17 /* KeyCode.RightArrow */,
     // Need a little extra weight to ensure this keybinding is preferred over the default cmd+alt+right arrow keybinding
-    // https://github.com/microsoft/vscode/blob/1451e4fbbbf074a4355cc537c35b547b80ce1c52/src/vs/workbench/browser/parts/editor/editorActions.ts#L1178-L1195
     weight: 200 /* KeybindingWeight.WorkbenchContrib */ + 50,
     handler: (accessor) => {
         const currentQuickPick = accessor.get(IQuickInputService).currentQuickInput;

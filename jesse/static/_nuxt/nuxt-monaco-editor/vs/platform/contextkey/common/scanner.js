@@ -230,7 +230,6 @@ export class Scanner {
     }
     /*
      * Lexing a regex expression: /.../[igsmyu]*
-     * Based on https://github.com/microsoft/TypeScript/blob/9247ef115e617805983740ba795d7a8164babf89/src/compiler/scanner.ts#L2129-L2181
      *
      * Note that we want slashes within a regex to be escaped, e.g., /file:\\/\\/\\// should match `file:///`
      */

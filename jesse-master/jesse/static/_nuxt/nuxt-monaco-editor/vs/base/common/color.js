@@ -31,7 +31,6 @@ export class HSLA {
     }
     /**
      * Converts an RGB color value to HSL. Conversion formula
-     * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
      * Assumes r, g, and b are contained in the set [0, 255] and
      * returns h in the set [0, 360], s, and l in the set [0, 1].
      */
@@ -84,7 +83,6 @@ export class HSLA {
     }
     /**
      * Converts an HSL color value to RGB. Conversion formula
-     * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
      * Assumes h in the set [0, 360] s, and l are contained in the set [0, 1] and
      * returns r, g, and b in the set [0, 255].
      */
@@ -116,7 +114,6 @@ export class HSVA {
     static equals(a, b) {
         return a.h === b.h && a.s === b.s && a.v === b.v && a.a === b.a;
     }
-    // from http://www.rapidtables.com/convert/color/rgb-to-hsv.htm
     static fromRGBA(rgba) {
         const r = rgba.r / 255;
         const g = rgba.g / 255;
@@ -140,7 +137,6 @@ export class HSVA {
         }
         return new HSVA(Math.round(m * 60), s, cmax, rgba.a);
     }
-    // from http://www.rapidtables.com/convert/color/hsv-to-rgb.htm
     static toRGBA(hsva) {
         const { h, s, v, a } = hsva;
         const c = v * s;
@@ -227,7 +223,6 @@ export class Color {
         return !!other && RGBA.equals(this.rgba, other.rgba) && HSLA.equals(this.hsla, other.hsla) && HSVA.equals(this.hsva, other.hsva);
     }
     /**
-     * http://www.w3.org/TR/WCAG20/#relativeluminancedef
      * Returns the number in the set [0, 1]. O => Darkest Black. 1 => Lightest white.
      */
     getRelativeLuminance() {
@@ -242,7 +237,6 @@ export class Color {
         return (c <= 0.03928) ? c / 12.92 : Math.pow(((c + 0.055) / 1.055), 2.4);
     }
     /**
-     *	http://24ways.org/2010/calculating-color-contrast
      *  Return 'true' if lighter color otherwise 'false'
      */
     isLighter() {
@@ -284,7 +278,6 @@ export class Color {
             return this;
         }
         const { r, g, b, a } = this.rgba;
-        // https://stackoverflow.com/questions/12228548/finding-equivalent-color-with-opacity
         return new Color(new RGBA(opaqueBackground.rgba.r - a * (opaqueBackground.rgba.r - r), opaqueBackground.rgba.g - a * (opaqueBackground.rgba.g - g), opaqueBackground.rgba.b - a * (opaqueBackground.rgba.b - b), 1));
     }
     toString() {

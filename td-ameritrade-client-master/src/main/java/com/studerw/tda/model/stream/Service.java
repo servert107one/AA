@@ -2,7 +2,6 @@ package com.studerw.tda.model.stream;
 
 /**
  * Service Data Types for Streaming Request
- * @see <a href="https://developer.tdameritrade.com/content/streaming-data#_Toc504640570">Data Service Table</a>
  */
 public enum Service {
   ADMIN,

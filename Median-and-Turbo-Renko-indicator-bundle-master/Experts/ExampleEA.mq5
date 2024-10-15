@@ -1,19 +1,14 @@
 //
 // Copyright 2017-2021, Artur Zas
-// GNU General Public License v3.0 -> https://github.com/9nix6/Median-and-Turbo-Renko-indicator-bundle/blob/master/LICENSE
-// https://www.az-invest.eu 
-// https://www.mql5.com/en/users/arturz
 //
 
 #property copyright "Copyright 2017-2021, Artur Zas"
-#property link      "https://www.az-invest.eu"
 #property version   "3.03"
 #property description "Example EA showing the use of the MedianRenko class defined in MedianRenko.mqh." 
 #property description " " 
 #property description "EA displays the date/time of the new bar plus the OPEN price &&"
 #property description "the data/time of the previous bar." 
 #property strict
-//#define ULTIMATE_RENKO_LICENSE // uncomment when used on Ultimate Renko chart from https://www.az-invest.eu/ultimate-renko-indicator-generator-for-metatrader-5
 
 //
 // SHOW_INDICATOR_INPUTS *NEEDS* to be defined, if the EA needs to be *tested in MT5's backtester*

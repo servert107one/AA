@@ -1,6 +1,5 @@
 ## TDA SITE
 This is the example json documents and JSON schema used on the 
-[TDA Developer API](https://developer.tdameritrade.com/apis) site. The goal of placing it here is to periodically
 do diffs of what was checked in when the model was initially created to
 determine if TDA has since updated the schema. 
 

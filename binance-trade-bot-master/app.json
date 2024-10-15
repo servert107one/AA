@@ -1,8 +1,6 @@
 {
     "name": "binance-trade-bot",
     "description": "Binance Trader",
-    "logo": "https://cdn.freebiesupply.com/logos/large/2x/binance-coin-logo-png-transparent.png",
-    "repository": "https://github.com/edeng23/binance-trade-bot",
 	"formation": {
     "worker": {
       "quantity": 1,

@@ -290,7 +290,6 @@ function createDOMPurify() {
 	const getChildNodes = lookupGetter(ElementPrototype, 'childNodes');
 	const getParentNode = lookupGetter(ElementPrototype, 'parentNode'); // As per issue #47, the web-components registry is inherited by a
 	// new document created via createHTMLDocument. As per the spec
-	// (http://w3c.github.io/webcomponents/spec/custom/#creating-and-passing-registries)
 	// a new empty registry is used when creating a template contents owner
 	// document, so we use that as our parent document to ensure nothing
 	// is inherited.
@@ -463,9 +462,6 @@ function createDOMPurify() {
 
 	let URI_SAFE_ATTRIBUTES = null;
 	const DEFAULT_URI_SAFE_ATTRIBUTES = addToSet({}, ['alt', 'class', 'for', 'id', 'label', 'name', 'pattern', 'placeholder', 'role', 'summary', 'title', 'value', 'style', 'xmlns']);
-	const MATHML_NAMESPACE = 'http://www.w3.org/1998/Math/MathML';
-	const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
-	const HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml';
 	/* Document namespace */
 
 	let NAMESPACE = HTML_NAMESPACE;
@@ -888,8 +884,6 @@ function createDOMPurify() {
 		}
 
 		if (PARSER_MEDIA_TYPE === 'application/xhtml+xml' && NAMESPACE === HTML_NAMESPACE) {
-			// Root of XHTML doc must contain xmlns declaration (see https://www.w3.org/TR/xhtml1/normative.html#strict)
-			dirty = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + dirty + '</body></html>';
 		}
 
 		const dirtyPayload = trustedTypesPolicy ? trustedTypesPolicy.createHTML(dirty) : dirty;
@@ -1111,8 +1105,6 @@ function createDOMPurify() {
 			return false;
 		}
 		/* Allow valid data-* attributes: At least one character after "-"
-				(https://html.spec.whatwg.org/multipage/dom.html#embedding-custom-non-visible-data-with-the-data-*-attributes)
-				XML-compatible (https://html.spec.whatwg.org/multipage/infrastructure.html#xml-compatible and http://www.w3.org/TR/xml/#d0e804)
 				We don't need to check the value; it's always URI safe. */
 
 
@@ -1136,7 +1128,6 @@ function createDOMPurify() {
 	/**
 	 * _basicCustomElementCheck
 	 * checks if at least one dash is included in tagName, and it's not the first char
-	 * for more sophisticated checking see https://github.com/sindresorhus/validate-element-name
 	 * @param {string} tagName name of the tag of the node to sanitize
 	 */
 

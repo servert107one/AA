@@ -188,7 +188,6 @@ export class ViewCursors extends ViewPart {
         this._updateDomClassName();
         if (!isHidden && !isSolid) {
             if (blinkingStyle === 1 /* TextEditorCursorBlinkingStyle.Blink */) {
-                // flat blinking is handled by JavaScript to save battery life due to Chromium step timing issue https://bugs.chromium.org/p/chromium/issues/detail?id=361587
                 this._cursorFlatBlinkInterval.cancelAndSet(() => {
                     if (this._isVisible) {
                         this._hide();

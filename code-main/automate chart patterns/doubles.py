@@ -3,8 +3,6 @@ Date 20230105
 
 This progam implements the Doubles Chart Patterns
 
-Source: https://alpaca.markets/learn/algorithmic-trading-chart-pattern-python/
-        https://github.com/samchaaa/alpaca_tech_screener/blob/master/tech_screener_notebook.ipynb
 """
 
 from mplfinance.original_flavor import candlestick_ohlc

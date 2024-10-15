@@ -18,12 +18,7 @@ setup(
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
-    url="https://jesse.trade",
     project_urls={
-        'Documentation': 'https://docs.jesse.trade',
-        'Say Thanks!': 'https://jesse.trade/discord',
-        'Source': 'https://github.com/jesse-ai/jesse',
-        'Tracker': 'https://github.com/jesse-ai/jesse/issues',
     },
     install_requires=REQUIRED_PACKAGES,
     entry_points='''

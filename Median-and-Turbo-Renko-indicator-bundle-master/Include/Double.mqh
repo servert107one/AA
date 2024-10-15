@@ -1,14 +1,11 @@
 //+------------------------------------------------------------------+
 //|                                                      CDouble.mqh |
 //|                                      Copyright 2017, nicholishen |
-//|                         https://www.forexfactory.com/nicholishen |
 //+------------------------------------------------------------------+
 #property copyright "Copyright 2017, nicholishen"
-#property link      "https://www.forexfactory.com/nicholishen"
 #property version   "1.02"
 /*********************************************************************
 * Version 1.00: Initial release. See full documentation at
-* https://www.mql5.com/en/code/19727
 **********************************************************************
 
 *********************************************************************

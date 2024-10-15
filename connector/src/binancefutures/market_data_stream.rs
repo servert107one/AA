@@ -230,7 +230,6 @@ impl MarketDataStream {
         // while new_prev_u.is_none() {
         //     if let Some(msg) = pending_depth_messages.get_mut(&symbol) {
         //         for pending_depth in msg.into_iter() {
-        //             // https://binance-docs.github.io/apidocs/futures/en/#how-to-manage-a-local-order-book-correctly
         //             // The first processed event should have U <= lastUpdateId AND u >= lastUpdateId
         //             if (
         //                 pending_depth.last_update_id < resp.last_update_id

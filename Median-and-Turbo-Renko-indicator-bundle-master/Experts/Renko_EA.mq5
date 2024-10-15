@@ -1,21 +1,13 @@
 //
 // Copyright 2018-2021, Artur Zas
-// GNU General Public License v3.0 -> https://github.com/9nix6/Median-and-Turbo-Renko-indicator-bundle/blob/master/LICENSE
-// https://www.az-invest.eu 
-// https://www.mql5.com/en/users/arturz
 //
 // Renko_EA uses "Median and Turbo renko indicator bundle" for the renko chart.
 // You can get this indicator from MQL5 market: 
-// https://www.mql5.com/en/market/product/16347
 // or
-// https://www.az-invest.eu/ultimate-renko-indicator-generator-for-metatrader-5
 // 
-// The indicator is described here: https://renko-trading-robots.blogspot.com/2021/01/open-source-renko-ea-for-metatrader-5.html 
 //
 #define VERSION "2.11"
 #property copyright "Copyright 2018-2021, Artur Zas"
-// GNU General Public License v3.0 -> https://github.com/9nix6/Median-and-Turbo-Renko-indicator-bundle/blob/master/LICENSE
-#property link      "https://www.az-invest.eu"
 #property version VERSION
 #property description "Example EA: Trading based renko bar reversal signals." 
 #property description "For optinal entry & exit filters MA1, MA2, MA3 && channel" 
@@ -25,7 +17,6 @@
 
 //#define DEVELOPER_VERSION // used when I develop ;) should always be commented out
 
-//#define ULTIMATE_RENKO_LICENSE // uncomment when used on Ultimate Renko chart from https://www.az-invest.eu/ultimate-renko-indicator-generator-for-metatrader-5
 
 // Uncomment the directive below and recompile if EA is used with P-Renko BR Ultimate
 // ----------------------------------------------------------------------------------

@@ -26,7 +26,6 @@
  * </pre>
  *
  *
- * <p>More information in the <a href="https://github.com/studerw/td-ameritrade-client/wiki/how-to">How-To</a></p>
  * See {@link com.studerw.tda.client.HttpTdaClient HttpTdaClient}.
  *
  */

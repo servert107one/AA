@@ -11,7 +11,6 @@ def support_resistance_with_breaks(candles: np.ndarray, left_bars: int = 15, rig
     support_resistance_with_breaks
 
     @author LuxAlgo
-    credits: https://www.tradingview.com/script/JDFoWQbL-Support-and-Resistance-Levels-with-Breaks-LuxAlgo
 
     :param candles: np.ndarray
     :param left_bars: int - default: 15

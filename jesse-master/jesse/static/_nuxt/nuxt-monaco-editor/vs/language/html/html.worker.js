@@ -2,7 +2,6 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Version: 0.50.0(c321d0fbecb50ab8a5365fa1965476b0ae63fc87)
  * Released under the MIT license
- * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
  *-----------------------------------------------------------------------------*/
 
 
@@ -1640,7 +1639,6 @@ var _WSP = " ".charCodeAt(0);
 var _TAB = "	".charCodeAt(0);
 var htmlScriptContents = {
   "text/x-handlebars-template": true,
-  // Fix for https://github.com/microsoft/vscode/issues/77977
   "text/html": true
 };
 function createScanner(input, initialOffset = 0, initialState = ScannerState.WithinContent, emitPseudoCloseTags = false) {
@@ -8277,7 +8275,6 @@ var legacy_beautify_html;
         this.inline_custom_elements = this._get_boolean("inline_custom_elements", true);
         this.void_elements = this._get_array("void_elements", [
           // HTLM void elements - aka self-closing tags - aka singletons
-          // https://www.w3.org/html/wg/drafts/html/master/syntax.html#void-elements
           "area",
           "base",
           "br",
@@ -8300,8 +8297,6 @@ var legacy_beautify_html;
           "!doctype",
           "?xml",
           // obsolete tags
-          // basefont: https://www.computerhope.com/jargon/h/html-basefont-tag.htm
-          // isndex: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/isindex
           "basefont",
           "isindex"
         ]);
@@ -8359,7 +8354,6 @@ var legacy_beautify_html;
           handlebars_raw_close: pattern_reader.until(/}}/),
           comment: pattern_reader.starting_with(/<!--/).until_after(/-->/),
           cdata: pattern_reader.starting_with(/<!\[CDATA\[/).until_after(/]]>/),
-          // https://en.wikipedia.org/wiki/Conditional_comment
           conditional_comment: pattern_reader.starting_with(/<!\[/).until_after(/]>/),
           processing: pattern_reader.starting_with(/<\?/).until_after(/\?>/)
         };
@@ -9170,7 +9164,6 @@ function getWorkspaceUrl(documentUri, tokenContent, documentContext, base) {
     return documentUri + tokenContent;
   }
   if (/^\/\//i.test(tokenContent)) {
-    const pickedScheme = startsWith(documentUri, "https://") ? "https" : "http";
     return pickedScheme + ":" + tokenContent.replace(/^\s*/g, "");
   }
   if (documentContext) {
@@ -9770,22 +9763,18 @@ var htmlData = {
           "name": "manifest",
           "description": {
             "kind": "markdown",
-            "value": "Specifies the URI of a resource manifest indicating resources that should be cached locally. See [Using the application cache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) for details."
           }
         },
         {
           "name": "version",
-          "description": 'Specifies the version of the HTML [Document Type Definition](https://developer.mozilla.org/en-US/docs/Glossary/DTD "Document Type Definition: In HTML, the doctype is the required "<!DOCTYPE html>" preamble found at the top of all documents. Its sole purpose is to prevent a browser from switching into so-called \u201Cquirks mode\u201D when rendering a document; that is, the "<!DOCTYPE html>" doctype ensures that the browser makes a best-effort attempt at following the relevant specifications, rather than using a different rendering mode that is incompatible with some specifications.") that governs the current document. This attribute is not needed, because it is redundant with the version information in the document type declaration.'
         },
         {
           "name": "xmlns",
-          "description": 'Specifies the XML Namespace of the document. Default value is `"http://www.w3.org/1999/xhtml"`. This is required in documents parsed with XML parsers, and optional in text/html documents.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/html"
         }
       ]
     },
@@ -9804,7 +9793,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/head"
         }
       ]
     },
@@ -9818,7 +9806,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/title"
         }
       ]
     },
@@ -9849,7 +9836,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/base"
         }
       ]
     },
@@ -9865,7 +9851,6 @@ var htmlData = {
           "name": "href",
           "description": {
             "kind": "markdown",
-            "value": 'This attribute specifies the [URL](https://developer.mozilla.org/en-US/docs/Glossary/URL "URL: Uniform Resource Locator (URL) is a text string specifying where a resource can be found on the Internet.") of the linked resource. A URL can be absolute or relative.'
           }
         },
         {
@@ -9873,28 +9858,24 @@ var htmlData = {
           "valueSet": "xo",
           "description": {
             "kind": "markdown",
-            "value": 'This enumerated attribute indicates whether [CORS](https://developer.mozilla.org/en-US/docs/Glossary/CORS "CORS: CORS (Cross-Origin Resource Sharing) is a system, consisting of transmitting HTTP headers, that determines whether browsers block frontend JavaScript code from accessing responses for cross-origin requests.") must be used when fetching the resource. [CORS-enabled images](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_Enabled_Image) can be reused in the [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas "Use the HTML <canvas> element with either the canvas scripting API or the WebGL API to draw graphics and animations.") element without being _tainted_. The allowed values are:\n\n`anonymous`\n\nA cross-origin request (i.e. with an [`Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin "The Origin request header indicates where a fetch originates from. It doesn\'t include any path information, but only the server name. It is sent with CORS requests, as well as with POST requests. It is similar to the Referer header, but, unlike this header, it doesn\'t disclose the whole path.") HTTP header) is performed, but no credential is sent (i.e. no cookie, X.509 certificate, or HTTP Basic authentication). If the server does not give credentials to the origin site (by not setting the [`Access-Control-Allow-Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin "The Access-Control-Allow-Origin response header indicates whether the response can be shared with requesting code from the given origin.") HTTP header) the image will be tainted and its usage restricted.\n\n`use-credentials`\n\nA cross-origin request (i.e. with an `Origin` HTTP header) is performed along with a credential sent (i.e. a cookie, certificate, and/or HTTP Basic authentication is performed). If the server does not give credentials to the origin site (through [`Access-Control-Allow-Credentials`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials "The Access-Control-Allow-Credentials response header tells browsers whether to expose the response to frontend JavaScript code when the request\'s credentials mode (Request.credentials) is "include".") HTTP header), the resource will be _tainted_ and its usage restricted.\n\nIf the attribute is not present, the resource is fetched without a [CORS](https://developer.mozilla.org/en-US/docs/Glossary/CORS "CORS: CORS (Cross-Origin Resource Sharing) is a system, consisting of transmitting HTTP headers, that determines whether browsers block frontend JavaScript code from accessing responses for cross-origin requests.") request (i.e. without sending the `Origin` HTTP header), preventing its non-tainted usage. If invalid, it is handled as if the enumerated keyword **anonymous** was used. See [CORS settings attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) for additional information.'
           }
         },
         {
           "name": "rel",
           "description": {
             "kind": "markdown",
-            "value": "This attribute names a relationship of the linked document to the current document. The attribute must be a space-separated list of the [link types values](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types)."
           }
         },
         {
           "name": "media",
           "description": {
             "kind": "markdown",
-            "value": "This attribute specifies the media that the linked resource applies to. Its value must be a media type / [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_queries). This attribute is mainly useful when linking to external stylesheets \u2014 it allows the user agent to pick the best adapted one for the device it runs on.\n\n**Notes:**\n\n*   In HTML 4, this can only be a simple white-space-separated list of media description literals, i.e., [media types and groups](https://developer.mozilla.org/en-US/docs/Web/CSS/@media), where defined and allowed as values for this attribute, such as `print`, `screen`, `aural`, `braille`. HTML5 extended this to any kind of [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_queries), which are a superset of the allowed values of HTML 4.\n*   Browsers not supporting [CSS3 Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_queries) won't necessarily recognize the adequate link; do not forget to set fallback links, the restricted set of media queries defined in HTML 4."
           }
         },
         {
           "name": "hreflang",
           "description": {
             "kind": "markdown",
-            "value": "This attribute indicates the language of the linked resource. It is purely advisory. Allowed values are determined by [BCP47](https://www.ietf.org/rfc/bcp/bcp47.txt). Use this attribute only if the [`href`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-href) attribute is present."
           }
         },
         {
@@ -9908,12 +9889,10 @@ var htmlData = {
           "name": "sizes",
           "description": {
             "kind": "markdown",
-            "value": "This attribute defines the sizes of the icons for visual media contained in the resource. It must be present only if the [`rel`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attr-rel) contains a value of `icon` or a non-standard type such as Apple's `apple-touch-icon`. It may have the following values:\n\n*   `any`, meaning that the icon can be scaled to any size as it is in a vector format, like `image/svg+xml`.\n*   a white-space separated list of sizes, each in the format `_<width in pixels>_x_<height in pixels>_` or `_<width in pixels>_X_<height in pixels>_`. Each of these sizes must be contained in the resource.\n\n**Note:** Most icon formats are only able to store one single icon; therefore most of the time the [`sizes`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-sizes) contains only one entry. MS's ICO format does, as well as Apple's ICNS. ICO is more ubiquitous; you should definitely use it."
           }
         },
         {
           "name": "as",
-          "description": 'This attribute is only used when `rel="preload"` or `rel="prefetch"` has been set on the `<link>` element. It specifies the type of content being loaded by the `<link>`, which is necessary for content prioritization, request matching, application of correct [content security policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), and setting of correct [`Accept`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept "The Accept request HTTP header advertises which content types, expressed as MIME types, the client is able to understand. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice with the Content-Type response header. Browsers set adequate values for this header depending on\xA0the context where the request is done: when fetching a CSS stylesheet a different value is set for the request than when fetching an image,\xA0video or a script.") request header.'
         },
         {
           "name": "importance",
@@ -9925,21 +9904,17 @@ var htmlData = {
         },
         {
           "name": "integrity",
-          "description": "Contains inline metadata \u2014 a base64-encoded cryptographic hash of the resource (file) you\u2019re telling the browser to fetch. The browser can use this to verify that the fetched resource has been delivered free of unexpected manipulation. See [Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)."
         },
         {
           "name": "referrerpolicy",
-          "description": 'A string indicating which referrer to use when fetching the resource:\n\n*   `no-referrer` means that the [`Referer`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer "The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example.") header will not be sent.\n*   `no-referrer-when-downgrade` means that no [`Referer`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer "The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example.") header will be sent when navigating to an origin without TLS (HTTPS). This is a user agent\u2019s default behavior, if no policy is otherwise specified.\n*   `origin` means that the referrer will be the origin of the page, which is roughly the scheme, the host, and the port.\n*   `origin-when-cross-origin` means that navigating to other origins will be limited to the scheme, the host, and the port, while navigating on the same origin will include the referrer\'s path.\n*   `unsafe-url` means that the referrer will include the origin and the path (but not the fragment, password, or username). This case is unsafe because it can leak origins and paths from TLS-protected resources to insecure origins.'
         },
         {
           "name": "title",
-          "description": 'The `title` attribute has special semantics on the `<link>` element. When used on a `<link rel="stylesheet">` it defines a [preferred or an alternate stylesheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets). Incorrectly using it may [cause the stylesheet to be ignored](https://developer.mozilla.org/en-US/docs/Correctly_Using_Titles_With_External_Stylesheets).'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/link"
         }
       ]
     },
@@ -9955,39 +9930,33 @@ var htmlData = {
           "name": "name",
           "description": {
             "kind": "markdown",
-            "value": 'This attribute defines the name of a piece of document-level metadata. It should not be set if one of the attributes [`itemprop`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-itemprop), [`http-equiv`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv) or [`charset`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-charset) is also set.\n\nThis metadata name is associated with the value contained by the [`content`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-content) attribute. The possible values for the name attribute are:\n\n*   `application-name` which defines the name of the application running in the web page.\n    \n    **Note:**\n    \n    *   Browsers may use this to identify the application. It is different from the [`<title>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title "The HTML Title element (<title>) defines the document\'s title that is shown in a browser\'s title bar or a page\'s tab.") element, which usually contain the application name, but may also contain information like the document name or a status.\n    *   Simple web pages shouldn\'t define an application-name.\n    \n*   `author` which defines the name of the document\'s author.\n*   `description` which contains a short and accurate summary of the content of the page. Several browsers, like Firefox and Opera, use this as the default description of bookmarked pages.\n*   `generator` which contains the identifier of the software that generated the page.\n*   `keywords` which contains words relevant to the page\'s content separated by commas.\n*   `referrer` which controls the [`Referer` HTTP header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer) attached to requests sent from the document:\n    \n    Values for the `content` attribute of `<meta name="referrer">`\n    \n    `no-referrer`\n    \n    Do not send a HTTP `Referrer` header.\n    \n    `origin`\n    \n    Send the [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) of the document.\n    \n    `no-referrer-when-downgrade`\n    \n    Send the [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) as a referrer to URLs as secure as the current page, (https\u2192https), but does not send a referrer to less secure URLs (https\u2192http). This is the default behaviour.\n    \n    `origin-when-cross-origin`\n    \n    Send the full URL (stripped of parameters) for same-origin requests, but only send the [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) for other cases.\n    \n    `same-origin`\n    \n    A referrer will be sent for [same-site origins](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy), but cross-origin requests will contain no referrer information.\n    \n    `strict-origin`\n    \n    Only send the origin of the document as the referrer to a-priori as-much-secure destination (HTTPS->HTTPS), but don\'t send it to a less secure destination (HTTPS->HTTP).\n    \n    `strict-origin-when-cross-origin`\n    \n    Send a full URL when performing a same-origin request, only send the origin of the document to a-priori as-much-secure destination (HTTPS->HTTPS), and send no header to a less secure destination (HTTPS->HTTP).\n    \n    `unsafe-URL`\n    \n    Send the full URL (stripped of parameters) for same-origin or cross-origin requests.\n    \n    **Notes:**\n    \n    *   Some browsers support the deprecated values of `always`, `default`, and `never` for referrer.\n    *   Dynamically inserting `<meta name="referrer">` (with [`document.write`](https://developer.mozilla.org/en-US/docs/Web/API/Document/write) or [`appendChild`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)) makes the referrer behaviour unpredictable.\n    *   When several conflicting policies are defined, the no-referrer policy is applied.\n    \n\nThis attribute may also have a value taken from the extended list defined on [WHATWG Wiki MetaExtensions page](https://wiki.whatwg.org/wiki/MetaExtensions). Although none have been formally accepted yet, a few commonly used names are:\n\n*   `creator` which defines the name of the creator of the document, such as an organization or institution. If there are more than one, several [`<meta>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta "The HTML <meta> element represents metadata that cannot be represented by other HTML meta-related elements, like <base>, <link>, <script>, <style> or <title>.") elements should be used.\n*   `googlebot`, a synonym of `robots`, is only followed by Googlebot (the indexing crawler for Google).\n*   `publisher` which defines the name of the document\'s publisher.\n*   `robots` which defines the behaviour that cooperative crawlers, or "robots", should use with the page. It is a comma-separated list of the values below:\n    \n    Values for the content of `<meta name="robots">`\n    \n    Value\n    \n    Description\n    \n    Used by\n    \n    `index`\n    \n    Allows the robot to index the page (default).\n    \n    All\n    \n    `noindex`\n    \n    Requests the robot to not index the page.\n    \n    All\n    \n    `follow`\n    \n    Allows the robot to follow the links on the page (default).\n    \n    All\n    \n    `nofollow`\n    \n    Requests the robot to not follow the links on the page.\n    \n    All\n    \n    `none`\n    \n    Equivalent to `noindex, nofollow`\n    \n    [Google](https://support.google.com/webmasters/answer/79812)\n    \n    `noodp`\n    \n    Prevents using the [Open Directory Project](https://www.dmoz.org/) description, if any, as the page description in search engine results.\n    \n    [Google](https://support.google.com/webmasters/answer/35624#nodmoz), [Yahoo](https://help.yahoo.com/kb/search-for-desktop/meta-tags-robotstxt-yahoo-search-sln2213.html#cont5), [Bing](https://www.bing.com/webmaster/help/which-robots-metatags-does-bing-support-5198d240)\n    \n    `noarchive`\n    \n    Requests the search engine not to cache the page content.\n    \n    [Google](https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag#valid-indexing--serving-directives), [Yahoo](https://help.yahoo.com/kb/search-for-desktop/SLN2213.html), [Bing](https://www.bing.com/webmaster/help/which-robots-metatags-does-bing-support-5198d240)\n    \n    `nosnippet`\n    \n    Prevents displaying any description of the page in search engine results.\n    \n    [Google](https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag#valid-indexing--serving-directives), [Bing](https://www.bing.com/webmaster/help/which-robots-metatags-does-bing-support-5198d240)\n    \n    `noimageindex`\n    \n    Requests this page not to appear as the referring page of an indexed image.\n    \n    [Google](https://developers.google.com/webmasters/control-crawl-index/docs/robots_meta_tag#valid-indexing--serving-directives)\n    \n    `nocache`\n    \n    Synonym of `noarchive`.\n    \n    [Bing](https://www.bing.com/webmaster/help/which-robots-metatags-does-bing-support-5198d240)\n    \n    **Notes:**\n    \n    *   Only cooperative robots follow these rules. Do not expect to prevent e-mail harvesters with them.\n    *   The robot still needs to access the page in order to read these rules. To prevent bandwidth consumption, use a _[robots.txt](https://developer.mozilla.org/en-US/docs/Glossary/robots.txt "robots.txt: Robots.txt is a file which is usually placed in the root of any website. It decides whether\xA0crawlers are permitted or forbidden access to the web site.")_ file.\n    *   If you want to remove a page, `noindex` will work, but only after the robot visits the page again. Ensure that the `robots.txt` file is not preventing revisits.\n    *   Some values are mutually exclusive, like `index` and `noindex`, or `follow` and `nofollow`. In these cases the robot\'s behaviour is undefined and may vary between them.\n    *   Some crawler robots, like Google, Yahoo and Bing, support the same values for the HTTP header `X-Robots-Tag`; this allows non-HTML documents like images to use these rules.\n    \n*   `slurp`, is a synonym of `robots`, but only for Slurp - the crawler for Yahoo Search.\n*   `viewport`, which gives hints about the size of the initial size of the [viewport](https://developer.mozilla.org/en-US/docs/Glossary/viewport "viewport: A viewport represents a polygonal (normally rectangular) area in computer graphics that is currently being viewed. In web browser terms, it refers to the part of the document you\'re viewing which is currently visible in its window (or the screen, if the document is being viewed in full screen mode). Content outside the viewport is not visible onscreen until scrolled into view."). Used by mobile devices only.\n    \n    Values for the content of `<meta name="viewport">`\n    \n    Value\n    \n    Possible subvalues\n    \n    Description\n    \n    `width`\n    \n    A positive integer number, or the text `device-width`\n    \n    Defines the pixel width of the viewport that you want the web site to be rendered at.\n    \n    `height`\n    \n    A positive integer, or the text `device-height`\n    \n    Defines the height of the viewport. Not used by any browser.\n    \n    `initial-scale`\n    \n    A positive number between `0.0` and `10.0`\n    \n    Defines the ratio between the device width (`device-width` in portrait mode or `device-height` in landscape mode) and the viewport size.\n    \n    `maximum-scale`\n    \n    A positive number between `0.0` and `10.0`\n    \n    Defines the maximum amount to zoom in. It must be greater or equal to the `minimum-scale` or the behaviour is undefined. Browser settings can ignore this rule and iOS10+ ignores it by default.\n    \n    `minimum-scale`\n    \n    A positive number between `0.0` and `10.0`\n    \n    Defines the minimum zoom level. It must be smaller or equal to the `maximum-scale` or the behaviour is undefined. Browser settings can ignore this rule and iOS10+ ignores it by default.\n    \n    `user-scalable`\n    \n    `yes` or `no`\n    \n    If set to `no`, the user is not able to zoom in the webpage. The default is `yes`. Browser settings can ignore this rule, and iOS10+ ignores it by default.\n    \n    Specification\n    \n    Status\n    \n    Comment\n    \n    [CSS Device Adaptation  \n    The definition of \'<meta name="viewport">\' in that specification.](https://drafts.csswg.org/css-device-adapt/#viewport-meta)\n    \n    Working Draft\n    \n    Non-normatively describes the Viewport META element\n    \n    See also: [`@viewport`](https://developer.mozilla.org/en-US/docs/Web/CSS/@viewport "The @viewport CSS at-rule lets you configure the viewport through which the document is viewed. It\'s primarily used for mobile devices, but is also used by desktop browsers that support features like "snap to edge" (such as Microsoft Edge).")\n    \n    **Notes:**\n    \n    *   Though unstandardized, this declaration is respected by most mobile browsers due to de-facto dominance.\n    *   The default values may vary between devices and browsers.\n    *   To learn about this declaration in Firefox for Mobile, see [this article](https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag "Mobile/Viewport meta tag").'
           }
         },
         {
           "name": "http-equiv",
           "description": {
             "kind": "markdown",
-            "value": 'Defines a pragma directive. The attribute is named `**http-equiv**(alent)` because all the allowed values are names of particular HTTP headers:\n\n*   `"content-language"`  \n    Defines the default language of the page. It can be overridden by the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute on any element.\n    \n    **Warning:** Do not use this value, as it is obsolete. Prefer the `lang` attribute on the [`<html>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html "The HTML <html> element represents the root (top-level element) of an HTML document, so it is also referred to as the root element. All other elements must be descendants of this element.") element.\n    \n*   `"content-security-policy"`  \n    Allows page authors to define a [content policy](https://developer.mozilla.org/en-US/docs/Web/Security/CSP/CSP_policy_directives) for the current page. Content policies mostly specify allowed server origins and script endpoints which help guard against cross-site scripting attacks.\n*   `"content-type"`  \n    Defines the [MIME type](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type) of the document, followed by its character encoding. It follows the same syntax as the HTTP `content-type` entity-header field, but as it is inside a HTML page, most values other than `text/html` are impossible. Therefore the valid syntax for its `content` is the string \'`text/html`\' followed by a character set with the following syntax: \'`; charset=_IANAcharset_`\', where `IANAcharset` is the _preferred MIME name_ for a character set as [defined by the IANA.](https://www.iana.org/assignments/character-sets)\n    \n    **Warning:** Do not use this value, as it is obsolete. Use the [`charset`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-charset) attribute on the [`<meta>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta "The HTML <meta> element represents metadata that cannot be represented by other HTML meta-related elements, like <base>, <link>, <script>, <style> or <title>.") element.\n    \n    **Note:** As [`<meta>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta "The HTML <meta> element represents metadata that cannot be represented by other HTML meta-related elements, like <base>, <link>, <script>, <style> or <title>.") can\'t change documents\' types in XHTML or HTML5\'s XHTML serialization, never set the MIME type to an XHTML MIME type with `<meta>`.\n    \n*   `"refresh"`  \n    This instruction specifies:\n    *   The number of seconds until the page should be reloaded - only if the [`content`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-content) attribute contains a positive integer.\n    *   The number of seconds until the page should redirect to another - only if the [`content`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-content) attribute contains a positive integer followed by the string \'`;url=`\', and a valid URL.\n*   `"set-cookie"`  \n    Defines a [cookie](https://developer.mozilla.org/en-US/docs/cookie) for the page. Its content must follow the syntax defined in the [IETF HTTP Cookie Specification](https://tools.ietf.org/html/draft-ietf-httpstate-cookie-14).\n    \n    **Warning:** Do not use this instruction, as it is obsolete. Use the HTTP header [`Set-Cookie`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie) instead.'
           }
         },
         {
           "name": "content",
           "description": {
             "kind": "markdown",
-            "value": "This attribute contains the value for the [`http-equiv`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv) or [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-name) attribute, depending on which is used."
           }
         },
         {
           "name": "charset",
           "description": {
             "kind": "markdown",
-            "value": 'This attribute declares the page\'s character encoding. It must contain a [standard IANA MIME name for character encodings](https://www.iana.org/assignments/character-sets). Although the standard doesn\'t request a specific encoding, it suggests:\n\n*   Authors are encouraged to use [`UTF-8`](https://developer.mozilla.org/en-US/docs/Glossary/UTF-8).\n*   Authors should not use ASCII-incompatible encodings to avoid security risk: browsers not supporting them may interpret harmful content as HTML. This happens with the `JIS_C6226-1983`, `JIS_X0212-1990`, `HZ-GB-2312`, `JOHAB`, the ISO-2022 family and the EBCDIC family.\n\n**Note:** ASCII-incompatible encodings are those that don\'t map the 8-bit code points `0x20` to `0x7E` to the `0x0020` to `0x007E` Unicode code points)\n\n*   Authors **must not** use `CESU-8`, `UTF-7`, `BOCU-1` and/or `SCSU` as [cross-site scripting](https://developer.mozilla.org/en-US/docs/Glossary/Cross-site_scripting) attacks with these encodings have been demonstrated.\n*   Authors should not use `UTF-32` because not all HTML5 encoding algorithms can distinguish it from `UTF-16`.\n\n**Notes:**\n\n*   The declared character encoding must match the one the page was saved with to avoid garbled characters and security holes.\n*   The [`<meta>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta "The HTML <meta> element represents metadata that cannot be represented by other HTML meta-related elements, like <base>, <link>, <script>, <style> or <title>.") element declaring the encoding must be inside the [`<head>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head "The HTML <head> element provides general information (metadata) about the document, including its title and links to its\xA0scripts and style sheets.") element and **within the first 1024 bytes** of the HTML as some browsers only look at those bytes before choosing an encoding.\n*   This [`<meta>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta "The HTML <meta> element represents metadata that cannot be represented by other HTML meta-related elements, like <base>, <link>, <script>, <style> or <title>.") element is only one part of the [algorithm to determine a page\'s character set](https://www.whatwg.org/specs/web-apps/current-work/multipage/parsing.html#encoding-sniffing-algorithm "Algorithm charset page"). The [`Content-Type` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type) and any [Byte-Order Marks](https://developer.mozilla.org/en-US/docs/Glossary/Byte-Order_Mark "The definition of that term (Byte-Order Marks) has not been written yet; please consider contributing it!") override this element.\n*   It is strongly recommended to define the character encoding. If a page\'s encoding is undefined, cross-scripting techniques are possible, such as the [`UTF-7` fallback cross-scripting technique](https://code.google.com/p/doctype-mirror/wiki/ArticleUtf7).\n*   The [`<meta>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta "The HTML <meta> element represents metadata that cannot be represented by other HTML meta-related elements, like <base>, <link>, <script>, <style> or <title>.") element with a `charset` attribute is a synonym for the pre-HTML5 `<meta http-equiv="Content-Type" content="text/html; charset=_IANAcharset_">`, where _`IANAcharset`_ contains the value of the equivalent [`charset`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-charset) attribute. This syntax is still allowed, although no longer recommended.'
           }
         },
         {
           "name": "scheme",
-          "description": "This attribute defines the scheme in which metadata is described. A scheme is a context leading to the correct interpretations of the [`content`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-content) value, like a format.\n\n**Warning:** Do not use this value, as it is obsolete. There is no replacement as there was no real usage for it."
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/meta"
         }
       ]
     },
@@ -10002,14 +9971,12 @@ var htmlData = {
           "name": "media",
           "description": {
             "kind": "markdown",
-            "value": "This attribute defines which media the style should be applied to. Its value is a [media query](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries), which defaults to `all` if the attribute is missing."
           }
         },
         {
           "name": "nonce",
           "description": {
             "kind": "markdown",
-            "value": "A cryptographic nonce (number used once) used to whitelist inline styles in a [style-src Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src). The server must generate a unique nonce value each time it transmits a policy. It is critical to provide a nonce that cannot be guessed as bypassing a resource\u2019s policy is otherwise trivial."
           }
         },
         {
@@ -10025,13 +9992,11 @@ var htmlData = {
         },
         {
           "name": "title",
-          "description": "This attribute specifies [alternative style sheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets) sets."
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/style"
         }
       ]
     },
@@ -10127,27 +10092,21 @@ var htmlData = {
         },
         {
           "name": "alink",
-          "description": 'Color of text for hyperlinks when selected. _This method is non-conforming, use CSS [`color`](https://developer.mozilla.org/en-US/docs/Web/CSS/color "The color CSS property sets the foreground color value of an element\'s text and text decorations, and sets the currentcolor value.") property in conjunction with the [`:active`](https://developer.mozilla.org/en-US/docs/Web/CSS/:active "The :active CSS pseudo-class represents an element (such as a button) that is being activated by the user.") pseudo-class instead._'
         },
         {
           "name": "background",
-          "description": 'URI of a image to use as a background. _This method is non-conforming, use CSS [`background`](https://developer.mozilla.org/en-US/docs/Web/CSS/background "The background shorthand CSS property sets all background style properties at once, such as color, image, origin and size, or repeat method.") property on the element instead._'
         },
         {
           "name": "bgcolor",
-          "description": 'Background color for the document. _This method is non-conforming, use CSS [`background-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color "The background-color CSS property sets the background color of an element.") property on the element instead._'
         },
         {
           "name": "bottommargin",
-          "description": 'The margin of the bottom of the body. _This method is non-conforming, use CSS [`margin-bottom`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom "The margin-bottom CSS property sets the margin area on the bottom of an element. A positive value places it farther from its neighbors, while a negative value places it closer.") property on the element instead._'
         },
         {
           "name": "leftmargin",
-          "description": 'The margin of the left of the body. _This method is non-conforming, use CSS [`margin-left`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left "The margin-left CSS property sets the margin area on the left side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.") property on the element instead._'
         },
         {
           "name": "link",
-          "description": 'Color of text for unvisited hypertext links. _This method is non-conforming, use CSS [`color`](https://developer.mozilla.org/en-US/docs/Web/CSS/color "The color CSS property sets the foreground color value of an element\'s text and text decorations, and sets the currentcolor value.") property in conjunction with the [`:link`](https://developer.mozilla.org/en-US/docs/Web/CSS/:link "The :link CSS pseudo-class represents an element that has not yet been visited. It matches every unvisited <a>, <area>, or <link> element that has an href attribute.") pseudo-class instead._'
         },
         {
           "name": "onblur",
@@ -10179,25 +10138,20 @@ var htmlData = {
         },
         {
           "name": "rightmargin",
-          "description": 'The margin of the right of the body. _This method is non-conforming, use CSS [`margin-right`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right "The margin-right CSS property sets the margin area on the right side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.") property on the element instead._'
         },
         {
           "name": "text",
-          "description": 'Foreground color of text. _This method is non-conforming, use CSS [`color`](https://developer.mozilla.org/en-US/docs/Web/CSS/color "The color CSS property sets the foreground color value of an element\'s text and text decorations, and sets the currentcolor value.") property on the element instead._'
         },
         {
           "name": "topmargin",
-          "description": 'The margin of the top of the body. _This method is non-conforming, use CSS [`margin-top`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-top "The margin-top CSS property sets the margin area on the top of an element. A positive value places it farther from its neighbors, while a negative value places it closer.") property on the element instead._'
         },
         {
           "name": "vlink",
-          "description": 'Color of text for visited hypertext links. _This method is non-conforming, use CSS [`color`](https://developer.mozilla.org/en-US/docs/Web/CSS/color "The color CSS property sets the foreground color value of an element\'s text and text decorations, and sets the currentcolor value.") property in conjunction with the [`:visited`](https://developer.mozilla.org/en-US/docs/Web/CSS/:visited "The :visited CSS pseudo-class represents links that the user has already visited. For privacy reasons, the styles that can be modified using this selector are very limited.") pseudo-class instead._'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/body"
         }
       ]
     },
@@ -10211,7 +10165,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/article"
         }
       ]
     },
@@ -10225,7 +10178,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/section"
         }
       ]
     },
@@ -10239,7 +10191,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/nav"
         }
       ]
     },
@@ -10253,7 +10204,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/aside"
         }
       ]
     },
@@ -10267,7 +10217,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements"
         }
       ]
     },
@@ -10281,7 +10230,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements"
         }
       ]
     },
@@ -10295,7 +10243,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements"
         }
       ]
     },
@@ -10309,7 +10256,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements"
         }
       ]
     },
@@ -10323,7 +10269,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements"
         }
       ]
     },
@@ -10337,7 +10282,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/Heading_Elements"
         }
       ]
     },
@@ -10351,7 +10295,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/header"
         }
       ]
     },
@@ -10365,7 +10308,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/footer"
         }
       ]
     },
@@ -10379,7 +10321,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/address"
         }
       ]
     },
@@ -10393,7 +10334,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/p"
         }
       ]
     },
@@ -10429,7 +10369,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/hr"
         }
       ]
     },
@@ -10442,21 +10381,17 @@ var htmlData = {
       "attributes": [
         {
           "name": "cols",
-          "description": 'Contains the _preferred_ count of characters that a line should have. It was a non-standard synonym of [`width`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre#attr-width). To achieve such an effect, use CSS [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width "The width CSS property sets an element\'s width. By default it sets the width of the content area, but if box-sizing is set to border-box, it sets the width of the border area.") instead.'
         },
         {
           "name": "width",
-          "description": 'Contains the _preferred_ count of characters that a line should have. Though technically still implemented, this attribute has no visual effect; to achieve such an effect, use CSS [`width`](https://developer.mozilla.org/en-US/docs/Web/CSS/width "The width CSS property sets an element\'s width. By default it sets the width of the content area, but if box-sizing is set to border-box, it sets the width of the border area.") instead.'
         },
         {
           "name": "wrap",
-          "description": 'Is a _hint_ indicating how the overflow must happen. In modern browser this hint is ignored and no visual effect results in its present; to achieve such an effect, use CSS [`white-space`](https://developer.mozilla.org/en-US/docs/Web/CSS/white-space "The white-space CSS property sets how white space inside an element is handled.") instead.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/pre"
         }
       ]
     },
@@ -10478,7 +10413,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/blockquote"
         }
       ]
     },
@@ -10509,18 +10443,15 @@ var htmlData = {
           "valueSet": "lt",
           "description": {
             "kind": "markdown",
-            "value": "Indicates the numbering type:\n\n*   `'a'` indicates lowercase letters,\n*   `'A'` indicates uppercase letters,\n*   `'i'` indicates lowercase Roman numerals,\n*   `'I'` indicates uppercase Roman numerals,\n*   and `'1'` indicates numbers (default).\n\nThe type set is used for the entire list unless a different [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li#attr-type) attribute is used within an enclosed [`<li>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li \"The HTML <li> element is used to represent an item in a list. It must be contained in a parent element: an ordered list (<ol>), an unordered list (<ul>), or a menu (<menu>). In menus and unordered lists, list items are usually displayed using bullet points. In ordered lists, they are usually displayed with an ascending counter on the left, such as a number or letter.\") element.\n\n**Note:** This attribute was deprecated in HTML4, but reintroduced in HTML5.\n\nUnless the value of the list number matters (e.g. in legal or technical documents where items are to be referenced by their number/letter), the CSS [`list-style-type`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type \"The list-style-type CSS property sets the marker (such as a disc, character, or custom counter style) of a list item element.\") property should be used instead."
           }
         },
         {
           "name": "compact",
-          "description": 'This Boolean attribute hints that the list should be rendered in a compact style. The interpretation of this attribute depends on the user agent and it doesn\'t work in all browsers.\n\n**Warning:** Do not use this attribute, as it has been deprecated: the [`<ol>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol "The HTML <ol> element represents an ordered list of items, typically rendered as a numbered list.") element should be styled using [CSS](https://developer.mozilla.org/en-US/docs/CSS). To give an effect similar to the `compact` attribute, the [CSS](https://developer.mozilla.org/en-US/docs/CSS) property [`line-height`](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height "The line-height CSS property sets the amount of space used for lines, such as in text. On block-level elements, it specifies the minimum height of line boxes within the element. On non-replaced inline elements, it specifies the height that is used to calculate line box height.") can be used with a value of `80%`.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/ol"
         }
       ]
     },
@@ -10533,13 +10464,11 @@ var htmlData = {
       "attributes": [
         {
           "name": "compact",
-          "description": 'This Boolean attribute hints that the list should be rendered in a compact style. The interpretation of this attribute depends on the user agent and it doesn\'t work in all browsers.\n\n**Usage note:\xA0**Do not use this attribute, as it has been deprecated: the [`<ul>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul "The HTML <ul> element represents an unordered list of items, typically rendered as a bulleted list.") element should be styled using [CSS](https://developer.mozilla.org/en-US/docs/CSS). To give a similar effect as the `compact` attribute, the [CSS](https://developer.mozilla.org/en-US/docs/CSS) property [line-height](https://developer.mozilla.org/en-US/docs/CSS/line-height) can be used with a value of `80%`.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/ul"
         }
       ]
     },
@@ -10554,18 +10483,15 @@ var htmlData = {
           "name": "value",
           "description": {
             "kind": "markdown",
-            "value": 'This integer attribute indicates the current ordinal value of the list item as defined by the [`<ol>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol "The HTML <ol> element represents an ordered list of items, typically rendered as a numbered list.") element. The only allowed value for this attribute is a number, even if the list is displayed with Roman numerals or letters. List items that follow this one continue numbering from the value set. The **value** attribute has no meaning for unordered lists ([`<ul>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul "The HTML <ul> element represents an unordered list of items, typically rendered as a bulleted list.")) or for menus ([`<menu>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu "The HTML <menu> element represents a group of commands that a user can perform or activate. This includes both list menus, which might appear across the top of a screen, as well as context menus, such as those that might appear underneath a button after it has been clicked.")).\n\n**Note**: This attribute was deprecated in HTML4, but reintroduced in HTML5.\n\n**Note:** Prior to Gecko\xA09.0, negative values were incorrectly converted to 0. Starting in Gecko\xA09.0 all integer values are correctly parsed.'
           }
         },
         {
           "name": "type",
-          "description": 'This character attribute indicates the numbering type:\n\n*   `a`: lowercase letters\n*   `A`: uppercase letters\n*   `i`: lowercase Roman numerals\n*   `I`: uppercase Roman numerals\n*   `1`: numbers\n\nThis type overrides the one used by its parent [`<ol>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol "The HTML <ol> element represents an ordered list of items, typically rendered as a numbered list.") element, if any.\n\n**Usage note:** This attribute has been deprecated: use the CSS [`list-style-type`](https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type "The list-style-type CSS property sets the marker (such as a disc, character, or custom counter style) of a list item element.") property instead.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/li"
         }
       ]
     },
@@ -10579,7 +10505,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/dl"
         }
       ]
     },
@@ -10593,7 +10518,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/dt"
         }
       ]
     },
@@ -10612,7 +10536,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/dd"
         }
       ]
     },
@@ -10626,7 +10549,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/figure"
         }
       ]
     },
@@ -10640,7 +10562,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/figcaption"
         }
       ]
     },
@@ -10654,7 +10575,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/main"
         }
       ]
     },
@@ -10668,7 +10588,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/div"
         }
       ]
     },
@@ -10683,7 +10602,6 @@ var htmlData = {
           "name": "href",
           "description": {
             "kind": "markdown",
-            "value": 'Contains a URL or a URL fragment that the hyperlink points to.\nA URL fragment is a name preceded by a hash mark (`#`), which specifies an internal target location (an [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-id) of an HTML element) within the current document. URLs are not restricted to Web (HTTP)-based documents, but can use any protocol supported by the browser. For example, [`file:`](https://en.wikipedia.org/wiki/File_URI_scheme), `ftp:`, and `mailto:` work in most browsers.\n\n**Note:** You can use `href="#top"` or the empty fragment `href="#"` to link to the top of the current page. [This behavior is specified by HTML5](https://www.w3.org/TR/html5/single-page.html#scroll-to-fragid).'
           }
         },
         {
@@ -10698,46 +10616,39 @@ var htmlData = {
           "name": "download",
           "description": {
             "kind": "markdown",
-            "value": "This attribute instructs browsers to download a URL instead of navigating to it, so the user will be prompted to save it as a local file. If the attribute has a value, it is used as the pre-filled file name in the Save prompt (the user can still change the file name if they want). There are no restrictions on allowed values, though `/` and `\\` are converted to underscores. Most file systems limit some punctuation in file names, and browsers will adjust the suggested name accordingly.\n\n**Notes:**\n\n*   This attribute only works for [same-origin URLs](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).\n*   Although HTTP(s) URLs need to be in the same-origin, [`blob:` URLs](https://developer.mozilla.org/en-US/docs/Web/API/URL.createObjectURL) and [`data:` URLs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) are allowed so that content generated by JavaScript, such as pictures created in an image-editor Web app, can be downloaded.\n*   If the HTTP header [`Content-Disposition:`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition) gives a different filename than this attribute, the HTTP header takes priority over this attribute.\n*   If `Content-Disposition:` is set to `inline`, Firefox prioritizes `Content-Disposition`, like the filename case, while Chrome prioritizes the `download` attribute."
           }
         },
         {
           "name": "ping",
           "description": {
             "kind": "markdown",
-            "value": 'Contains a space-separated list of URLs to which, when the hyperlink is followed, [`POST`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST "The HTTP POST method sends data to the server. The type of the body of the request is indicated by the Content-Type header.") requests with the body `PING` will be sent by the browser (in the background). Typically used for tracking.'
           }
         },
         {
           "name": "rel",
           "description": {
             "kind": "markdown",
-            "value": "Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types)."
           }
         },
         {
           "name": "hreflang",
           "description": {
             "kind": "markdown",
-            "value": 'This attribute indicates the human language of the linked resource. It is purely advisory, with no built-in functionality. Allowed values are determined by [BCP47](https://www.ietf.org/rfc/bcp/bcp47.txt "Tags for Identifying Languages").'
           }
         },
         {
           "name": "type",
           "description": {
             "kind": "markdown",
-            "value": 'Specifies the media type in the form of a [MIME type](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type "MIME type: A\xA0MIME type\xA0(now properly called "media type", but\xA0also sometimes "content type") is a string sent along\xA0with a file indicating the type of the file (describing the content format, for example, a sound file might be labeled\xA0audio/ogg, or an image file\xA0image/png).") for the linked URL. It is purely advisory, with no built-in functionality.'
           }
         },
         {
           "name": "referrerpolicy",
-          "description": "Indicates which [referrer](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer) to send when fetching the URL:\n\n*   `'no-referrer'` means the `Referer:` header will not be sent.\n*   `'no-referrer-when-downgrade'` means no `Referer:` header will be sent when navigating to an origin without HTTPS. This is the default behavior.\n*   `'origin'` means the referrer will be the [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) of the page, not including information after the domain.\n*   `'origin-when-cross-origin'` meaning that navigations to other origins will be limited to the scheme, the host and the port, while navigations on the same origin will include the referrer's path.\n*   `'strict-origin-when-cross-origin'`\n*   `'unsafe-url'` means the referrer will include the origin and path, but not the fragment, password, or username. This is unsafe because it can leak data from secure URLs to insecure ones."
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/a"
         }
       ]
     },
@@ -10751,7 +10662,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/em"
         }
       ]
     },
@@ -10765,7 +10675,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/strong"
         }
       ]
     },
@@ -10779,7 +10688,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/small"
         }
       ]
     },
@@ -10793,7 +10701,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/s"
         }
       ]
     },
@@ -10807,7 +10714,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/cite"
         }
       ]
     },
@@ -10829,7 +10735,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/q"
         }
       ]
     },
@@ -10843,7 +10748,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/dfn"
         }
       ]
     },
@@ -10857,7 +10761,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/abbr"
         }
       ]
     },
@@ -10871,7 +10774,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/ruby"
         }
       ]
     },
@@ -10885,7 +10787,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/rb"
         }
       ]
     },
@@ -10899,7 +10800,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/rt"
         }
       ]
     },
@@ -10913,7 +10813,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/rp"
         }
       ]
     },
@@ -10935,7 +10834,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/time"
         }
       ]
     },
@@ -10949,7 +10847,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/code"
         }
       ]
     },
@@ -10963,7 +10860,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/var"
         }
       ]
     },
@@ -10977,7 +10873,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/samp"
         }
       ]
     },
@@ -10991,7 +10886,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/kbd"
         }
       ]
     },
@@ -11005,7 +10899,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/sub"
         }
       ]
     },
@@ -11019,7 +10912,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/sup"
         }
       ]
     },
@@ -11033,7 +10925,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/i"
         }
       ]
     },
@@ -11047,7 +10938,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/b"
         }
       ]
     },
@@ -11061,7 +10951,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/u"
         }
       ]
     },
@@ -11075,7 +10964,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/mark"
         }
       ]
     },
@@ -11089,7 +10977,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/bdi"
         }
       ]
     },
@@ -11108,7 +10995,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/bdo"
         }
       ]
     },
@@ -11122,7 +11008,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/span"
         }
       ]
     },
@@ -11142,7 +11027,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/br"
         }
       ]
     },
@@ -11157,7 +11041,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/wbr"
         }
       ]
     },
@@ -11174,13 +11057,11 @@ var htmlData = {
         },
         {
           "name": "datetime",
-          "description": 'This attribute indicates the time and date of the change and must be a valid date with an optional time string. If the value cannot be parsed as a date with an optional time string, the element does not have an associated time stamp. For the format of the string without a time, see [Format of a valid date string](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#Format_of_a_valid_date_string "Certain HTML elements use date and/or time values. The formats of the strings that specify these are described in this article.") in [Date and time formats used in HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats "Certain HTML elements use date and/or time values. The formats of the strings that specify these are described in this article."). The format of the string if it includes both date and time is covered in [Format of a valid local date and time string](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#Format_of_a_valid_local_date_and_time_string "Certain HTML elements use date and/or time values. The formats of the strings that specify these are described in this article.") in [Date and time formats used in HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats "Certain HTML elements use date and/or time values. The formats of the strings that specify these are described in this article.").'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/ins"
         }
       ]
     },
@@ -11202,14 +11083,12 @@ var htmlData = {
           "name": "datetime",
           "description": {
             "kind": "markdown",
-            "value": 'This attribute indicates the time and date of the change and must be a valid date string with an optional time. If the value cannot be parsed as a date with an optional time string, the element does not have an associated time stamp. For the format of the string without a time, see [Format of a valid date string](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#Format_of_a_valid_date_string "Certain HTML elements use date and/or time values. The formats of the strings that specify these are described in this article.") in [Date and time formats used in HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats "Certain HTML elements use date and/or time values. The formats of the strings that specify these are described in this article."). The format of the string if it includes both date and time is covered in [Format of a valid local date and time string](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats#Format_of_a_valid_local_date_and_time_string "Certain HTML elements use date and/or time values. The formats of the strings that specify these are described in this article.") in [Date and time formats used in HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Date_and_time_formats "Certain HTML elements use date and/or time values. The formats of the strings that specify these are described in this article.").'
           }
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/del"
         }
       ]
     },
@@ -11223,7 +11102,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/picture"
         }
       ]
     },
@@ -11253,7 +11131,6 @@ var htmlData = {
           "name": "srcset",
           "description": {
             "kind": "markdown",
-            "value": "A list of one or more strings separated by commas indicating a set of possible image sources for the user agent to use. Each string is composed of:\n\n1.  a URL to an image,\n2.  optionally, whitespace followed by one of:\n    *   A width descriptor, or a positive integer directly followed by '`w`'. The width descriptor is divided by the source size given in the `sizes` attribute to calculate the effective pixel density.\n    *   A pixel density descriptor, which is a positive floating point number directly followed by '`x`'.\n\nIf no descriptor is specified, the source is assigned the default descriptor: `1x`.\n\nIt is incorrect to mix width descriptors and pixel density descriptors in the same `srcset` attribute. Duplicate descriptors (for instance, two sources in the same `srcset` which are both described with '`2x`') are also invalid.\n\nThe user agent selects any one of the available sources at its discretion. This provides them with significant leeway to tailor their selection based on things like user preferences or bandwidth conditions. See our [Responsive images](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images) tutorial for an example."
           }
         },
         {
@@ -11261,14 +11138,12 @@ var htmlData = {
           "valueSet": "xo",
           "description": {
             "kind": "markdown",
-            "value": 'This enumerated attribute indicates if the fetching of the related image must be done using CORS or not. [CORS-enabled images](https://developer.mozilla.org/en-US/docs/CORS_Enabled_Image) can be reused in the [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas "Use the HTML <canvas> element with either the canvas scripting API or the WebGL API to draw graphics and animations.") element without being "[tainted](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image#What_is_a_tainted_canvas)." The allowed values are:\n`anonymous`\n\nA cross-origin request (i.e., with `Origin:` HTTP header) is performed, but no credential is sent (i.e., no cookie, X.509 certificate, or HTTP Basic authentication). If the server does not give credentials to the origin site (by not setting the [`Access-Control-Allow-Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin "The Access-Control-Allow-Origin response header indicates whether the response can be shared with requesting code from the given origin.") HTTP header), the image will be tainted and its usage restricted.\n\n`use-credentials`\n\nA cross-origin request (i.e., with the [`Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin "The Origin request header indicates where a fetch originates from. It doesn\'t include any path information, but only the server name. It is sent with CORS requests, as well as with POST requests. It is similar to the Referer header, but, unlike this header, it doesn\'t disclose the whole path.") HTTP header) performed along with credentials sent (i.e., a cookie, certificate, or HTTP Basic authentication). If the server does not give credentials to the origin site (through the `Access-Control-Allow-Credentials` HTTP header), the image will be tainted and its usage restricted.\n\nIf the attribute is not present, the resource is fetched without a CORS request (i.e., without sending the `Origin` HTTP header), preventing its non-tainted usage in [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas "Use the HTML <canvas> element with either the canvas scripting API or the WebGL API to draw graphics and animations.") elements. If invalid, it is handled as if the `anonymous` value was used. See [CORS settings attributes](https://developer.mozilla.org/en-US/docs/HTML/CORS_settings_attributes) for additional information.'
           }
         },
         {
           "name": "usemap",
           "description": {
             "kind": "markdown",
-            "value": 'The partial URL (starting with \'#\') of an [image map](https://developer.mozilla.org/en-US/docs/HTML/Element/map) associated with the element.\n\n**Note:** You cannot use this attribute if the `<img>` element is a descendant of an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a "The HTML <a> element (or anchor element) creates a hyperlink to other web pages, files, locations within the same page, email addresses, or any other URL.") or [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button "The HTML <button> element represents a clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality.") element.'
           }
         },
         {
@@ -11276,7 +11151,6 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": 'This Boolean attribute indicates that the image is part of a server-side map. If so, the precise coordinates of a click are sent to the server.\n\n**Note:** This attribute is allowed only if the `<img>` element is a descendant of an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a "The HTML <a> element (or anchor element) creates a hyperlink to other web pages, files, locations within the same page, email addresses, or any other URL.") element with a valid [`href`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-href) attribute.'
           }
         },
         {
@@ -11314,7 +11188,6 @@ var htmlData = {
           "valueSet": "referrerpolicy",
           "description": {
             "kind": "markdown",
-            "value": "A string indicating which referrer to use when fetching the resource:\n\n*   `no-referrer:` The [`Referer`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer \"The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example.\") header will not be sent.\n*   `no-referrer-when-downgrade:` No `Referer` header will be sent when navigating to an origin without TLS (HTTPS). This is a user agent\u2019s default behavior if no policy is otherwise specified.\n*   `origin:` The `Referer` header will include the page of origin's scheme, the host, and the port.\n*   `origin-when-cross-origin:` Navigating to other origins will limit the included referral data to the scheme, the host and the port, while navigating from the same origin will include the referrer's full path.\n*   `unsafe-url:` The `Referer` header will include the origin and the path, but not the fragment, password, or username. This case is unsafe because it can leak origins and paths from TLS-protected resources to insecure origins."
           }
         },
         {
@@ -11334,13 +11207,11 @@ var htmlData = {
         },
         {
           "name": "intrinsicsize",
-          "description": "This attribute tells the browser to ignore the actual intrinsic size of the image and pretend it\u2019s the size specified in the attribute. Specifically, the image would raster at these dimensions and `naturalWidth`/`naturalHeight` on images would return the values specified in this attribute. [Explainer](https://github.com/ojanvafai/intrinsicsize-attribute), [examples](https://googlechrome.github.io/samples/intrinsic-size/index.html)"
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/img"
         }
       ]
     },
@@ -11355,7 +11226,6 @@ var htmlData = {
           "name": "src",
           "description": {
             "kind": "markdown",
-            "value": 'The URL of the page to embed. Use a value of `about:blank` to embed an empty page that conforms to the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#Inherited_origins). Also note that programatically removing an `<iframe>`\'s src attribute (e.g. via [`Element.removeAttribute()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute "The Element method removeAttribute() removes the attribute with the specified name from the element.")) causes `about:blank` to be loaded in the frame in Firefox (from version 65), Chromium-based browsers, and Safari/iOS.'
           }
         },
         {
@@ -11369,7 +11239,6 @@ var htmlData = {
           "name": "name",
           "description": {
             "kind": "markdown",
-            "value": 'A targetable name for the embedded browsing context. This can be used in the `target` attribute of the [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a "The HTML <a> element (or anchor element) creates a hyperlink to other web pages, files, locations within the same page, email addresses, or any other URL."), [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form "The HTML <form> element represents a document section that contains interactive controls for submitting information to a web server."), or [`<base>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base "The HTML <base> element specifies the base URL to use for all relative URLs contained within a document. There can be only one <base> element in a document.") elements; the `formtarget` attribute of the [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") or [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button "The HTML <button> element represents a clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality.") elements; or the `windowName` parameter in the [`window.open()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open "The\xA0Window interface\'s open() method loads the specified resource into the browsing context (window, <iframe> or tab) with the specified name. If the name doesn\'t exist, then a new window is opened and the specified resource is loaded into its browsing context.") method.'
           }
         },
         {
@@ -11377,7 +11246,6 @@ var htmlData = {
           "valueSet": "sb",
           "description": {
             "kind": "markdown",
-            "value": 'Applies extra restrictions to the content in the frame. The value of the attribute can either be empty to apply all restrictions, or space-separated tokens to lift particular restrictions:\n\n*   `allow-forms`: Allows the resource to submit forms. If this keyword is not used, form submission is blocked.\n*   `allow-modals`: Lets the resource [open modal windows](https://html.spec.whatwg.org/multipage/origin.html#sandboxed-modals-flag).\n*   `allow-orientation-lock`: Lets the resource [lock the screen orientation](https://developer.mozilla.org/en-US/docs/Web/API/Screen/lockOrientation).\n*   `allow-pointer-lock`: Lets the resource use the [Pointer Lock API](https://developer.mozilla.org/en-US/docs/WebAPI/Pointer_Lock).\n*   `allow-popups`: Allows popups (such as `window.open()`, `target="_blank"`, or `showModalDialog()`). If this keyword is not used, the popup will silently fail to open.\n*   `allow-popups-to-escape-sandbox`: Lets the sandboxed document open new windows without those windows inheriting the sandboxing. For example, this can safely sandbox an advertisement without forcing the same restrictions upon the page the ad links to.\n*   `allow-presentation`: Lets the resource start a [presentation session](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest).\n*   `allow-same-origin`: If this token is not used, the resource is treated as being from a special origin that always fails the [same-origin policy](https://developer.mozilla.org/en-US/docs/Glossary/same-origin_policy "same-origin policy: The same-origin policy is a critical security mechanism that restricts how a document or script loaded from one origin can interact with a resource from another origin.").\n*   `allow-scripts`: Lets the resource run scripts (but not create popup windows).\n*   `allow-storage-access-by-user-activation` : Lets the resource request access to the parent\'s storage capabilities with the [Storage Access API](https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API).\n*   `allow-top-navigation`: Lets the resource navigate the top-level browsing context (the one named `_top`).\n*   `allow-top-navigation-by-user-activation`: Lets the resource navigate the top-level browsing context, but only if initiated by a user gesture.\n\n**Notes about sandboxing:**\n\n*   When the embedded document has the same origin as the embedding page, it is **strongly discouraged** to use both `allow-scripts` and `allow-same-origin`, as that lets the embedded document remove the `sandbox` attribute \u2014 making it no more secure than not using the `sandbox` attribute at all.\n*   Sandboxing is useless if the attacker can display content outside a sandboxed `iframe` \u2014 such as if the viewer opens the frame in a new tab. Such content should be also served from a _separate origin_ to limit potential damage.\n*   The `sandbox` attribute is unsupported in Internet Explorer 9 and earlier.'
           }
         },
         {
@@ -11389,7 +11257,6 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": 'Set to `true` if the `<iframe>` can activate fullscreen mode by calling the [`requestFullscreen()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen "The Element.requestFullscreen() method issues an asynchronous request to make the element be displayed in full-screen mode.") method.\nThis attribute is considered a legacy attribute and redefined as `allow="fullscreen"`.'
           }
         },
         {
@@ -11408,11 +11275,9 @@ var htmlData = {
         },
         {
           "name": "allow",
-          "description": "Specifies a [feature policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Feature_Policy) for the `<iframe>`."
         },
         {
           "name": "allowpaymentrequest",
-          "description": "Set to `true` if a cross-origin `<iframe>` should be allowed to invoke the [Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API)."
         },
         {
           "name": "allowpaymentrequest",
@@ -11420,7 +11285,6 @@ var htmlData = {
         },
         {
           "name": "csp",
-          "description": 'A [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) enforced for the embedded resource. See [`HTMLIFrameElement.csp`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/csp "The csp property of the HTMLIFrameElement interface specifies the Content Security Policy that an embedded document must agree to enforce upon itself.") for details.'
         },
         {
           "name": "importance",
@@ -11428,13 +11292,11 @@ var htmlData = {
         },
         {
           "name": "referrerpolicy",
-          "description": 'Indicates which [referrer](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer) to send when fetching the frame\'s resource:\n\n*   `no-referrer`: The [`Referer`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer "The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example.") header will not be sent.\n*   `no-referrer-when-downgrade` (default): The [`Referer`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer "The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example.") header will not be sent to [origin](https://developer.mozilla.org/en-US/docs/Glossary/origin "origin: Web content\'s origin is defined by the scheme (protocol), host (domain), and port of the URL used to access it. Two objects have the same origin only when the scheme, host, and port all match.")s without [TLS](https://developer.mozilla.org/en-US/docs/Glossary/TLS "TLS: Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL), is a protocol used by applications to communicate securely across a network, preventing tampering with and eavesdropping on email, web browsing, messaging, and other protocols.") ([HTTPS](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS "HTTPS: HTTPS (HTTP Secure) is an encrypted version of the HTTP protocol. It usually uses SSL or TLS to encrypt all communication between a client and a server. This secure connection allows clients to safely exchange sensitive data with a server, for example for banking activities or online shopping.")).\n*   `origin`: The sent referrer will be limited to the origin of the referring page: its [scheme](https://developer.mozilla.org/en-US/docs/Archive/Mozilla/URIScheme), [host](https://developer.mozilla.org/en-US/docs/Glossary/host "host: A host is a device connected to the Internet (or a local network). Some hosts called servers offer additional services like serving webpages or storing files and emails."), and [port](https://developer.mozilla.org/en-US/docs/Glossary/port "port: For a computer connected to a network with an IP address, a port is a communication endpoint. Ports are designated by numbers, and below 1024 each port is associated by default with a specific protocol.").\n*   `origin-when-cross-origin`: The referrer sent to other origins will be limited to the scheme, the host, and the port. Navigations on the same origin will still include the path.\n*   `same-origin`: A referrer will be sent for [same origin](https://developer.mozilla.org/en-US/docs/Glossary/Same-origin_policy "same origin: The same-origin policy is a critical security mechanism that restricts how a document or script loaded from one origin can interact with a resource from another origin."), but cross-origin requests will contain no referrer information.\n*   `strict-origin`: Only send the origin of the document as the referrer when the protocol security level stays the same (HTTPS\u2192HTTPS), but don\'t send it to a less secure destination (HTTPS\u2192HTTP).\n*   `strict-origin-when-cross-origin`: Send a full URL when performing a same-origin request, only send the origin when the protocol security level stays the same (HTTPS\u2192HTTPS), and send no header to a less secure destination (HTTPS\u2192HTTP).\n*   `unsafe-url`: The referrer will include the origin _and_ the path (but not the [fragment](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/hash), [password](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/password), or [username](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/username)). **This value is unsafe**, because it leaks origins and paths from TLS-protected resources to insecure origins.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/iframe"
         }
       ]
     },
@@ -11464,21 +11326,18 @@ var htmlData = {
           "name": "width",
           "description": {
             "kind": "markdown",
-            "value": "The displayed width of the resource, in [CSS pixels](https://drafts.csswg.org/css-values/#px). This must be an absolute value; percentages are _not_ allowed."
           }
         },
         {
           "name": "height",
           "description": {
             "kind": "markdown",
-            "value": "The displayed height of the resource, in [CSS pixels](https://drafts.csswg.org/css-values/#px). This must be an absolute value; percentages are _not_ allowed."
           }
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/embed"
         }
       ]
     },
@@ -11500,7 +11359,6 @@ var htmlData = {
           "name": "type",
           "description": {
             "kind": "markdown",
-            "value": "The [content type](https://developer.mozilla.org/en-US/docs/Glossary/Content_type) of the resource specified by **data**. At least one of **data** and **type** must be defined."
           }
         },
         {
@@ -11508,7 +11366,6 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": "This Boolean attribute indicates if the **type** attribute and the actual [content type](https://developer.mozilla.org/en-US/docs/Glossary/Content_type) of the resource must match to be used."
           }
         },
         {
@@ -11522,28 +11379,24 @@ var htmlData = {
           "name": "usemap",
           "description": {
             "kind": "markdown",
-            "value": "A hash-name reference to a [`<map>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map \"The HTML <map> element is used with <area> elements to define an image map (a clickable link area).\") element; that is a '#' followed by the value of a [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map#attr-name) of a map element."
           }
         },
         {
           "name": "form",
           "description": {
             "kind": "markdown",
-            "value": 'The form element, if any, that the object element is associated with (its _form owner_). The value of the attribute must be an ID of a [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form "The HTML <form> element represents a document section that contains interactive controls for submitting information to a web server.") element in the same document.'
           }
         },
         {
           "name": "width",
           "description": {
             "kind": "markdown",
-            "value": "The width of the display resource, in [CSS pixels](https://drafts.csswg.org/css-values/#px). -- (Absolute values only. [NO percentages](https://html.spec.whatwg.org/multipage/embedded-content.html#dimension-attributes))"
           }
         },
         {
           "name": "height",
           "description": {
             "kind": "markdown",
-            "value": "The height of the displayed resource, in [CSS pixels](https://drafts.csswg.org/css-values/#px). -- (Absolute values only. [NO percentages](https://html.spec.whatwg.org/multipage/embedded-content.html#dimension-attributes))"
           }
         },
         {
@@ -11582,7 +11435,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/object"
         }
       ]
     },
@@ -11614,13 +11466,11 @@ var htmlData = {
         },
         {
           "name": "valuetype",
-          "description": 'Specifies the type of the `value` attribute. Possible values are:\n\n*   data: Default value. The value is passed to the object\'s implementation as a string.\n*   ref: The value is a URI to a resource where run-time values are stored.\n*   object: An ID of another [`<object>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object "The HTML <object> element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.") in the same document.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/param"
         }
       ]
     },
@@ -11678,7 +11528,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/video"
         }
       ]
     },
@@ -11693,7 +11542,6 @@ var htmlData = {
           "name": "src",
           "description": {
             "kind": "markdown",
-            "value": 'The URL of the audio to embed. This is subject to [HTTP access controls](https://developer.mozilla.org/en-US/docs/HTTP_access_control). This is optional; you may instead use the [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source "The HTML <source> element specifies multiple media resources for the <picture>, the <audio> element, or the <video> element.") element within the audio block to specify the audio to embed.'
           }
         },
         {
@@ -11701,7 +11549,6 @@ var htmlData = {
           "valueSet": "xo",
           "description": {
             "kind": "markdown",
-            "value": 'This enumerated attribute indicates whether to use CORS to fetch the related image. [CORS-enabled resources](https://developer.mozilla.org/en-US/docs/CORS_Enabled_Image) can be reused in the [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas "Use the HTML <canvas> element with either the canvas scripting API or the WebGL API to draw graphics and animations.") element without being _tainted_. The allowed values are:\n\nanonymous\n\nSends a cross-origin request without a credential. In other words, it sends the `Origin:` HTTP header without a cookie, X.509 certificate, or performing HTTP Basic authentication. If the server does not give credentials to the origin site (by not setting the `Access-Control-Allow-Origin:` HTTP header), the image will be _tainted_, and its usage restricted.\n\nuse-credentials\n\nSends a cross-origin request with a credential. In other words, it sends the `Origin:` HTTP header with a cookie, a certificate, or performing HTTP Basic authentication. If the server does not give credentials to the origin site (through `Access-Control-Allow-Credentials:` HTTP header), the image will be _tainted_ and its usage restricted.\n\nWhen not present, the resource is fetched without a CORS request (i.e. without sending the `Origin:` HTTP header), preventing its non-tainted used in [`<canvas>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas "Use the HTML <canvas> element with either the canvas scripting API or the WebGL API to draw graphics and animations.") elements. If invalid, it is handled as if the enumerated keyword **anonymous** was used. See [CORS settings attributes](https://developer.mozilla.org/en-US/docs/HTML/CORS_settings_attributes) for additional information.'
           }
         },
         {
@@ -11751,7 +11598,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/audio"
         }
       ]
     },
@@ -11767,33 +11613,27 @@ var htmlData = {
           "name": "src",
           "description": {
             "kind": "markdown",
-            "value": 'Required for [`<audio>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio "The HTML <audio> element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the <source> element:\xA0the browser will choose the most suitable one. It can also be the destination for streamed media, using a MediaStream.") and [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video "The HTML Video element (<video>) embeds a media player which supports video playback into the document."), address of the media resource. The value of this attribute is ignored when the `<source>` element is placed inside a [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture "The HTML <picture> element contains zero or more <source> elements and one <img> element to provide versions of an image for different display/device scenarios.") element.'
           }
         },
         {
           "name": "type",
           "description": {
             "kind": "markdown",
-            "value": "The MIME-type of the resource, optionally with a `codecs` parameter. See [RFC 4281](https://tools.ietf.org/html/rfc4281) for information about how to specify codecs."
           }
         },
         {
           "name": "sizes",
-          "description": 'Is a list of source sizes that describes the final rendered width of the image represented by the source. Each source size consists of a comma-separated list of media condition-length pairs. This information is used by the browser to determine, before laying the page out, which image defined in [`srcset`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source#attr-srcset) to use.  \nThe `sizes` attribute has an effect only when the [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source "The HTML <source> element specifies multiple media resources for the <picture>, the <audio> element, or the <video> element.") element is the direct child of a [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture "The HTML <picture> element contains zero or more <source> elements and one <img> element to provide versions of an image for different display/device scenarios.") element.'
         },
         {
           "name": "srcset",
-          "description": "A list of one or more strings separated by commas indicating a set of possible images represented by the source for the browser to use. Each string is composed of:\n\n1.  one URL to an image,\n2.  a width descriptor, that is a positive integer directly followed by `'w'`. The default value, if missing, is the infinity.\n3.  a pixel density descriptor, that is a positive floating number directly followed by `'x'`. The default value, if missing, is `1x`.\n\nEach string in the list must have at least a width descriptor or a pixel density descriptor to be valid. Among the list, there must be only one string containing the same tuple of width descriptor and pixel density descriptor.  \nThe browser chooses the most adequate image to display at a given point of time.  \nThe `srcset` attribute has an effect only when the [`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source \"The HTML <source> element specifies multiple media resources for the <picture>, the <audio> element, or the <video> element.\") element is the direct child of a [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture \"The HTML <picture> element contains zero or more <source> elements and one <img> element to provide versions of an image for different display/device scenarios.\") element."
         },
         {
           "name": "media",
-          "description": '[Media query](https://developer.mozilla.org/en-US/docs/CSS/Media_queries) of the resource\'s intended media; this should be used only in a [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture "The HTML <picture> element contains zero or more <source> elements and one <img> element to provide versions of an image for different display/device scenarios.") element.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/source"
         }
       ]
     },
@@ -11832,21 +11672,18 @@ var htmlData = {
           "name": "src",
           "description": {
             "kind": "markdown",
-            "value": 'Address of the track (`.vtt` file). Must be a valid URL. This attribute must be specified and its URL value must have the same origin as the document \u2014 unless the [`<audio>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio "The HTML <audio> element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the <source> element:\xA0the browser will choose the most suitable one. It can also be the destination for streamed media, using a MediaStream.") or [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video "The HTML Video element (<video>) embeds a media player which supports video playback into the document.") parent element of the `track` element has a [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) attribute.'
           }
         },
         {
           "name": "srclang",
           "description": {
             "kind": "markdown",
-            "value": "Language of the track text data. It must be a valid [BCP 47](https://r12a.github.io/app-subtags/) language tag. If the `kind` attribute is set to\xA0`subtitles,` then `srclang` must be defined."
           }
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/track"
         }
       ]
     },
@@ -11868,7 +11705,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/map"
         }
       ]
     },
@@ -11920,7 +11756,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/area"
         }
       ]
     },
@@ -11936,13 +11771,11 @@ var htmlData = {
         },
         {
           "name": "align",
-          "description": 'This enumerated attribute indicates how the table must be aligned inside the containing document. It may have the following values:\n\n*   left: the table is displayed on the left side of the document;\n*   center: the table is displayed in the center of the document;\n*   right: the table is displayed on the right side of the document.\n\n**Usage Note**\n\n*   **Do not use this attribute**, as it has been deprecated. The [`<table>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table "The HTML <table> element represents tabular data \u2014 that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.") element should be styled using [CSS](https://developer.mozilla.org/en-US/docs/CSS). Set [`margin-left`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-left "The margin-left CSS property sets the margin area on the left side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.") and [`margin-right`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin-right "The margin-right CSS property sets the margin area on the right side of an element. A positive value places it farther from its neighbors, while a negative value places it closer.") to `auto` or [`margin`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin "The margin CSS property sets the margin area on all four sides of an element. It is a shorthand for margin-top, margin-right, margin-bottom, and margin-left.") to `0 auto` to achieve an effect that is similar to the align attribute.\n*   Prior to Firefox 4, Firefox also supported the `middle`, `absmiddle`, and `abscenter` values as synonyms of `center`, in quirks mode only.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/table"
         }
       ]
     },
@@ -11955,13 +11788,11 @@ var htmlData = {
       "attributes": [
         {
           "name": "align",
-          "description": 'This enumerated attribute indicates how the caption must be aligned with respect to the table. It may have one of the following values:\n\n`left`\n\nThe caption is displayed to the left of the table.\n\n`top`\n\nThe caption is displayed above the table.\n\n`right`\n\nThe caption is displayed to the right of the table.\n\n`bottom`\n\nThe caption is displayed below the table.\n\n**Usage note:** Do not use this attribute, as it has been deprecated. The [`<caption>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption "The HTML Table Caption element (<caption>) specifies the caption (or title) of a table, and if used is always the first child of a <table>.") element should be styled using the [CSS](https://developer.mozilla.org/en-US/docs/CSS) properties [`caption-side`](https://developer.mozilla.org/en-US/docs/Web/CSS/caption-side "The caption-side CSS property puts the content of a table\'s <caption> on the specified side. The values are relative to the writing-mode of the table.") and [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.").'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/caption"
         }
       ]
     },
@@ -11977,13 +11808,11 @@ var htmlData = {
         },
         {
           "name": "align",
-          "description": 'This enumerated attribute specifies how horizontal alignment of each column cell content will be handled. Possible values are:\n\n*   `left`, aligning the content to the left of the cell\n*   `center`, centering the content in the cell\n*   `right`, aligning the content to the right of the cell\n*   `justify`, inserting spaces into the textual content so that the content is justified in the cell\n*   `char`, aligning the textual content on a special character with a minimal offset, defined by the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col#attr-char) and [`charoff`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col#attr-charoff) attributes Unimplemented (see [bug\xA02212](https://bugzilla.mozilla.org/show_bug.cgi?id=2212 "character alignment not implemented (align=char, charoff=, text-align:<string>)")).\n\nIf this attribute is not set, the `left` value is assumed. The descendant [`<col>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col "The HTML <col> element defines a column within a table and is used for defining common semantics on all common cells. It is generally found within a <colgroup> element.") elements may override this value using their own [`align`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col#attr-align) attribute.\n\n**Note:** Do not use this attribute as it is obsolete (not supported) in the latest standard.\n\n*   To achieve the same effect as the `left`, `center`, `right` or `justify` values:\n    *   Do not try to set the [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property on a selector giving a [`<colgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup "The HTML <colgroup> element defines a group of columns within a table.") element. Because [`<td>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td "The HTML <td> element defines a cell of a table that contains data. It participates in the table model.") elements are not descendant of the [`<colgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup "The HTML <colgroup> element defines a group of columns within a table.") element, they won\'t inherit it.\n    *   If the table doesn\'t use a [`colspan`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attr-colspan) attribute, use one `td:nth-child(an+b)` CSS selector per column, where a is the total number of the columns in the table and b is the ordinal position of this column in the table. Only after this selector the [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property can be used.\n    *   If the table does use a [`colspan`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attr-colspan) attribute, the effect can be achieved by combining adequate CSS attribute selectors like `[colspan=n]`, though this is not trivial.\n*   To achieve the same effect as the `char` value, in CSS3, you can use the value of the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup#attr-char) as the value of the [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property Unimplemented.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/colgroup"
         }
       ]
     },
@@ -12000,13 +11829,11 @@ var htmlData = {
         },
         {
           "name": "align",
-          "description": 'This enumerated attribute specifies how horizontal alignment of each column cell content will be handled. Possible values are:\n\n*   `left`, aligning the content to the left of the cell\n*   `center`, centering the content in the cell\n*   `right`, aligning the content to the right of the cell\n*   `justify`, inserting spaces into the textual content so that the content is justified in the cell\n*   `char`, aligning the textual content on a special character with a minimal offset, defined by the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col#attr-char) and [`charoff`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col#attr-charoff) attributes Unimplemented (see [bug\xA02212](https://bugzilla.mozilla.org/show_bug.cgi?id=2212 "character alignment not implemented (align=char, charoff=, text-align:<string>)")).\n\nIf this attribute is not set, its value is inherited from the [`align`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup#attr-align) of the [`<colgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup "The HTML <colgroup> element defines a group of columns within a table.") element this `<col>` element belongs too. If there are none, the `left` value is assumed.\n\n**Note:** Do not use this attribute as it is obsolete (not supported) in the latest standard.\n\n*   To achieve the same effect as the `left`, `center`, `right` or `justify` values:\n    *   Do not try to set the [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property on a selector giving a [`<col>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col "The HTML <col> element defines a column within a table and is used for defining common semantics on all common cells. It is generally found within a <colgroup> element.") element. Because [`<td>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td "The HTML <td> element defines a cell of a table that contains data. It participates in the table model.") elements are not descendant of the [`<col>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col "The HTML <col> element defines a column within a table and is used for defining common semantics on all common cells. It is generally found within a <colgroup> element.") element, they won\'t inherit it.\n    *   If the table doesn\'t use a [`colspan`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attr-colspan) attribute, use the `td:nth-child(an+b)` CSS selector. Set `a` to zero and `b` to the position of the column in the table, e.g. `td:nth-child(2) { text-align: right; }` to right-align the second column.\n    *   If the table does use a [`colspan`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attr-colspan) attribute, the effect can be achieved by combining adequate CSS attribute selectors like `[colspan=n]`, though this is not trivial.\n*   To achieve the same effect as the `char` value, in CSS3, you can use the value of the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col#attr-char) as the value of the [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property Unimplemented.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/col"
         }
       ]
     },
@@ -12019,13 +11846,11 @@ var htmlData = {
       "attributes": [
         {
           "name": "align",
-          "description": 'This enumerated attribute specifies how horizontal alignment of each cell content will be handled. Possible values are:\n\n*   `left`, aligning the content to the left of the cell\n*   `center`, centering the content in the cell\n*   `right`, aligning the content to the right of the cell\n*   `justify`, inserting spaces into the textual content so that the content is justified in the cell\n*   `char`, aligning the textual content on a special character with a minimal offset, defined by the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody#attr-char) and [`charoff`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody#attr-charoff) attributes.\n\nIf this attribute is not set, the `left` value is assumed.\n\n**Note:** Do not use this attribute as it is obsolete (not supported) in the latest standard.\n\n*   To achieve the same effect as the `left`, `center`, `right` or `justify` values, use the CSS [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property on it.\n*   To achieve the same effect as the `char` value, in CSS3, you can use the value of the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody#attr-char) as the value of the [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property Unimplemented.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/tbody"
         }
       ]
     },
@@ -12038,13 +11863,11 @@ var htmlData = {
       "attributes": [
         {
           "name": "align",
-          "description": 'This enumerated attribute specifies how horizontal alignment of each cell content will be handled. Possible values are:\n\n*   `left`, aligning the content to the left of the cell\n*   `center`, centering the content in the cell\n*   `right`, aligning the content to the right of the cell\n*   `justify`, inserting spaces into the textual content so that the content is justified in the cell\n*   `char`, aligning the textual content on a special character with a minimal offset, defined by the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead#attr-char) and [`charoff`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead#attr-charoff) attributes Unimplemented (see [bug\xA02212](https://bugzilla.mozilla.org/show_bug.cgi?id=2212 "character alignment not implemented (align=char, charoff=, text-align:<string>)")).\n\nIf this attribute is not set, the `left` value is assumed.\n\n**Note:** Do not use this attribute as it is obsolete (not supported) in the latest standard.\n\n*   To achieve the same effect as the `left`, `center`, `right` or `justify` values, use the CSS [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property on it.\n*   To achieve the same effect as the `char` value, in CSS3, you can use the value of the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead#attr-char) as the value of the [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property Unimplemented.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/thead"
         }
       ]
     },
@@ -12057,13 +11880,11 @@ var htmlData = {
       "attributes": [
         {
           "name": "align",
-          "description": 'This enumerated attribute specifies how horizontal alignment of each cell content will be handled. Possible values are:\n\n*   `left`, aligning the content to the left of the cell\n*   `center`, centering the content in the cell\n*   `right`, aligning the content to the right of the cell\n*   `justify`, inserting spaces into the textual content so that the content is justified in the cell\n*   `char`, aligning the textual content on a special character with a minimal offset, defined by the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody#attr-char) and [`charoff`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody#attr-charoff) attributes Unimplemented (see [bug\xA02212](https://bugzilla.mozilla.org/show_bug.cgi?id=2212 "character alignment not implemented (align=char, charoff=, text-align:<string>)")).\n\nIf this attribute is not set, the `left` value is assumed.\n\n**Note:** Do not use this attribute as it is obsolete (not supported) in the latest standard.\n\n*   To achieve the same effect as the `left`, `center`, `right` or `justify` values, use the CSS [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property on it.\n*   To achieve the same effect as the `char` value, in CSS3, you can use the value of the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot#attr-char) as the value of the [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property Unimplemented.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/tfoot"
         }
       ]
     },
@@ -12076,13 +11897,11 @@ var htmlData = {
       "attributes": [
         {
           "name": "align",
-          "description": 'A [`DOMString`](https://developer.mozilla.org/en-US/docs/Web/API/DOMString "DOMString is a UTF-16 String. As JavaScript already uses such strings, DOMString is mapped directly to a String.") which specifies how the cell\'s context should be aligned horizontally within the cells in the row; this is shorthand for using `align` on every cell in the row individually. Possible values are:\n\n`left`\n\nAlign the content of each cell at its left edge.\n\n`center`\n\nCenter the contents of each cell between their left and right edges.\n\n`right`\n\nAlign the content of each cell at its right edge.\n\n`justify`\n\nWiden whitespaces within the text of each cell so that the text fills the full width of each cell (full justification).\n\n`char`\n\nAlign each cell in the row on a specific character (such that each row in the column that is configured this way will horizontally align its cells on that character). This uses the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr#attr-char) and [`charoff`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr#attr-charoff) to establish the alignment character (typically "." or "," when aligning numerical data) and the number of characters that should follow the alignment character. This alignment type was never widely supported.\n\nIf no value is expressly set for `align`, the parent node\'s value is inherited.\n\nInstead of using the obsolete `align` attribute, you should instead use the CSS [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property to establish `left`, `center`, `right`, or `justify` alignment for the row\'s cells. To apply character-based alignment, set the CSS [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property to the alignment character (such as `"."` or `","`).'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/tr"
         }
       ]
     },
@@ -12108,7 +11927,6 @@ var htmlData = {
         },
         {
           "name": "align",
-          "description": 'This enumerated attribute specifies how the cell content\'s horizontal alignment will be handled. Possible values are:\n\n*   `left`: The content is aligned to the left of the cell.\n*   `center`: The content is centered in the cell.\n*   `right`: The content is aligned to the right of the cell.\n*   `justify` (with text only): The content is stretched out inside the cell so that it covers its entire width.\n*   `char` (with text only): The content is aligned to a character inside the `<th>` element with minimal offset. This character is defined by the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attr-char) and [`charoff`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attr-charoff) attributes Unimplemented (see [bug\xA02212](https://bugzilla.mozilla.org/show_bug.cgi?id=2212 "character alignment not implemented (align=char, charoff=, text-align:<string>)")).\n\nThe default value when this attribute is not specified is `left`.\n\n**Note:** Do not use this attribute as it is obsolete in the latest standard.\n\n*   To achieve the same effect as the `left`, `center`, `right` or `justify` values, apply the CSS [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property to the element.\n*   To achieve the same effect as the `char` value, give the [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property the same value you would use for the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td#attr-char). Unimplemented in CSS3.'
         },
         {
           "name": "axis",
@@ -12116,13 +11934,11 @@ var htmlData = {
         },
         {
           "name": "bgcolor",
-          "description": 'This attribute defines the background color of each cell in a column. It consists of a 6-digit hexadecimal code as defined in [sRGB](https://www.w3.org/Graphics/Color/sRGB) and is prefixed by \'#\'. This attribute may be used with one of sixteen predefined color strings:\n\n\xA0\n\n`black` = "#000000"\n\n\xA0\n\n`green` = "#008000"\n\n\xA0\n\n`silver` = "#C0C0C0"\n\n\xA0\n\n`lime` = "#00FF00"\n\n\xA0\n\n`gray` = "#808080"\n\n\xA0\n\n`olive` = "#808000"\n\n\xA0\n\n`white` = "#FFFFFF"\n\n\xA0\n\n`yellow` = "#FFFF00"\n\n\xA0\n\n`maroon` = "#800000"\n\n\xA0\n\n`navy` = "#000080"\n\n\xA0\n\n`red` = "#FF0000"\n\n\xA0\n\n`blue` = "#0000FF"\n\n\xA0\n\n`purple` = "#800080"\n\n\xA0\n\n`teal` = "#008080"\n\n\xA0\n\n`fuchsia` = "#FF00FF"\n\n\xA0\n\n`aqua` = "#00FFFF"\n\n**Note:** Do not use this attribute, as it is non-standard and only implemented in some versions of Microsoft Internet Explorer: The [`<td>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td "The HTML <td> element defines a cell of a table that contains data. It participates in the table model.") element should be styled using [CSS](https://developer.mozilla.org/en-US/docs/CSS). To create a similar effect use the [`background-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color "The background-color CSS property sets the background color of an element.") property in [CSS](https://developer.mozilla.org/en-US/docs/CSS) instead.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/td"
         }
       ]
     },
@@ -12158,21 +11974,17 @@ var htmlData = {
         },
         {
           "name": "align",
-          "description": 'This enumerated attribute specifies how the cell content\'s horizontal alignment will be handled. Possible values are:\n\n*   `left`: The content is aligned to the left of the cell.\n*   `center`: The content is centered in the cell.\n*   `right`: The content is aligned to the right of the cell.\n*   `justify` (with text only): The content is stretched out inside the cell so that it covers its entire width.\n*   `char` (with text only): The content is aligned to a character inside the `<th>` element with minimal offset. This character is defined by the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-char) and [`charoff`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-charoff) attributes.\n\nThe default value when this attribute is not specified is `left`.\n\n**Note:** Do not use this attribute as it is obsolete in the latest standard.\n\n*   To achieve the same effect as the `left`, `center`, `right` or `justify` values, apply the CSS [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property to the element.\n*   To achieve the same effect as the `char` value, give the [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-align "The text-align CSS property sets the horizontal alignment of an inline or table-cell box. This means it works like vertical-align but in the horizontal direction.") property the same value you would use for the [`char`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-char). Unimplemented in CSS3.'
         },
         {
           "name": "axis",
-          "description": "This attribute contains a list of space-separated strings. Each string is the `id` of a group of cells that this header applies to.\n\n**Note:** Do not use this attribute as it is obsolete in the latest standard: use the [`scope`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th#attr-scope) attribute instead."
         },
         {
           "name": "bgcolor",
-          "description": 'This attribute defines the background color of each cell in a column. It consists of a 6-digit hexadecimal code as defined in [sRGB](https://www.w3.org/Graphics/Color/sRGB) and is prefixed by \'#\'. This attribute may be used with one of sixteen predefined color strings:\n\n\xA0\n\n`black` = "#000000"\n\n\xA0\n\n`green` = "#008000"\n\n\xA0\n\n`silver` = "#C0C0C0"\n\n\xA0\n\n`lime` = "#00FF00"\n\n\xA0\n\n`gray` = "#808080"\n\n\xA0\n\n`olive` = "#808000"\n\n\xA0\n\n`white` = "#FFFFFF"\n\n\xA0\n\n`yellow` = "#FFFF00"\n\n\xA0\n\n`maroon` = "#800000"\n\n\xA0\n\n`navy` = "#000080"\n\n\xA0\n\n`red` = "#FF0000"\n\n\xA0\n\n`blue` = "#0000FF"\n\n\xA0\n\n`purple` = "#800080"\n\n\xA0\n\n`teal` = "#008080"\n\n\xA0\n\n`fuchsia` = "#FF00FF"\n\n\xA0\n\n`aqua` = "#00FFFF"\n\n**Note:** Do not use this attribute, as it is non-standard and only implemented in some versions of Microsoft Internet Explorer: The [`<th>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th "The HTML <th> element defines a cell as header of a group of table cells. The exact nature of this group is defined by the scope and headers attributes.") element should be styled using [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). To create a similar effect use the [`background-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color "The background-color CSS property sets the background color of an element.") property in [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) instead.'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/th"
         }
       ]
     },
@@ -12194,7 +12006,6 @@ var htmlData = {
           "name": "action",
           "description": {
             "kind": "markdown",
-            "value": 'The URI of a program that processes the form information. This value can be overridden by a [`formaction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction) attribute on a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button "The HTML <button> element represents a clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality.") or [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") element.'
           }
         },
         {
@@ -12202,7 +12013,6 @@ var htmlData = {
           "valueSet": "o",
           "description": {
             "kind": "markdown",
-            "value": "Indicates whether input elements can by default have their values automatically completed by the browser. This setting can be overridden by an `autocomplete` attribute on an element belonging to the form. Possible values are:\n\n*   `off`: The user must explicitly enter a value into each field for every use, or the document provides its own auto-completion method; the browser does not automatically complete entries.\n*   `on`: The browser can automatically complete values based on values that the user has previously entered in the form.\n\nFor most modern browsers (including Firefox 38+, Google Chrome 34+, IE 11+) setting the autocomplete attribute will not prevent a browser's password manager from asking the user if they want to store login fields (username and password), if the user permits the storage the browser will autofill the login the next time the user visits the page. See [The autocomplete attribute and login fields](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion#The_autocomplete_attribute_and_login_fields).\n**Note:** If you set `autocomplete` to `off` in a form because the document provides its own auto-completion, then you should also set `autocomplete` to `off` for each of the form's `input` elements that the document can auto-complete. For details, see the note regarding Google Chrome in the [Browser Compatibility chart](#compatChart)."
           }
         },
         {
@@ -12210,7 +12020,6 @@ var htmlData = {
           "valueSet": "et",
           "description": {
             "kind": "markdown",
-            "value": 'When the value of the `method` attribute is `post`, enctype is the [MIME type](https://en.wikipedia.org/wiki/Mime_type) of content that is used to submit the form to the server. Possible values are:\n\n*   `application/x-www-form-urlencoded`: The default value if the attribute is not specified.\n*   `multipart/form-data`: The value used for an [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") element with the `type` attribute set to "file".\n*   `text/plain`: (HTML5)\n\nThis value can be overridden by a [`formenctype`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formenctype) attribute on a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button "The HTML <button> element represents a clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality.") or [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") element.'
           }
         },
         {
@@ -12218,7 +12027,6 @@ var htmlData = {
           "valueSet": "m",
           "description": {
             "kind": "markdown",
-            "value": 'The [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP) method that the browser uses to submit the form. Possible values are:\n\n*   `post`: Corresponds to the HTTP [POST method](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5) ; form data are included in the body of the form and sent to the server.\n*   `get`: Corresponds to the HTTP [GET method](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3); form data are appended to the `action` attribute URI with a \'?\' as separator, and the resulting URI is sent to the server. Use this method when the form has no side-effects and contains only ASCII characters.\n*   `dialog`: Use when the form is inside a\xA0[`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog "The HTML <dialog> element represents a dialog box or other interactive component, such as an inspector or window.") element to close the dialog when submitted.\n\nThis value can be overridden by a [`formmethod`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formmethod) attribute on a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button "The HTML <button> element represents a clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality.") or [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") element.'
           }
         },
         {
@@ -12233,7 +12041,6 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": 'This Boolean attribute indicates that the form is not to be validated when submitted. If this attribute is not specified (and therefore the form is validated), this default setting can be overridden by a [`formnovalidate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formnovalidate) attribute on a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button "The HTML <button> element represents a clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality.") or [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") element belonging to the form.'
           }
         },
         {
@@ -12241,12 +12048,10 @@ var htmlData = {
           "valueSet": "target",
           "description": {
             "kind": "markdown",
-            "value": 'A name or keyword indicating where to display the response that is received after submitting the form. In HTML 4, this is the name/keyword for a frame. In HTML5, it is a name/keyword for a _browsing context_ (for example, tab, window, or inline frame). The following keywords have special meanings:\n\n*   `_self`: Load the response into the same HTML 4 frame (or HTML5 browsing context) as the current one. This value is the default if the attribute is not specified.\n*   `_blank`: Load the response into a new unnamed HTML 4 window or HTML5 browsing context.\n*   `_parent`: Load the response into the HTML 4 frameset parent of the current frame, or HTML5 parent browsing context of the current one. If there is no parent, this option behaves the same way as `_self`.\n*   `_top`: HTML 4: Load the response into the full original window, and cancel all other frames. HTML5: Load the response into the top-level browsing context (i.e., the browsing context that is an ancestor of the current one, and has no parent). If there is no parent, this option behaves the same way as `_self`.\n*   _iframename_: The response is displayed in a named [`<iframe>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe "The HTML Inline Frame element (<iframe>) represents a nested browsing context, embedding another HTML page into the current one.").\n\nHTML5: This value can be overridden by a [`formtarget`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formtarget) attribute on a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button "The HTML <button> element represents a clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality.") or [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") element.'
           }
         },
         {
           "name": "accept",
-          "description": 'A comma-separated list of content types that the server accepts.\n\n**Usage note:** This attribute has been removed in HTML5 and should no longer be used. Instead, use the [`accept`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-accept) attribute of the specific [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") element.'
         },
         {
           "name": "autocapitalize",
@@ -12256,7 +12061,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/form"
         }
       ]
     },
@@ -12271,21 +12075,18 @@ var htmlData = {
           "name": "form",
           "description": {
             "kind": "markdown",
-            "value": 'The [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form "The HTML <form> element represents a document section that contains interactive controls for submitting information to a web server.") element with which the label is associated (its _form owner_). If specified, the value of the attribute is the `id` of a [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form "The HTML <form> element represents a document section that contains interactive controls for submitting information to a web server.") element in the same document. This lets you place label elements anywhere within a document, not just as descendants of their form elements.'
           }
         },
         {
           "name": "for",
           "description": {
             "kind": "markdown",
-            "value": "The [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-id) of a [labelable](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Form_labelable) form-related element in the same document as the `<label>` element. The first element in the document with an `id` matching the value of the `for` attribute is the _labeled control_ for this label element, if it is a labelable element. If it is\xA0not labelable then the `for` attribute has no effect. If there are other elements which also match the `id` value, later in the document, they are not considered.\n\n**Note**: A `<label>` element can have both a `for` attribute and a contained control element, as long as the `for` attribute points to the contained control element."
           }
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/label"
         }
       ]
     },
@@ -12409,7 +12210,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/input"
         }
       ]
     },
@@ -12433,21 +12233,18 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": 'This Boolean attribute indicates that the user cannot interact with the button. If this attribute is not specified, the button inherits its setting from the containing element, for example [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset "The HTML <fieldset> element is used to group several controls as well as labels (<label>) within a web form."); if there is no containing element with the **disabled** attribute set, then the button is enabled.\n\nFirefox will, unlike other browsers, by default, [persist the dynamic disabled state](https://stackoverflow.com/questions/5985839/bug-with-firefox-disabled-attribute-of-input-not-resetting-when-refreshing) of a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button "The HTML <button> element represents a clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality.") across page loads. Use the [`autocomplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-autocomplete) attribute to control this feature.'
           }
         },
         {
           "name": "form",
           "description": {
             "kind": "markdown",
-            "value": 'The form element that the button is associated with (its _form owner_). The value of the attribute must be the **id** attribute of a [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form "The HTML <form> element represents a document section that contains interactive controls for submitting information to a web server.") element in the same document. If this attribute is not specified, the `<button>` element will be associated to an ancestor [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form "The HTML <form> element represents a document section that contains interactive controls for submitting information to a web server.") element, if one exists. This attribute enables you to associate `<button>` elements to [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form "The HTML <form> element represents a document section that contains interactive controls for submitting information to a web server.") elements anywhere within a document, not just as descendants of [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form "The HTML <form> element represents a document section that contains interactive controls for submitting information to a web server.") elements.'
           }
         },
         {
           "name": "formaction",
           "description": {
             "kind": "markdown",
-            "value": "The URI of a program that processes the information submitted by the button. If specified, it overrides the [`action`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-action) attribute of the button's form owner."
           }
         },
         {
@@ -12455,7 +12252,6 @@ var htmlData = {
           "valueSet": "et",
           "description": {
             "kind": "markdown",
-            "value": 'If the button is a submit button, this attribute specifies the type of content that is used to submit the form to the server. Possible values are:\n\n*   `application/x-www-form-urlencoded`: The default value if the attribute is not specified.\n*   `multipart/form-data`: Use this value if you are using an [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") element with the [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-type) attribute set to `file`.\n*   `text/plain`\n\nIf this attribute is specified, it overrides the [`enctype`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-enctype) attribute of the button\'s form owner.'
           }
         },
         {
@@ -12463,7 +12259,6 @@ var htmlData = {
           "valueSet": "fm",
           "description": {
             "kind": "markdown",
-            "value": "If the button is a submit button, this attribute specifies the HTTP method that the browser uses to submit the form. Possible values are:\n\n*   `post`: The data from the form are included in the body of the form and sent to the server.\n*   `get`: The data from the form are appended to the **form** attribute URI, with a '?' as a separator, and the resulting URI is sent to the server. Use this method when the form has no side-effects and contains only ASCII characters.\n\nIf specified, this attribute overrides the [`method`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-method) attribute of the button's form owner."
           }
         },
         {
@@ -12471,14 +12266,12 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": "If the button is a submit button, this Boolean attribute specifies that the form is not to be validated when it is submitted. If this attribute is specified, it overrides the [`novalidate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-novalidate) attribute of the button's form owner."
           }
         },
         {
           "name": "formtarget",
           "description": {
             "kind": "markdown",
-            "value": "If the button is a submit button, this attribute is a name or keyword indicating where to display the response that is received after submitting the form. This is a name of, or keyword for, a _browsing context_ (for example, tab, window, or inline frame). If this attribute is specified, it overrides the [`target`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-target) attribute of the button's form owner. The following keywords have special meanings:\n\n*   `_self`: Load the response into the same browsing context as the current one. This value is the default if the attribute is not specified.\n*   `_blank`: Load the response into a new unnamed browsing context.\n*   `_parent`: Load the response into the parent browsing context of the current one. If there is no parent, this option behaves the same way as `_self`.\n*   `_top`: Load the response into the top-level browsing context (that is, the browsing context that is an ancestor of the current one, and has no parent). If there is no parent, this option behaves the same way as `_self`."
           }
         },
         {
@@ -12505,13 +12298,11 @@ var htmlData = {
         },
         {
           "name": "autocomplete",
-          "description": 'The use of this attribute on a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button "The HTML <button> element represents a clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality.") is nonstandard and Firefox-specific. By default, unlike other browsers, [Firefox persists the dynamic disabled state](https://stackoverflow.com/questions/5985839/bug-with-firefox-disabled-attribute-of-input-not-resetting-when-refreshing) of a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button "The HTML <button> element represents a clickable button, which can be used in forms or anywhere in a document that needs simple, standard button functionality.") across page loads. Setting the value of this attribute to `off` (i.e. `autocomplete="off"`) disables this feature. See [bug\xA0654072](https://bugzilla.mozilla.org/show_bug.cgi?id=654072 "if disabled state is changed with javascript, the normal state doesn\'t return after refreshing the page").'
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/button"
         }
       ]
     },
@@ -12527,7 +12318,6 @@ var htmlData = {
           "valueSet": "inputautocomplete",
           "description": {
             "kind": "markdown",
-            "value": 'A [`DOMString`](https://developer.mozilla.org/en-US/docs/Web/API/DOMString "DOMString is a UTF-16 String. As JavaScript already uses such strings, DOMString is mapped directly to a String.") providing a hint for a [user agent\'s](https://developer.mozilla.org/en-US/docs/Glossary/user_agent "user agent\'s: A user agent is a computer program representing a person, for example, a browser in a Web context.") autocomplete feature. See [The HTML autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for a complete list of values and details on how to use autocomplete.'
           }
         },
         {
@@ -12587,7 +12377,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/select"
         }
       ]
     },
@@ -12601,7 +12390,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/datalist"
         }
       ]
     },
@@ -12631,7 +12419,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/optgroup"
         }
       ]
     },
@@ -12647,7 +12434,6 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": 'If this Boolean attribute is set, this option is not checkable. Often browsers grey out such control and it won\'t receive any browsing event, like mouse clicks or focus-related ones. If this attribute is not set, the element can still be disabled if one of its ancestors is a disabled [`<optgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup "The HTML <optgroup> element creates a grouping of options within a <select> element.") element.'
           }
         },
         {
@@ -12662,7 +12448,6 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": 'If present, this Boolean attribute indicates that the option is initially selected. If the `<option>` element is the descendant of a [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select "The HTML <select> element represents a control that provides a menu of options") element whose [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-multiple) attribute is not set, only one single `<option>` of this [`<select>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select "The HTML <select> element represents a control that provides a menu of options") element may have the `selected` attribute.'
           }
         },
         {
@@ -12676,7 +12461,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/option"
         }
       ]
     },
@@ -12692,7 +12476,6 @@ var htmlData = {
           "valueSet": "inputautocomplete",
           "description": {
             "kind": "markdown",
-            "value": 'This attribute indicates whether the value of the control can be automatically completed by the browser. Possible values are:\n\n*   `off`: The user must explicitly enter a value into this field for every use, or the document provides its own auto-completion method; the browser does not automatically complete the entry.\n*   `on`: The browser can automatically complete the value based on values that the user has entered during previous uses.\n\nIf the `autocomplete` attribute is not specified on a `<textarea>` element, then the browser uses the `autocomplete` attribute value of the `<textarea>` element\'s form owner. The form owner is either the [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form "The HTML <form> element represents a document section that contains interactive controls for submitting information to a web server.") element that this `<textarea>` element is a descendant of or the form element whose `id` is specified by the `form` attribute of the input element. For more information, see the [`autocomplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-autocomplete) attribute in [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form "The HTML <form> element represents a document section that contains interactive controls for submitting information to a web server.").'
           }
         },
         {
@@ -12718,7 +12501,6 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": 'This Boolean attribute indicates that the user cannot interact with the control. If this attribute is not specified, the control inherits its setting from the containing element, for example [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset "The HTML <fieldset> element is used to group several controls as well as labels (<label>) within a web form."); if there is no containing element when the `disabled` attribute is set, the control is enabled.'
           }
         },
         {
@@ -12757,7 +12539,6 @@ var htmlData = {
           "name": "placeholder",
           "description": {
             "kind": "markdown",
-            "value": 'A hint to the user of what can be entered in the control. Carriage returns or line-feeds within the placeholder text must be treated as line breaks when rendering the hint.\n\n**Note:** Placeholders should only be used to show an example of the type of data that should be entered into a form; they are _not_ a substitute for a proper [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label "The HTML <label> element represents a caption for an item in a user interface.") element tied to the input. See [Labels and placeholders](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Labels_and_placeholders "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") in [<input>: The Input (Form Input) element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") for a full explanation.'
           }
         },
         {
@@ -12803,7 +12584,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/textarea"
         }
       ]
     },
@@ -12818,28 +12598,24 @@ var htmlData = {
           "name": "for",
           "description": {
             "kind": "markdown",
-            "value": "A space-separated list of other elements\u2019 [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id)s, indicating that those elements contributed input values to (or otherwise affected) the calculation."
           }
         },
         {
           "name": "form",
           "description": {
             "kind": "markdown",
-            "value": 'The [form element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) that this element is associated with (its "form owner"). The value of the attribute must be an `id` of a form element in the same document. If this attribute is not specified, the output element must be a descendant of a form element. This attribute enables you to place output elements anywhere within a document, not just as descendants of their form elements.'
           }
         },
         {
           "name": "name",
           "description": {
             "kind": "markdown",
-            "value": 'The name of the element, exposed in the [`HTMLFormElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement "The HTMLFormElement interface represents a <form> element in the DOM; it allows access to and in some cases modification of aspects of the form, as well as access to its component elements.") API.'
           }
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/output"
         }
       ]
     },
@@ -12868,7 +12644,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/progress"
         }
       ]
     },
@@ -12929,7 +12704,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/meter"
         }
       ]
     },
@@ -12945,28 +12719,24 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": "If this Boolean attribute is set, all form controls that are descendants of the `<fieldset>`, are disabled, meaning they are not editable and won't be submitted along with the `<form>`. They won't receive any browsing events, like mouse clicks or focus-related events. By default browsers display such controls grayed out. Note that form elements inside the [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend \"The HTML <legend> element represents a caption for the content of its parent <fieldset>.\") element won't be disabled."
           }
         },
         {
           "name": "form",
           "description": {
             "kind": "markdown",
-            "value": 'This attribute takes the value of the `id` attribute of a [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form "The HTML <form> element represents a document section that contains interactive controls for submitting information to a web server.") element you want the `<fieldset>` to be part of, even if it is not inside the form.'
           }
         },
         {
           "name": "name",
           "description": {
             "kind": "markdown",
-            "value": 'The name associated with the group.\n\n**Note**: The caption for the fieldset is given by the first [`<legend>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend "The HTML <legend> element represents a caption for the content of its parent <fieldset>.") element nested inside it.'
           }
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/fieldset"
         }
       ]
     },
@@ -12980,7 +12750,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/legend"
         }
       ]
     },
@@ -13003,7 +12772,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/details"
         }
       ]
     },
@@ -13017,7 +12785,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/summary"
         }
       ]
     },
@@ -13036,7 +12803,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/dialog"
         }
       ]
     },
@@ -13058,7 +12824,6 @@ var htmlData = {
           "name": "type",
           "description": {
             "kind": "markdown",
-            "value": 'This attribute indicates the type of script represented. The value of this attribute will be in one of the following categories:\n\n*   **Omitted or a JavaScript MIME type:** For HTML5-compliant browsers this indicates the script is JavaScript. HTML5 specification urges authors to omit the attribute rather than provide a redundant MIME type. In earlier browsers, this identified the scripting language of the embedded or imported (via the `src` attribute) code. JavaScript MIME types are [listed in the specification](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#JavaScript_types).\n*   **`module`:** For HTML5-compliant browsers the code is treated as a JavaScript module. The processing of the script contents is not affected by the `charset` and `defer` attributes. For information on using `module`, see [ES6 in Depth: Modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/). Code may behave differently when the `module` keyword is used.\n*   **Any other value:** The embedded content is treated as a data block which won\'t be processed by the browser. Developers must use a valid MIME type that is not a JavaScript MIME type to denote data blocks. The `src` attribute will be ignored.\n\n**Note:** in Firefox you could specify the version of JavaScript contained in a `<script>` element by including a non-standard `version` parameter inside the `type` attribute \u2014 for example `type="text/javascript;version=1.8"`. This has been removed in Firefox 59 (see [bug\xA01428745](https://bugzilla.mozilla.org/show_bug.cgi?id=1428745 "FIXED: Remove support for version parameter from script loader")).'
           }
         },
         {
@@ -13069,7 +12834,6 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": 'This is a Boolean attribute indicating that the browser should, if possible, load the script asynchronously.\n\nThis attribute must not be used if the `src` attribute is absent (i.e. for inline scripts). If it is included in this case it will have no effect.\n\nBrowsers usually assume the worst case scenario and load scripts synchronously, (i.e. `async="false"`) during HTML parsing.\n\nDynamically inserted scripts (using [`document.createElement()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement "In an HTML document, the document.createElement() method creates the HTML element specified by tagName, or an HTMLUnknownElement if tagName isn\'t recognized.")) load asynchronously by default, so to turn on synchronous loading (i.e. scripts load in the order they were inserted) set `async="false"`.\n\nSee [Browser compatibility](#Browser_compatibility) for notes on browser support. See also [Async scripts for asm.js](https://developer.mozilla.org/en-US/docs/Games/Techniques/Async_scripts).'
           }
         },
         {
@@ -13077,7 +12841,6 @@ var htmlData = {
           "valueSet": "v",
           "description": {
             "kind": "markdown",
-            "value": 'This Boolean attribute is set to indicate to a browser that the script is meant to be executed after the document has been parsed, but before firing [`DOMContentLoaded`](https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded "/en-US/docs/Web/Events/DOMContentLoaded").\n\nScripts with the `defer` attribute will prevent the `DOMContentLoaded` event from firing until the script has loaded and finished evaluating.\n\nThis attribute must not be used if the `src` attribute is absent (i.e. for inline scripts), in this case it would have no effect.\n\nTo achieve a similar effect for dynamically inserted scripts use `async="false"` instead. Scripts with the `defer` attribute will execute in the order in which they appear in the document.'
           }
         },
         {
@@ -13085,27 +12848,22 @@ var htmlData = {
           "valueSet": "xo",
           "description": {
             "kind": "markdown",
-            "value": 'Normal `script` elements pass minimal information to the [`window.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror "The onerror property of the GlobalEventHandlers mixin is an EventHandler that processes error events.") for scripts which do not pass the standard [CORS](https://developer.mozilla.org/en-US/docs/Glossary/CORS "CORS: CORS (Cross-Origin Resource Sharing) is a system, consisting of transmitting HTTP headers, that determines whether browsers block frontend JavaScript code from accessing responses for cross-origin requests.") checks. To allow error logging for sites which use a separate domain for static media, use this attribute. See [CORS settings attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) for a more descriptive explanation of its valid arguments.'
           }
         },
         {
           "name": "nonce",
           "description": {
             "kind": "markdown",
-            "value": "A cryptographic nonce (number used once) to list the allowed inline scripts in a [script-src Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src). The server must generate a unique nonce value each time it transmits a policy. It is critical to provide a nonce that cannot be guessed as bypassing a resource's policy is otherwise trivial."
           }
         },
         {
           "name": "integrity",
-          "description": "This attribute contains inline metadata that a user agent can use to verify that a fetched resource has been delivered free of unexpected manipulation. See [Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)."
         },
         {
           "name": "nomodule",
-          "description": "This Boolean attribute is set to indicate that the script should not be executed in browsers that support [ES2015 modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/) \u2014 in effect, this can be used to serve fallback scripts to older browsers that do not support modular JavaScript code."
         },
         {
           "name": "referrerpolicy",
-          "description": 'Indicates which [referrer](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer) to send when fetching the script, or resources fetched by the script:\n\n*   `no-referrer`: The [`Referer`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer "The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example.") header will not be sent.\n*   `no-referrer-when-downgrade` (default): The [`Referer`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer "The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example.") header will not be sent to [origin](https://developer.mozilla.org/en-US/docs/Glossary/origin "origin: Web content\'s origin is defined by the scheme (protocol), host (domain), and port of the URL used to access it. Two objects have the same origin only when the scheme, host, and port all match.")s without [TLS](https://developer.mozilla.org/en-US/docs/Glossary/TLS "TLS: Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL), is a protocol used by applications to communicate securely across a network, preventing tampering with and eavesdropping on email, web browsing, messaging, and other protocols.") ([HTTPS](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS "HTTPS: HTTPS (HTTP Secure) is an encrypted version of the HTTP protocol. It usually uses SSL or TLS to encrypt all communication between a client and a server. This secure connection allows clients to safely exchange sensitive data with a server, for example for banking activities or online shopping.")).\n*   `origin`: The sent referrer will be limited to the origin of the referring page: its [scheme](https://developer.mozilla.org/en-US/docs/Archive/Mozilla/URIScheme), [host](https://developer.mozilla.org/en-US/docs/Glossary/host "host: A host is a device connected to the Internet (or a local network). Some hosts called servers offer additional services like serving webpages or storing files and emails."), and [port](https://developer.mozilla.org/en-US/docs/Glossary/port "port: For a computer connected to a network with an IP address, a port is a communication endpoint. Ports are designated by numbers, and below 1024 each port is associated by default with a specific protocol.").\n*   `origin-when-cross-origin`: The referrer sent to other origins will be limited to the scheme, the host, and the port. Navigations on the same origin will still include the path.\n*   `same-origin`: A referrer will be sent for [same origin](https://developer.mozilla.org/en-US/docs/Glossary/Same-origin_policy "same origin: The same-origin policy is a critical security mechanism that restricts how a document or script loaded from one origin can interact with a resource from another origin."), but cross-origin requests will contain no referrer information.\n*   `strict-origin`: Only send the origin of the document as the referrer when the protocol security level stays the same (e.g. HTTPS\u2192HTTPS), but don\'t send it to a less secure destination (e.g. HTTPS\u2192HTTP).\n*   `strict-origin-when-cross-origin`: Send a full URL when performing a same-origin request, but only send the origin when the protocol security level stays the same (e.g.HTTPS\u2192HTTPS), and send no header to a less secure destination (e.g. HTTPS\u2192HTTP).\n*   `unsafe-url`: The referrer will include the origin _and_ the path (but not the [fragment](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/hash), [password](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/password), or [username](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/username)). **This value is unsafe**, because it leaks origins and paths from TLS-protected resources to insecure origins.\n\n**Note**: An empty string value (`""`) is both the default value, and a fallback value if `referrerpolicy` is not supported. If `referrerpolicy` is not explicitly specified on the `<script>` element, it will adopt a higher-level referrer policy, i.e. one set on the whole document or domain. If a higher-level policy is not available,\xA0the empty string is treated as being equivalent to `no-referrer-when-downgrade`.'
         },
         {
           "name": "text",
@@ -13115,7 +12873,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/script"
         }
       ]
     },
@@ -13129,7 +12886,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/noscript"
         }
       ]
     },
@@ -13143,7 +12899,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/template"
         }
       ]
     },
@@ -13170,13 +12925,11 @@ var htmlData = {
         },
         {
           "name": "moz-opaque",
-          "description": "Lets the canvas know whether or not translucency will be a factor. If the canvas knows there's no translucency, painting performance can be optimized. This is only supported by Mozilla-based browsers; use the standardized [`canvas.getContext('2d', { alpha: false })`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext \"The HTMLCanvasElement.getContext() method returns a drawing context on the canvas, or null if the context identifier is not supported.\") instead."
         }
       ],
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/canvas"
         }
       ]
     },
@@ -13198,7 +12951,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/slot"
         }
       ]
     },
@@ -13220,7 +12972,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/data"
         }
       ]
     },
@@ -13234,7 +12985,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/hgroup"
         }
       ]
     },
@@ -13248,7 +12998,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Element/menu"
         }
       ]
     }
@@ -13263,7 +13012,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/accesskey"
         }
       ]
     },
@@ -13276,7 +13024,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/autocapitalize"
         }
       ]
     },
@@ -13284,12 +13031,10 @@ var htmlData = {
       "name": "class",
       "description": {
         "kind": "markdown",
-        "value": 'A space-separated list of the classes of the element. Classes allows CSS and JavaScript to select and access specific elements via the [class selectors](https://developer.mozilla.org/docs/Web/CSS/Class_selectors) or functions like the method [`Document.getElementsByClassName()`](https://developer.mozilla.org/docs/Web/API/Document/getElementsByClassName "returns an array-like object of all child elements which have all of the given class names.").'
       },
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/class"
         }
       ]
     },
@@ -13302,7 +13047,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/contenteditable"
         }
       ]
     },
@@ -13310,12 +13054,10 @@ var htmlData = {
       "name": "contextmenu",
       "description": {
         "kind": "markdown",
-        "value": 'The `[**id**](#attr-id)` of a [`<menu>`](https://developer.mozilla.org/docs/Web/HTML/Element/menu "The HTML <menu> element represents a group of commands that a user can perform or activate. This includes both list menus, which might appear across the top of a screen, as well as context menus, such as those that might appear underneath a button after it has been clicked.") to use as the contextual menu for this element.'
       },
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/contextmenu"
         }
       ]
     },
@@ -13329,7 +13071,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/dir"
         }
       ]
     },
@@ -13337,13 +13078,11 @@ var htmlData = {
       "name": "draggable",
       "description": {
         "kind": "markdown",
-        "value": "An enumerated attribute indicating whether the element can be dragged, using the [Drag and Drop API](https://developer.mozilla.org/docs/DragDrop/Drag_and_Drop). It can have the following values:\n\n*   `true`, which indicates that the element may be dragged\n*   `false`, which indicates that the element may not be dragged."
       },
       "valueSet": "b",
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/draggable"
         }
       ]
     },
@@ -13351,7 +13090,6 @@ var htmlData = {
       "name": "dropzone",
       "description": {
         "kind": "markdown",
-        "value": "An enumerated attribute indicating what types of content can be dropped on an element, using the [Drag and Drop API](https://developer.mozilla.org/docs/DragDrop/Drag_and_Drop). It can have the following values:\n\n*   `copy`, which indicates that dropping will create a copy of the element that was dragged\n*   `move`, which indicates that the element that was dragged will be moved to this new location.\n*   `link`, will create a link to the dragged data."
       }
     },
     {
@@ -13363,7 +13101,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/exportparts"
         }
       ]
     },
@@ -13377,7 +13114,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/hidden"
         }
       ]
     },
@@ -13390,7 +13126,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/id"
         }
       ]
     },
@@ -13398,12 +13133,10 @@ var htmlData = {
       "name": "inputmode",
       "description": {
         "kind": "markdown",
-        "value": 'Provides a hint to browsers as to the type of virtual keyboard configuration to use when editing this element or its contents. Used primarily on [`<input>`](https://developer.mozilla.org/docs/Web/HTML/Element/input "The HTML <input> element is used to create interactive controls for web-based forms in order to accept data from the user; a wide variety of types of input data and control widgets are available, depending on the device and user agent.") elements, but is usable on any element while in `[contenteditable](https://developer.mozilla.org/docs/Web/HTML/Global_attributes#attr-contenteditable)` mode.'
       },
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/inputmode"
         }
       ]
     },
@@ -13411,12 +13144,10 @@ var htmlData = {
       "name": "is",
       "description": {
         "kind": "markdown",
-        "value": "Allows you to specify that a standard HTML element should behave like a registered custom built-in element (see [Using custom elements](https://developer.mozilla.org/docs/Web/Web_Components/Using_custom_elements) for more details)."
       },
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/is"
         }
       ]
     },
@@ -13429,7 +13160,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/itemid"
         }
       ]
     },
@@ -13442,7 +13172,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/itemprop"
         }
       ]
     },
@@ -13455,7 +13184,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/itemref"
         }
       ]
     },
@@ -13463,13 +13191,11 @@ var htmlData = {
       "name": "itemscope",
       "description": {
         "kind": "markdown",
-        "value": "`itemscope` (usually) works along with `[itemtype](https://developer.mozilla.org/docs/Web/HTML/Global_attributes#attr-itemtype)` to specify that the HTML contained in a block is about a particular item. `itemscope` creates the Item and defines the scope of the `itemtype` associated with it. `itemtype` is a valid URL of a vocabulary (such as [schema.org](https://schema.org/)) that describes the item and its properties context."
       },
       "valueSet": "v",
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/itemscope"
         }
       ]
     },
@@ -13477,12 +13203,10 @@ var htmlData = {
       "name": "itemtype",
       "description": {
         "kind": "markdown",
-        "value": "Specifies the URL of the vocabulary that will be used to define `itemprop`s (item properties) in the data structure. `[itemscope](https://developer.mozilla.org/docs/Web/HTML/Global_attributes#attr-itemscope)` is used to set the scope of where in the data structure the vocabulary set by `itemtype` will be active."
       },
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/itemtype"
         }
       ]
     },
@@ -13490,12 +13214,10 @@ var htmlData = {
       "name": "lang",
       "description": {
         "kind": "markdown",
-        "value": "Helps define the language of an element: the language that non-editable elements are in, or the language that editable elements should be written in by the user. The attribute contains one \u201Clanguage tag\u201D (made of hyphen-separated \u201Clanguage subtags\u201D) in the format defined in [_Tags for Identifying Languages (BCP47)_](https://www.ietf.org/rfc/bcp/bcp47.txt). [**xml:lang**](#attr-xml:lang) has priority over it."
       },
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/lang"
         }
       ]
     },
@@ -13503,12 +13225,10 @@ var htmlData = {
       "name": "part",
       "description": {
         "kind": "markdown",
-        "value": 'A space-separated list of the part names of the element. Part names allows CSS to select and style specific elements in a shadow tree via the [`::part`](https://developer.mozilla.org/docs/Web/CSS/::part "The ::part CSS pseudo-element represents any element within a shadow tree that has a matching part attribute.") pseudo-element.'
       },
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/part"
         }
       ]
     },
@@ -13520,12 +13240,10 @@ var htmlData = {
       "name": "slot",
       "description": {
         "kind": "markdown",
-        "value": "Assigns a slot in a [shadow DOM](https://developer.mozilla.org/docs/Web/Web_Components/Shadow_DOM) shadow tree to an element: An element with a `slot` attribute is assigned to the slot created by the [`<slot>`](https://developer.mozilla.org/docs/Web/HTML/Element/slot \"The HTML <slot> element\u2014part of the Web Components technology suite\u2014is a placeholder inside a web component that you can fill with your own markup, which lets you create separate DOM trees and present them together.\") element whose `[name](https://developer.mozilla.org/docs/Web/HTML/Element/slot#attr-name)` attribute's value matches that `slot` attribute's value."
       },
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/slot"
         }
       ]
     },
@@ -13539,7 +13257,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/spellcheck"
         }
       ]
     },
@@ -13547,12 +13264,10 @@ var htmlData = {
       "name": "style",
       "description": {
         "kind": "markdown",
-        "value": 'Contains [CSS](https://developer.mozilla.org/docs/Web/CSS) styling declarations to be applied to the element. Note that it is recommended for styles to be defined in a separate file or files. This attribute and the [`<style>`](https://developer.mozilla.org/docs/Web/HTML/Element/style "The HTML <style> element contains style information for a document, or part of a document.") element have mainly the purpose of allowing for quick styling, for example for testing purposes.'
       },
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/style"
         }
       ]
     },
@@ -13565,7 +13280,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/tabindex"
         }
       ]
     },
@@ -13578,7 +13292,6 @@ var htmlData = {
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/title"
         }
       ]
     },
@@ -13586,13 +13299,11 @@ var htmlData = {
       "name": "translate",
       "description": {
         "kind": "markdown",
-        "value": "An enumerated attribute that is used to specify whether an element's attribute values and the values of its [`Text`](https://developer.mozilla.org/docs/Web/API/Text \"The Text interface represents the textual content of Element or Attr. If an element has no markup within its content, it has a single child implementing Text that contains the element's text. However, if the element contains markup, it is parsed into information items and Text nodes that form its children.\") node children are to be translated when the page is localized, or whether to leave them unchanged. It can have the following values:\n\n*   empty string and `yes`, which indicates that the element will be translated.\n*   `no`, which indicates that the element will not be translated."
       },
       "valueSet": "y",
       "references": [
         {
           "name": "MDN Reference",
-          "url": "https://developer.mozilla.org/docs/Web/HTML/Global_attributes/translate"
         }
       ]
     },
@@ -14065,12 +13776,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-activedescendant"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Identifies the currently active element when DOM focus is on a [`composite`](https://www.w3.org/TR/wai-aria-1.1/#composite) widget, [`textbox`](https://www.w3.org/TR/wai-aria-1.1/#textbox), [`group`](https://www.w3.org/TR/wai-aria-1.1/#group), or [`application`](https://www.w3.org/TR/wai-aria-1.1/#application)."
       }
     },
     {
@@ -14079,12 +13788,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-atomic"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Indicates whether [assistive technologies](https://www.w3.org/TR/wai-aria-1.1/#dfn-assistive-technology) will present all, or only parts of, the changed region based on the change notifications defined by the [`aria-relevant`](https://www.w3.org/TR/wai-aria-1.1/#aria-relevant) attribute."
       }
     },
     {
@@ -14093,7 +13800,6 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-autocomplete"
         }
       ],
       "description": {
@@ -14107,7 +13813,6 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-busy"
         }
       ],
       "description": {
@@ -14121,12 +13826,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-checked"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": 'Indicates the current "checked" [state](https://www.w3.org/TR/wai-aria-1.1/#dfn-state) of checkboxes, radio buttons, and other [widgets](https://www.w3.org/TR/wai-aria-1.1/#dfn-widget). See related [`aria-pressed`](https://www.w3.org/TR/wai-aria-1.1/#aria-pressed) and [`aria-selected`](https://www.w3.org/TR/wai-aria-1.1/#aria-selected).'
       }
     },
     {
@@ -14134,12 +13837,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-colcount"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines the total number of columns in a [`table`](https://www.w3.org/TR/wai-aria-1.1/#table), [`grid`](https://www.w3.org/TR/wai-aria-1.1/#grid), or [`treegrid`](https://www.w3.org/TR/wai-aria-1.1/#treegrid). See related [`aria-colindex`](https://www.w3.org/TR/wai-aria-1.1/#aria-colindex)."
       }
     },
     {
@@ -14147,12 +13848,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-colindex"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines an [element's](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) column index or position with respect to the total number of columns within a [`table`](https://www.w3.org/TR/wai-aria-1.1/#table), [`grid`](https://www.w3.org/TR/wai-aria-1.1/#grid), or [`treegrid`](https://www.w3.org/TR/wai-aria-1.1/#treegrid). See related [`aria-colcount`](https://www.w3.org/TR/wai-aria-1.1/#aria-colcount) and [`aria-colspan`](https://www.w3.org/TR/wai-aria-1.1/#aria-colspan)."
       }
     },
     {
@@ -14160,12 +13859,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-colspan"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines the number of columns spanned by a cell or gridcell within a [`table`](https://www.w3.org/TR/wai-aria-1.1/#table), [`grid`](https://www.w3.org/TR/wai-aria-1.1/#grid), or [`treegrid`](https://www.w3.org/TR/wai-aria-1.1/#treegrid). See related [`aria-colindex`](https://www.w3.org/TR/wai-aria-1.1/#aria-colindex) and [`aria-rowspan`](https://www.w3.org/TR/wai-aria-1.1/#aria-rowspan)."
       }
     },
     {
@@ -14173,12 +13870,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-controls"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Identifies the [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) (or elements) whose contents or presence are controlled by the current element. See related [`aria-owns`](https://www.w3.org/TR/wai-aria-1.1/#aria-owns)."
       }
     },
     {
@@ -14187,12 +13882,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-current"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Indicates the [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) that represents the current item within a container or set of related elements."
       }
     },
     {
@@ -14200,12 +13893,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-describedby"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Identifies the [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) (or elements) that describes the [object](https://www.w3.org/TR/wai-aria-1.1/#dfn-object). See related [`aria-labelledby`](https://www.w3.org/TR/wai-aria-1.1/#aria-labelledby)."
       }
     },
     {
@@ -14214,12 +13905,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-disabled"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Indicates that the [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) is [perceivable](https://www.w3.org/TR/wai-aria-1.1/#dfn-perceivable) but disabled, so it is not editable or otherwise [operable](https://www.w3.org/TR/wai-aria-1.1/#dfn-operable). See related [`aria-hidden`](https://www.w3.org/TR/wai-aria-1.1/#aria-hidden) and [`aria-readonly`](https://www.w3.org/TR/wai-aria-1.1/#aria-readonly)."
       }
     },
     {
@@ -14228,7 +13917,6 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-dropeffect"
         }
       ],
       "description": {
@@ -14241,12 +13929,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-errormessage"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Identifies the [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) that provides an error message for the [object](https://www.w3.org/TR/wai-aria-1.1/#dfn-object). See related [`aria-invalid`](https://www.w3.org/TR/wai-aria-1.1/#aria-invalid) and [`aria-describedby`](https://www.w3.org/TR/wai-aria-1.1/#aria-describedby)."
       }
     },
     {
@@ -14255,7 +13941,6 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-expanded"
         }
       ],
       "description": {
@@ -14268,12 +13953,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-flowto"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Identifies the next [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) (or elements) in an alternate reading order of content which, at the user's discretion, allows assistive technology to override the general default of reading in document source order."
       }
     },
     {
@@ -14282,12 +13965,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-grabbed"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": `\\[Deprecated in ARIA 1.1\\] Indicates an element's "grabbed" [state](https://www.w3.org/TR/wai-aria-1.1/#dfn-state) in a drag-and-drop operation.`
       }
     },
     {
@@ -14296,12 +13977,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-haspopup"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element)."
       }
     },
     {
@@ -14310,12 +13989,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-hidden"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Indicates whether the [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) is exposed to an accessibility API. See related [`aria-disabled`](https://www.w3.org/TR/wai-aria-1.1/#aria-disabled)."
       }
     },
     {
@@ -14324,12 +14001,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-invalid"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Indicates the entered value does not conform to the format expected by the application. See related [`aria-errormessage`](https://www.w3.org/TR/wai-aria-1.1/#aria-errormessage)."
       }
     },
     {
@@ -14337,12 +14012,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-label"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines a string value that labels the current element. See related [`aria-labelledby`](https://www.w3.org/TR/wai-aria-1.1/#aria-labelledby)."
       }
     },
     {
@@ -14350,12 +14023,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-labelledby"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Identifies the [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) (or elements) that labels the current element. See related [`aria-describedby`](https://www.w3.org/TR/wai-aria-1.1/#aria-describedby)."
       }
     },
     {
@@ -14363,12 +14034,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-level"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines the hierarchical level of an [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) within a structure."
       }
     },
     {
@@ -14377,12 +14046,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-live"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Indicates that an [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) will be updated, and describes the types of updates the [user agents](https://www.w3.org/TR/wai-aria-1.1/#dfn-user-agent), [assistive technologies](https://www.w3.org/TR/wai-aria-1.1/#dfn-assistive-technology), and user can expect from the [live region](https://www.w3.org/TR/wai-aria-1.1/#dfn-live-region)."
       }
     },
     {
@@ -14391,12 +14058,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-modal"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Indicates whether an [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) is modal when displayed."
       }
     },
     {
@@ -14405,7 +14070,6 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-multiline"
         }
       ],
       "description": {
@@ -14419,7 +14083,6 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-multiselectable"
         }
       ],
       "description": {
@@ -14433,7 +14096,6 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-orientation"
         }
       ],
       "description": {
@@ -14446,12 +14108,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-owns"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Identifies an [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) (or elements) in order to define a visual, functional, or contextual parent/child [relationship](https://www.w3.org/TR/wai-aria-1.1/#dfn-relationship) between DOM elements where the DOM hierarchy cannot be used to represent the relationship. See related [`aria-controls`](https://www.w3.org/TR/wai-aria-1.1/#aria-controls)."
       }
     },
     {
@@ -14459,7 +14119,6 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-placeholder"
         }
       ],
       "description": {
@@ -14472,12 +14131,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-posinset"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines an [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element)'s number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. See related [`aria-setsize`](https://www.w3.org/TR/wai-aria-1.1/#aria-setsize)."
       }
     },
     {
@@ -14486,12 +14143,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-pressed"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": 'Indicates the current "pressed" [state](https://www.w3.org/TR/wai-aria-1.1/#dfn-state) of toggle buttons. See related [`aria-checked`](https://www.w3.org/TR/wai-aria-1.1/#aria-checked) and [`aria-selected`](https://www.w3.org/TR/wai-aria-1.1/#aria-selected).'
       }
     },
     {
@@ -14500,12 +14155,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-readonly"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Indicates that the [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) is not editable, but is otherwise [operable](https://www.w3.org/TR/wai-aria-1.1/#dfn-operable). See related [`aria-disabled`](https://www.w3.org/TR/wai-aria-1.1/#aria-disabled)."
       }
     },
     {
@@ -14514,12 +14167,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-relevant"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified. See related [`aria-atomic`](https://www.w3.org/TR/wai-aria-1.1/#aria-atomic)."
       }
     },
     {
@@ -14528,12 +14179,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-required"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Indicates that user input is required on the [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) before a form may be submitted."
       }
     },
     {
@@ -14541,12 +14190,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines a human-readable, author-localized description for the [role](https://www.w3.org/TR/wai-aria-1.1/#dfn-role) of an [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element)."
       }
     },
     {
@@ -14554,12 +14201,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-rowcount"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines the total number of rows in a [`table`](https://www.w3.org/TR/wai-aria-1.1/#table), [`grid`](https://www.w3.org/TR/wai-aria-1.1/#grid), or [`treegrid`](https://www.w3.org/TR/wai-aria-1.1/#treegrid). See related [`aria-rowindex`](https://www.w3.org/TR/wai-aria-1.1/#aria-rowindex)."
       }
     },
     {
@@ -14567,12 +14212,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-rowindex"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines an [element's](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) row index or position with respect to the total number of rows within a [`table`](https://www.w3.org/TR/wai-aria-1.1/#table), [`grid`](https://www.w3.org/TR/wai-aria-1.1/#grid), or [`treegrid`](https://www.w3.org/TR/wai-aria-1.1/#treegrid). See related [`aria-rowcount`](https://www.w3.org/TR/wai-aria-1.1/#aria-rowcount) and [`aria-rowspan`](https://www.w3.org/TR/wai-aria-1.1/#aria-rowspan)."
       }
     },
     {
@@ -14580,12 +14223,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-rowspan"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines the number of rows spanned by a cell or gridcell within a [`table`](https://www.w3.org/TR/wai-aria-1.1/#table), [`grid`](https://www.w3.org/TR/wai-aria-1.1/#grid), or [`treegrid`](https://www.w3.org/TR/wai-aria-1.1/#treegrid). See related [`aria-rowindex`](https://www.w3.org/TR/wai-aria-1.1/#aria-rowindex) and [`aria-colspan`](https://www.w3.org/TR/wai-aria-1.1/#aria-colspan)."
       }
     },
     {
@@ -14594,12 +14235,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-selected"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": 'Indicates the current "selected" [state](https://www.w3.org/TR/wai-aria-1.1/#dfn-state) of various [widgets](https://www.w3.org/TR/wai-aria-1.1/#dfn-widget). See related [`aria-checked`](https://www.w3.org/TR/wai-aria-1.1/#aria-checked) and [`aria-pressed`](https://www.w3.org/TR/wai-aria-1.1/#aria-pressed).'
       }
     },
     {
@@ -14607,12 +14246,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-setsize"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM. See related [`aria-posinset`](https://www.w3.org/TR/wai-aria-1.1/#aria-posinset)."
       }
     },
     {
@@ -14621,7 +14258,6 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-sort"
         }
       ],
       "description": {
@@ -14634,12 +14270,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-valuemax"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines the maximum allowed value for a range [widget](https://www.w3.org/TR/wai-aria-1.1/#dfn-widget)."
       }
     },
     {
@@ -14647,12 +14281,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-valuemin"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines the minimum allowed value for a range [widget](https://www.w3.org/TR/wai-aria-1.1/#dfn-widget)."
       }
     },
     {
@@ -14660,12 +14292,10 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-valuenow"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines the current value for a range [widget](https://www.w3.org/TR/wai-aria-1.1/#dfn-widget). See related [`aria-valuetext`](https://www.w3.org/TR/wai-aria-1.1/#aria-valuetext)."
       }
     },
     {
@@ -14673,19 +14303,16 @@ var htmlData = {
       "references": [
         {
           "name": "WAI-ARIA Reference",
-          "url": "https://www.w3.org/TR/wai-aria-1.1/#aria-valuetext"
         }
       ],
       "description": {
         "kind": "markdown",
-        "value": "Defines the human readable text alternative of [`aria-valuenow`](https://www.w3.org/TR/wai-aria-1.1/#aria-valuenow) for a range [widget](https://www.w3.org/TR/wai-aria-1.1/#dfn-widget)."
       }
     },
     {
       "name": "aria-details",
       "description": {
         "kind": "markdown",
-        "value": "Identifies the [element](https://www.w3.org/TR/wai-aria-1.1/#dfn-element) that provides a detailed, extended description for the [object](https://www.w3.org/TR/wai-aria-1.1/#dfn-object). See related [`aria-describedby`](https://www.w3.org/TR/wai-aria-1.1/#aria-describedby)."
       }
     },
     {
@@ -14776,21 +14403,18 @@ var htmlData = {
           "name": "get",
           "description": {
             "kind": "markdown",
-            "value": "Corresponds to the HTTP [GET method](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3); form data are appended to the `action` attribute URI with a '?' as separator, and the resulting URI is sent to the server. Use this method when the form has no side-effects and contains only ASCII characters."
           }
         },
         {
           "name": "post",
           "description": {
             "kind": "markdown",
-            "value": "Corresponds to the HTTP [POST method](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.5); form data are included in the body of the form and sent to the server."
           }
         },
         {
           "name": "dialog",
           "description": {
             "kind": "markdown",
-            "value": "Use when the form is inside a [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element to close the dialog when submitted."
           }
         }
       ]

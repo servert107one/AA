@@ -1,11 +1,9 @@
 //+------------------------------------------------------------------+
 //|                                                  MACDClassic.mqh |
 //|                                                      Paul Csapak |
-//|                 https://github.com/paulcpk/mql5-MT5-MACD-Classic |
 //+------------------------------------------------------------------+
 
 #property copyright "Paul Csapak"
-#property link "https://github.com/paulcpk/mql5-MT5-MACD-Classic"
 #property description "Moving Average Convergence/Divergence (Classic)"
 
 /*

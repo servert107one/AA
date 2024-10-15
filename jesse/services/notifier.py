@@ -69,7 +69,6 @@ def _telegram(msg: str, token: str, chat_id: str) -> None:
 
     try:
         response = requests.get(
-            f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&parse_mode=Markdown&text={msg}'
         )
         if response.status_code // 100 != 2:
             err_msg = f'Telegram ERROR [{response.status_code}]: {response.text}'
@@ -121,10 +120,8 @@ def _slack(msg: str, webhook_address) -> None:
 def _custom_channel_notification(msg: dict):
     webhook = msg['webhook']
 
-    if webhook.startswith('https://hooks.slack.com'):
         # a slack webhook
         _slack(msg['content'], webhook)
-    elif webhook.startswith('https://discord.com/api/webhooks'):
         # a discord webhook
         _discord(msg['content'], webhook)
     else:

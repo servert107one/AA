@@ -12,12 +12,10 @@ function _validateUri(ret, _strict) {
     if (!ret.scheme && _strict) {
         throw new Error(`[UriError]: Scheme is missing: {scheme: "", authority: "${ret.authority}", path: "${ret.path}", query: "${ret.query}", fragment: "${ret.fragment}"}`);
     }
-    // scheme, https://tools.ietf.org/html/rfc3986#section-3.1
     // ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
     if (ret.scheme && !_schemePattern.test(ret.scheme)) {
         throw new Error('[UriError]: Scheme contains illegal characters.');
     }
-    // path, http://tools.ietf.org/html/rfc3986#section-3.3
     // If a URI contains an authority component, then the path component
     // must either be empty or begin with a slash ("/") character.  If a URI
     // does not contain an authority component, then the path cannot begin
@@ -45,12 +43,10 @@ function _schemeFix(scheme, _strict) {
     }
     return scheme;
 }
-// implements a bit of https://tools.ietf.org/html/rfc3986#section-5
 function _referenceResolution(scheme, path) {
     // the slash-character is our 'default base' as we don't
     // support constructing URIs relative to other URIs. This
     // also means that we alter and potentially break paths.
-    // see https://tools.ietf.org/html/rfc3986#section-5.1.4
     switch (scheme) {
         case 'https':
         case 'http':
@@ -69,9 +65,7 @@ const _empty = '';
 const _slash = '/';
 const _regexp = /^(([^:/?#]+?):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
 /**
- * Uniform Resource Identifier (URI) http://tools.ietf.org/html/rfc3986.
  * This class is a simple parser which creates the basic component parts
- * (http://tools.ietf.org/html/rfc3986#section-3) with minimal validation
  * and encoding.
  *
  * ```txt
@@ -202,7 +196,6 @@ export class URI {
     }
     // ---- parse & validate ------------------------
     /**
-     * Creates a new URI from a string, e.g. `http://www.example.com/some/path`,
      * `file:///usr/home`, or `scheme:with/path`.
      *
      * @param value A string which represents an URI (see `URI#toString`).
@@ -384,7 +377,6 @@ class Uri extends URI {
         return res;
     }
 }
-// reserved characters: https://tools.ietf.org/html/rfc3986#section-2.2
 const encodeTable = {
     [58 /* CharCode.Colon */]: '%3A', // gen-delims
     [47 /* CharCode.Slash */]: '%2F',
@@ -411,7 +403,6 @@ function encodeURIComponentFast(uriComponent, isPath, isAuthority) {
     let nativeEncodePos = -1;
     for (let pos = 0; pos < uriComponent.length; pos++) {
         const code = uriComponent.charCodeAt(pos);
-        // unreserved characters: https://tools.ietf.org/html/rfc3986#section-2.3
         if ((code >= 97 /* CharCode.a */ && code <= 122 /* CharCode.z */)
             || (code >= 65 /* CharCode.A */ && code <= 90 /* CharCode.Z */)
             || (code >= 48 /* CharCode.Digit0 */ && code <= 57 /* CharCode.Digit9 */)

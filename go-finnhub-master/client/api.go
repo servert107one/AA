@@ -15,7 +15,6 @@ import (
 
 const (
 	// APIEndpoint the api url
-	APIEndpoint = "https://finnhub.io/api"
 
 	// APIVersion the api version
 	APIVersion = "v1"

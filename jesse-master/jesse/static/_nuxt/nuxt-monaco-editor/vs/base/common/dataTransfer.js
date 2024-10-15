@@ -116,7 +116,6 @@ function matchesMimeType_normalized(normalizedPattern, normalizedMimeTypes) {
     return false;
 }
 export const UriList = Object.freeze({
-    // http://amundsen.com/hypermedia/urilist/
     create: (entries) => {
         return distinct(entries.map(x => x.toString())).join('\r\n');
     },

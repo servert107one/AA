@@ -45,7 +45,6 @@ export class GlobalPointerMoveMonitor {
                     initialElement.releasePointerCapture(pointerId);
                 }
                 catch (err) {
-                    // See https://github.com/microsoft/vscode/issues/161731
                     //
                     // `releasePointerCapture` sometimes fails when being invoked with the exception:
                     //     DOMException: Failed to execute 'releasePointerCapture' on 'Element':
@@ -56,8 +55,6 @@ export class GlobalPointerMoveMonitor {
             }));
         }
         catch (err) {
-            // See https://github.com/microsoft/vscode/issues/144584
-            // See https://github.com/microsoft/vscode/issues/146947
             // `setPointerCapture` sometimes fails when being invoked
             // from a `mousedown` listener on macOS and Windows
             // and it always fails on Linux with the exception:

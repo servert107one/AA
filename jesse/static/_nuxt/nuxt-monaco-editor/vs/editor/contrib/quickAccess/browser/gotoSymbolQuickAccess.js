@@ -61,7 +61,6 @@ let AbstractGotoSymbolQuickAccessProvider = AbstractGotoSymbolQuickAccessProvide
         // we do get symbols. This can happen if the picker is opened
         // very early after the model has loaded but before the
         // language registry is ready.
-        // https://github.com/microsoft/vscode/issues/70607
         (async () => {
             const result = await this.waitForLanguageSymbolRegistry(model, disposables);
             if (!result || token.isCancellationRequested) {

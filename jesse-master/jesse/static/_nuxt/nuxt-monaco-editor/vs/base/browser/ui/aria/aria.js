@@ -75,7 +75,6 @@ function insertMessage(target, msg) {
         msg = msg.substr(0, MAX_MESSAGE_LENGTH);
     }
     target.textContent = msg;
-    // See https://www.paciellogroup.com/blog/2012/06/html5-accessibility-chops-aria-rolealert-browser-support/
     target.style.visibility = 'hidden';
     target.style.visibility = 'visible';
 }

@@ -95,7 +95,6 @@ export class CompressedObjectTreeModel {
     }
     setChildren(element, children = Iterable.empty(), options) {
         // Diffs must be deep, since the compression can affect nested elements.
-        // @see https://github.com/microsoft/vscode/pull/114237#issuecomment-759425034
         const diffIdentityProvider = options.diffIdentityProvider && wrapIdentityProvider(options.diffIdentityProvider);
         if (element === null) {
             const compressedChildren = Iterable.map(children, this.enabled ? compress : noCompress);

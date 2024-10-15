@@ -10,7 +10,6 @@ def jma(candles: np.ndarray, period:int=7, phase:float=50, power:int=2, source_t
   float, np.ndarray]:
     """
     Jurik Moving Average
-    Port of: https://tradingview.com/script/nZuBWW9j-Jurik-Moving-Average/
     """
 
     if len(candles.shape) == 1:

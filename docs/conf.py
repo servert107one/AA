@@ -2,7 +2,6 @@
 #
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # -- Path setup --------------------------------------------------------------
 
@@ -70,8 +69,4 @@ autodoc_typehints = 'description'
 keep_warnings = False
 
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/3.10/', None),
-    'numpy': ('https://numpy.org/doc/stable/', None),
-    'numba': ('https://numba.readthedocs.io/en/stable/', None),
-    'polars': ('https://docs.pola.rs/api/python/stable/', None),
 }

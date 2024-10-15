@@ -24,7 +24,6 @@ style.use('ggplot')
 #end = datetime.datetime(2015, 1, 1)
 def run():
     #Format 30 Day Historical Data from CoinMarketCap into a Pandas data format
-    url = 'https://coinmarketcap.com/currencies/bitcoin/historical-data/?start=20180727&end=20181227'
     btc90day = pd.read_html(url, header=0)
     btc_30_sma = simple_moving_average(btc90day[0]['Close**'])
     #btc_30_sma += btc90day[0]['Close**'][0:29]
@@ -44,7 +43,6 @@ def run():
     #plt.subplot(122)
     #Format Historical Dow Jones Industrial Average into a Pandas format
     plt.figure(2)
-    url2 = "https://finance.yahoo.com/quote/%5EDJI/history/"
     DJIA = pd.read_html(url2, header=0)
     DJIA[0]=DJIA[0][:-1]
     print(DJIA[0])
@@ -60,14 +58,12 @@ def run():
 
     #create 5 year, logarithmic btc data visualization
 
-    urlalltime = "https://coinmarketcap.com/currencies/bitcoin/historical-data/?start=20131227&end=20181227"
     btcalltime = pd.read_html(urlalltime, header = 0)
     print(btcalltime[0].head())
     #btcalltime[0]['Close**'].plot()
     #plt.plot(btcalltime[0]['Date'], btcalltime[0]['Close**'])
     #plt.show()
 
-# Following Code from: https://stackoverflow.com/questions/30261541/slow-stochastic-implementation-in-python-pandas
 
 def simple_moving_average(prices, period=30):
     """

@@ -1,5 +1,4 @@
 #property copyright "Copyright 2018-2021, Level Up Software"
-#property link      "https://www.az-invest.eu"
 
 #ifdef DEVELOPER_VERSION
    #define RENKO_INDICATOR_NAME "MedianRenko\\MedianRenkoOverlay319" 

@@ -4,7 +4,6 @@ spec:
   - environment_slug: python
     git:
       branch: master
-      repo_clone_url: https://github.com/coinbookbrasil/binance-trade-bot.git
     envs:
     - key: API_KEY
       scope: BUILD_TIME

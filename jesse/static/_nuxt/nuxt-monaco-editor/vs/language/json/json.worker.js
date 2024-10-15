@@ -2,7 +2,6 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Version: 0.50.0(c321d0fbecb50ab8a5365fa1965476b0ae63fc87)
  * Released under the MIT license
- * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
  *-----------------------------------------------------------------------------*/
 
 
@@ -2843,12 +2842,6 @@ var EnumMatch;
   EnumMatch2[EnumMatch2["Enum"] = 1] = "Enum";
 })(EnumMatch || (EnumMatch = {}));
 var schemaDraftFromId = {
-  "http://json-schema.org/draft-03/schema#": SchemaDraft.v3,
-  "http://json-schema.org/draft-04/schema#": SchemaDraft.v4,
-  "http://json-schema.org/draft-06/schema#": SchemaDraft.v6,
-  "http://json-schema.org/draft-07/schema#": SchemaDraft.v7,
-  "https://json-schema.org/draft/2019-09/schema": SchemaDraft.v2019_09,
-  "https://json-schema.org/draft/2020-12/schema": SchemaDraft.v2020_12
 };
 var EvaluationContext = class {
   constructor(schemaDraft) {
@@ -4658,7 +4651,6 @@ var JSONCompletion = class {
   addDollarSchemaCompletions(separatorAfter, collector) {
     const schemaIds = this.schemaService.getRegisteredSchemaIds((schema) => schema === "http" || schema === "https");
     schemaIds.forEach((schemaId) => {
-      if (schemaId.startsWith("http://json-schema.org/draft-")) {
         schemaId = schemaId + "#";
       }
       collector.add({
@@ -5491,8 +5483,6 @@ var schemaContributions = {
   schemaAssociations: [],
   schemas: {
     // bundle the schema-schema to include (localized) descriptions
-    "http://json-schema.org/draft-04/schema#": {
-      "$schema": "http://json-schema.org/draft-04/schema#",
       "definitions": {
         "schemaArray": {
           "type": "array",
@@ -5774,7 +5764,6 @@ var schemaContributions = {
       },
       "default": {}
     },
-    "http://json-schema.org/draft-07/schema#": {
       "definitions": {
         "schemaArray": {
           "type": "array",
@@ -6721,7 +6710,6 @@ var JSONSchemaService = class {
       const errorMessage = t("Unable to load schema from '{0}'. No schema request service available", toDisplayString(url));
       return this.promise.resolve(new UnresolvedSchema({}, [errorMessage]));
     }
-    if (url.startsWith("http://json-schema.org/")) {
       url = "https" + url.substring(4);
     }
     return this.requestService(url).then((content) => {
@@ -6757,7 +6745,6 @@ var JSONSchemaService = class {
     const resolveErrors = schemaToResolve.errors.slice(0);
     const schema = schemaToResolve.schema;
     let schemaDraft = schema.$schema ? normalizeId(schema.$schema) : void 0;
-    if (schemaDraft === "http://json-schema.org/draft-03/schema") {
       return this.promise.resolve(new ResolvedSchema({}, [t("Draft-03 schemas are not supported.")], [], schemaDraft));
     }
     let usesUnsupportedFeatures = /* @__PURE__ */ new Set();

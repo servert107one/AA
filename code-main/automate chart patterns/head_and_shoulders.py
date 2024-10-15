@@ -3,7 +3,6 @@ Date: 20230102
 
 This program implements the Head and Shoulders pattern
 
-Source: https://www.youtube.com/watch?v=Mxk8PP3vbuA
 """
 
 import mplfinance as mpf 

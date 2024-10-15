@@ -1,10 +1,8 @@
 //+------------------------------------------------------------------+
 //|                                                          RSI.mq4 |
 //|                   Copyright 2005-2014, MetaQuotes Software Corp. |
-//|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 #property copyright   "2005-2014, MetaQuotes Software Corp."
-#property link        "https://www.mql5.com"
 #property description "Relative Strength Index"
 #property strict
 

@@ -3,10 +3,8 @@
 //+------------------------------------------------------------------+
 //|                                                        iNRTR.mq5 |
 //|                                        MetaQuotes Software Corp. |
-//|                                              http://www.mql5.com |
 //+------------------------------------------------------------------+
 #property copyright "MetaQuotes Software Corp."
-#property link      "http://www.mql5.com"
 #property version   "1.00"
 #property indicator_chart_window
 #property indicator_buffers 6

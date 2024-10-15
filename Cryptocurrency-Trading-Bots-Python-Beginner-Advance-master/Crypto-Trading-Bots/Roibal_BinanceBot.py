@@ -1,15 +1,12 @@
 """
 The Purpose of the RoibalBot Python Program is to create an automated trading bot (functionality) on Binance
-Utilized Python-Binance ( https://github.com/sammchardy/python-binance )
 Advanced-Version capable of all exchanges, all coins (using cctx)
 
 Created 4/14/2018 by Joaquin Roibal
 V 0.01 - Updated 4/20/2018
-v 0.02 - Updated 5/30/2018 - Converted to Advanced Version: https://github.com/Roibal/Cryptocurrency-Trading-Bots-Python-Beginner-Advance
 
 Licensed under MIT License
 
-Instructional Youtube Video: https://www.youtube.com/watch?v=8AAN03M8QhA
 
 Did you enjoy the functionality of this bot? Tips always appreciated.
 
@@ -81,7 +78,6 @@ def run():
         pass
 
     # place a test market buy order, to place an actual order use the create_order function
-    # if '1000 ms ahead of server time' error encountered, visit https://github.com/sammchardy/python-binance/issues/249
     try:
         order = client.create_test_order(
             symbol='BNBBTC',
@@ -195,7 +191,6 @@ def scalping_orders(coin, wait=1, tot_time=1):
     print("Spread: {} % Projected Spread {} %".format(spread, proj_spread))
     print("Max Bid: {} Min Ask: {}".format(max_bid, min_ask))
     #Place Orders based on calculated bid-ask orders if projected > 0.05% (transaction fee)
-    #Documentation: http://python-binance.readthedocs.io/en/latest/account.html#orders
     """
     if proj_spread > 0.05:
         quant1=100          #Determine Code Required to calculate 'minimum' quantity
@@ -283,7 +278,6 @@ def portfolio_management(deposit = '10000', withdraw=0, portfolio_amt = '0', por
 def Bollinger_Bands():
     #This Function will calculate Bollinger Bands for Given Time Period
     #EDIT: Will use Crypto-Signal for this functionality
-    #https://github.com/CryptoSignal/crypto-signal
     pass
 
 def buy_sell_bot():

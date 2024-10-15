@@ -72,7 +72,6 @@ TRADE_METRIC_TABLE = dict(id='trade-metric-table', data=[],
 
 # API Requests for news div
 news_requests = requests.get(
-    "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=da8e2e705b914f9f86ed2e9692e66012"
 )
 
 # API Call to update news

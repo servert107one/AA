@@ -109,7 +109,6 @@ function parseRegExp(pattern) {
                             res = '^';
                         }
                         // glob split matching is not allowed within character ranges
-                        // see http://man7.org/linux/man-pages/man7/glob.7.html
                         else if (char === GLOB_SPLIT) {
                             res = '';
                         }
@@ -244,7 +243,6 @@ function wrapRelativePattern(parsedPattern, arg2) {
         // For that we try to extract the portion of the `path`
         // that comes after the `base` portion. We have to account
         // for the fact that `base` might end in a path separator
-        // (https://github.com/microsoft/vscode/issues/162498)
         return parsedPattern(ltrim(path.substr(arg2.base.length), sep), basename);
     };
     // Make sure to preserve associated metadata

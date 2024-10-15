@@ -11,7 +11,6 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 package exchanges
 
@@ -26,7 +25,6 @@ import (
 	"github.com/shopspring/decimal"
 )
 
-// NOTE: https://www.kraken.com/help/api
 
 // KrakenWrapper provides a Generic wrapper of the Kraken API.
 type KrakenWrapper struct {

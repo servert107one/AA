@@ -1,5 +1,4 @@
 #property copyright "Copyright 2018-2021, Level Up Software"
-#property link      "https://www.az-invest.eu"
 #property description "A timescale indicator for use on the custom chart."
 #property version   "1.04"
 #property indicator_separate_window
@@ -196,7 +195,6 @@ void OnChartEvent(const int id,
 
 //
 // GUI wrapper function 
-// https://www.mql5.com/en/docs/constants/objectconstants/enum_object/obj_text
 //
 
 bool TextCreate(const long              chart_ID=0,               // chart's ID 

@@ -29,7 +29,6 @@ export function getPlatformTextDecoder() {
 export function decodeUTF16LE(source, offset, len) {
     const view = new Uint16Array(source.buffer, offset, len);
     if (len > 0 && (view[0] === 0xFEFF || view[0] === 0xFFFE)) {
-        // UTF16 sometimes starts with a BOM https://de.wikipedia.org/wiki/Byte_Order_Mark
         // It looks like TextDecoder.decode will eat up a leading BOM (0xFEFF or 0xFFFE)
         // We don't want that behavior because we know the string is UTF16LE and the BOM should be maintained
         // So we use the manual decoder

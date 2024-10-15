@@ -13,7 +13,6 @@ const _enableListenerGCedWarning = false;
 const _enableDisposeWithListenerWarning = false;
 // -----------------------------------------------------------------------------------------------------------------------
 // Uncomment the next line to print warnings whenever a snapshotted event is used repeatedly without cleanup.
-// See https://github.com/microsoft/vscode/issues/142851
 // -----------------------------------------------------------------------------------------------------------------------
 const _enableSnapshotPotentialLeakWarning = false;
 export var Event;

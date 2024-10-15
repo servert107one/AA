@@ -2,7 +2,6 @@
 Twitter Sentiment Analysis in Python - A bot which will monitor, store and categorize Sentiment Analysis based on Twitter
 for cryptocurrencies, and implement a strategy for profitable trading based on Bitcoin Barbie Bot (BBB) Strategy, described here:
 
-https://medium.com/@BlockchainEng/crypto-trading-bot-sentiment-analysis-bot-bfbd8dd1df5a
 
 Youtube Series Here:
 6/30/2018
@@ -29,7 +28,6 @@ def run():
 
     :return:
     """
-    #Instructions: https://www.geeksforgeeks.org/twitter-sentiment-analysis-using-python/
 import tweepy
 import textblob
 

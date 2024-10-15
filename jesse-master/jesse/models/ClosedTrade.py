@@ -113,7 +113,6 @@ class ClosedTrade(peewee.Model):
     def roi(self) -> float:
         """
         Return on Investment in percentage
-        More at: https://www.binance.com/en/support/faq/5b9ad93cb4854f5990b9fb97c03cfbeb
         """
         return self.pnl / self.total_cost * 100
 

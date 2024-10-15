@@ -4,7 +4,6 @@ Date 20230102
 This progam implements the Rectangle Chart Patterns.
 It finds both the bullish and bearish rectangle patterns
 
-Source: https://www.youtube.com/watch?v=Mxk8PP3vbuA
 """
 
 from mplfinance.original_flavor import candlestick_ohlc

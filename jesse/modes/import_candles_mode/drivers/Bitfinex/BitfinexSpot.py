@@ -16,7 +16,6 @@ class BitfinexSpot(CandleExchange):
             backup_exchange_class=None
         )
 
-        self.endpoint = 'https://api-pub.bitfinex.com/v2/candles'
 
     def get_starting_time(self, symbol: str) -> int:
         dashless_symbol = jh.dashless_symbol(symbol)
@@ -86,7 +85,6 @@ class BitfinexSpot(CandleExchange):
         } for d in data]
 
     def get_available_symbols(self) -> list:
-        response = requests.get('https://api-pub.bitfinex.com/v2/conf/pub:list:pair:exchange')
         self.validate_response(response)
         data = response.json()[0]
         arr = []

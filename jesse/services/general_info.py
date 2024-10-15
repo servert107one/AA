@@ -48,7 +48,6 @@ def get_general_info(has_live=False) -> dict:
     update_info = {}
 
     try:
-        response = requests.get('https://pypi.org/pypi/jesse/json')
         update_info['jesse_latest_version'] = response.json()['info']['version']
         response = requests.get(
             JESSE_API_URL + '/plugins/live/releases/info'

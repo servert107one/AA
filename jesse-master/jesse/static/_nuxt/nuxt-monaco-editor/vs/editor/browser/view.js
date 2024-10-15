@@ -77,7 +77,6 @@ let View = class View extends ViewEventHandler {
         this._linesContent.setPosition('absolute');
         this.domNode = createFastDomNode(document.createElement('div'));
         this.domNode.setClassName(this._getEditorClassName());
-        // Set role 'code' for better screen reader support https://github.com/microsoft/vscode/issues/93438
         this.domNode.setAttribute('role', 'code');
         this._overflowGuardContainer = createFastDomNode(document.createElement('div'));
         PartFingerprints.write(this._overflowGuardContainer, 3 /* PartFingerprint.OverflowGuard */);
@@ -241,7 +240,6 @@ let View = class View extends ViewEventHandler {
         this.domNode.setHeight(layoutInfo.height);
         this._overflowGuardContainer.setWidth(layoutInfo.width);
         this._overflowGuardContainer.setHeight(layoutInfo.height);
-        // https://stackoverflow.com/questions/38905916/content-in-google-chrome-larger-than-16777216-px-not-being-rendered
         this._linesContent.setWidth(16777216);
         this._linesContent.setHeight(16777216);
     }

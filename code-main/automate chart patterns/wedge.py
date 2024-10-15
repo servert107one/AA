@@ -3,8 +3,6 @@ Date 20230102
 
 This progam implements the Wedge Chart Patterns
 
-Source: https://quantnet.ai/referee/template/14015755/html
-        https://www.youtube.com/watch?v=WVNB_6JRbl0
 """
 
 from mplfinance.original_flavor import candlestick_ohlc

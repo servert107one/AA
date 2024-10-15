@@ -4,7 +4,6 @@ Engulfing candlestick
 This is s strategy from the CodingTrading Youtube Channel. It has only been refactored.
 
 Date: 2023-07-23
-Source: https://www.youtube.com/watch?v=eN4zh3PEH6c&list=PLwEOixRFAUxZmM26EYI1uYtJG39HDW1zm&index=46
 
 Disclaimer: We want to emphasize that this is purely for educational purposes only. We do not offer any financial advice, recommendations, or make any guarantees of profit or success. 
 Trading carries a risk of loss, and it is important to always consult with a qualified professional before making any trading decisions.

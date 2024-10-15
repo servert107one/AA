@@ -1,7 +1,6 @@
 ---
 minimum_pre_commit_version: 1.15.2
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.1.0
   hooks:
   - id: check-merge-conflict      # Check for files that contain merge conflict strings.
@@ -21,26 +20,22 @@ repos:
     language: python
     files: ^supported_coin_list$
 
-- repo: https://github.com/asottile/pyupgrade
   rev: v2.29.1
   hooks:
   - id: pyupgrade
     name: Rewrite Code to be Py3.6+
     args: [--py36-plus]
 
-- repo: https://github.com/pycqa/isort
   rev: 5.11.5
   hooks:
   - id: isort
     args: [--profile, black, --line-length, '120']
 
-- repo: https://github.com/psf/black
   rev: 23.3.0
   hooks:
   - id: black
     args: [-l, '120']
 
-- repo: https://github.com/asottile/blacken-docs
   rev: v1.11.0
   hooks:
   - id: blacken-docs
@@ -48,14 +43,12 @@ repos:
     files: ^docs/.*\.rst
     additional_dependencies: [black==20.8b1]
 
-- repo: https://github.com/s0undt3ch/pre-commit-populate-pylint-requirements
   rev: aed8c6a
   hooks:
   - id: populate-pylint-requirements
     files: ^(dev-)?requirements\.txt$
     args: [requirements.txt, dev-requirements.txt]
 
-- repo: https://github.com/pre-commit/mirrors-pylint
   rev: v3.0.0a5
   hooks:
   - id: pylint

@@ -45,7 +45,6 @@ Liquidity-Taking Order
 
 You can find details below.
 
-* `NoPartialFillExchange <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/proc/struct.NoPartialFillExchange.html>`_
   and :meth:`no_partial_fill_exchange <hftbacktest.BacktestAsset.no_partial_fill_exchange>`
 
 .. _order_fill_partial_fill_exchange:
@@ -88,7 +87,6 @@ Liquidity-Taking Order
 
 You can find details below.
 
-* `PartialFillExchange <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/proc/struct.PartialFillExchange.html>`_
   and :meth:`partial_fill_exchange <hftbacktest.BacktestAsset.partial_fill_exchange>`
 
 Queue Models
@@ -100,7 +98,6 @@ If an exchange doesn't provide Market-By-Order, you have to guess it by modeling
 HftBacktest currently only supports Market-By-Price that is most crypto exchanges provide and it provides the following
 queue position models for order fill simulation.
 
-Please refer to the details at `Models <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/index.html>`.
 
 .. image:: images/liquidity-and-trade-activities.png
 
@@ -114,7 +111,6 @@ The order queue position will be advanced only if a trade happens at the price.
 
 You can find details below.
 
-* `RiskAdverseQueueModel <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/struct.RiskAdverseQueueModel.html>`_
   and :meth:`risk_adverse_queue_model <hftbacktest.BacktestAsset.risk_adverse_queue_model>`
 
 .. _order_fill_prob_queue_model:
@@ -126,26 +122,18 @@ and after the queue position.
 So your queue position is also advanced according to the probability.
 This model is implemented as described in
 
-* https://quant.stackexchange.com/questions/3782/how-do-we-estimate-position-of-our-order-in-order-book
-* https://rigtorp.se/2013/06/08/estimating-order-queue-position.html
 
 You can find details below.
 
-* `ProbQueueModel <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/struct.ProbQueueModel.html>`_
 
-* `PowerProbQueueFunc <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/struct.PowerProbQueueFunc.html>`_
   and :meth:`power_prob_queue_model <hftbacktest.BacktestAsset.power_prob_queue_model>`
 
-* `PowerProbQueueFunc2 <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/struct.PowerProbQueueFunc2.html>`_
   and :meth:`power_prob_queue_model2 <hftbacktest.BacktestAsset.power_prob_queue_model2>`
 
-* `PowerProbQueueFunc3 <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/struct.PowerProbQueueFunc3.html>`_
   and :meth:`power_prob_queue_model3 <hftbacktest.BacktestAsset.power_prob_queue_model3>`
 
-* `LogProbQueueFunc <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/struct.LogProbQueueFunc.html>`_
   and :meth:`log_prob_queue_model <hftbacktest.BacktestAsset.log_prob_queue_model>`
 
-* `LogProbQueueFunc2 <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/struct.LogProbQueueFunc2.html>`_
   and :meth:`log_prob_queue_model2 <hftbacktest.BacktestAsset.log_prob_queue_model2>`
 
 By default, three variations are provided. These three models have different probability profiles.
@@ -173,14 +161,9 @@ Implement a custom queue model
 ------------------------------
 You need to implement the following traits in Rust based on your usage requirements.
 
-* `QueueModel <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/trait.QueueModel.html>`_
-* `L3QueueModel <https://docs.rs/hftbacktest/latest/hftbacktest/backtest/models/trait.L3QueueModel.html>`_
 
-Please refer to `the queue model implementation <https://github.com/nkaz001/hftbacktest/blob/master/hftbacktest/src/backtest/models/queue.rs>`_.
 
 References
 ==========
 This is initially implemented as described in the following articles.
 
-* http://www.math.ualberta.ca/~cfrei/PIMS/Almgren5.pdf
-* https://quant.stackexchange.com/questions/3782/how-do-we-estimate-position-of-our-order-in-order-book

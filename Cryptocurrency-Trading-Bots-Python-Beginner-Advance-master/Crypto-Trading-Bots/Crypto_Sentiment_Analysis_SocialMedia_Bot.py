@@ -2,11 +2,9 @@
 Twitter Sentiment Analysis in Python - A bot which will monitor, store and categorize Sentiment Analysis based on Twitter
 for cryptocurrencies, and implement a strategy for profitable trading based on Bitcoin Barbie Bot (BBB) Strategy, described here:
 
-https://medium.com/@BlockchainEng/crypto-trading-bot-sentiment-analysis-bot-bfbd8dd1df5a
 
 Youtube Series Here:
 6/30/2018
-source of BitcoinPrice() code: https://gist.github.com/mattvukas/9146611
 
 @BlockchainEng
 Copyright 2018 - All Rights Reserved
@@ -30,7 +28,6 @@ def run():
 
     :return:
     """
-    #Instructions: https://www.geeksforgeeks.org/twitter-sentiment-analysis-using-python/
 import tweepy
 import textblob
 import time
@@ -200,7 +197,6 @@ def save_to_file(coin, positive_tweet_percentage, negative_tweet_percentage, neu
         line = coin, positive_tweet_percentage, negative_tweet_percentage, neutral_tweet_percentage, time, current_price
         f.writelines(str(line) + '\n')
 def getBitcoinPrice():
-    URL = 'https://www.bitstamp.net/api/ticker/'
     try:
         r = requests.get(URL)
         priceFloat = float(json.loads(r.text)['last'])
@@ -262,7 +258,6 @@ def data_visualize(api, list_coins, start_time, end_time):
         neutral_tweet.append(coin[3])
         time_list.append(coin[4])
         visualize_price.append(coin[5])
-    #Converted to two axis on same graph - https://matplotlib.org/gallery/api/two_scales.html
     fig, ax1 = plt.subplots()
 
     color = 'black'

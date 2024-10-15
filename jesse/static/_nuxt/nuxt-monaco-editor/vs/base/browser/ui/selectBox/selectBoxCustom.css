@@ -97,7 +97,6 @@
 
 
 /* Accepted CSS hiding technique for accessibility reader text  */
-/* https://webaim.org/techniques/css/invisiblecontent/ */
 
 .monaco-select-box-dropdown-container > .select-box-dropdown-list-container .monaco-list .monaco-list-row > .visually-hidden {
 		position: absolute;

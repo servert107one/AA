@@ -75,7 +75,6 @@ export class BracketTokens {
 function prepareBracketForRegExp(str) {
     let escaped = escapeRegExpCharacters(str);
     // These bracket pair delimiters start or end with letters
-    // see https://github.com/microsoft/vscode/issues/132162 https://github.com/microsoft/vscode/issues/150440
     if (/^[\w ]+/.test(str)) {
         escaped = `\\b${escaped}`;
     }

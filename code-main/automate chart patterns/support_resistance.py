@@ -3,7 +3,6 @@ Date: 2023-04-14
 
 Support and resistance
 
-This code is based on the following Youtube video: https://www.youtube.com/watch?v=Mxk8PP3vbuA
 """
 
 from mplfinance.original_flavor import candlestick_ohlc

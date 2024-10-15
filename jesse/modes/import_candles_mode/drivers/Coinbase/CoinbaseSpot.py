@@ -14,7 +14,6 @@ class CoinbaseSpot(CandleExchange):
             backup_exchange_class=None
         )
 
-        self.endpoint = 'https://api.coinbase.com/api/v3/brokerage/market/products'
 
     def get_starting_time(self, symbol: str) -> int:
         """

@@ -358,7 +358,6 @@ function transformAndRemoveOverflowing(lineContent, lineContainsRTL, tokens, fau
     return result;
 }
 /**
- * See https://github.com/microsoft/vscode/issues/6885.
  * It appears that having very large spans causes very slow reading of character positions.
  * So here we try to avoid that.
  */
@@ -828,7 +827,6 @@ function _renderLine(input, sb) {
                         break;
                     case 0 /* CharCode.Null */:
                         if (renderControlCharacters) {
-                            // See https://unicode-table.com/en/blocks/control-pictures/
                             sb.appendCharCode(9216);
                         }
                         else {
@@ -845,7 +843,6 @@ function _renderLine(input, sb) {
                         if (strings.isFullWidthCharacter(charCode)) {
                             charWidth++;
                         }
-                        // See https://unicode-table.com/en/blocks/control-pictures/
                         if (renderControlCharacters && charCode < 32) {
                             sb.appendCharCode(9216 + charCode);
                         }

@@ -1,10 +1,8 @@
 //+------------------------------------------------------------------+
 //|                                                           BB.mq5 |
 //|                   Copyright 2009-2020, MetaQuotes Software Corp. |
-//|                                              http://www.mql5.com |
 //+------------------------------------------------------------------+
 #property copyright   "2009-2020, MetaQuotes Software Corp."
-#property link        "http://www.mql5.com"
 #property description "Bollinger Bands"
 #include <MovingAverages.mqh>
 #include <AZ-INVEST/CustomBarConfig.mqh>

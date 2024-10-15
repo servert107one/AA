@@ -53,7 +53,6 @@ export class StandardWheelEvent {
         let shouldFactorDPR = false;
         if (browser.isChrome) {
             // Chrome version >= 123 contains the fix to factor devicePixelRatio into the wheel event.
-            // See https://chromium.googlesource.com/chromium/src.git/+/be51b448441ff0c9d1f17e0f25c4bf1ab3f11f61
             const chromeVersionMatch = navigator.userAgent.match(/Chrome\/(\d+)/);
             const chromeMajorVersion = chromeVersionMatch ? parseInt(chromeVersionMatch[1]) : 123;
             shouldFactorDPR = chromeMajorVersion <= 122;
@@ -66,7 +65,6 @@ export class StandardWheelEvent {
             // vertical delta scroll
             if (typeof e1.wheelDeltaY !== 'undefined') {
                 if (shouldFactorDPR) {
-                    // Refs https://github.com/microsoft/vscode/issues/146403#issuecomment-1854538928
                     this.deltaY = e1.wheelDeltaY / (120 * devicePixelRatio);
                 }
                 else {
@@ -78,7 +76,6 @@ export class StandardWheelEvent {
             }
             else if (e.type === 'wheel') {
                 // Modern wheel event
-                // https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent
                 const ev = e;
                 if (ev.deltaMode === ev.DOM_DELTA_LINE) {
                     // the deltas are expressed in lines
@@ -99,7 +96,6 @@ export class StandardWheelEvent {
                     this.deltaX = -(e1.wheelDeltaX / 120);
                 }
                 else if (shouldFactorDPR) {
-                    // Refs https://github.com/microsoft/vscode/issues/146403#issuecomment-1854538928
                     this.deltaX = e1.wheelDeltaX / (120 * devicePixelRatio);
                 }
                 else {
@@ -111,7 +107,6 @@ export class StandardWheelEvent {
             }
             else if (e.type === 'wheel') {
                 // Modern wheel event
-                // https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent
                 const ev = e;
                 if (ev.deltaMode === ev.DOM_DELTA_LINE) {
                     // the deltas are expressed in lines
@@ -129,7 +124,6 @@ export class StandardWheelEvent {
             // Assume a vertical scroll if nothing else worked
             if (this.deltaY === 0 && this.deltaX === 0 && e.wheelDelta) {
                 if (shouldFactorDPR) {
-                    // Refs https://github.com/microsoft/vscode/issues/146403#issuecomment-1854538928
                     this.deltaY = e.wheelDelta / (120 * devicePixelRatio);
                 }
                 else {

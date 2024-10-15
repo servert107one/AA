@@ -164,7 +164,6 @@ export class Menu extends ActionBar {
             this.scrollableElement.setScrollPosition({ scrollTop: scrollTop - e.translationY });
         }));
         this._register(addDisposableListener(scrollElement, EventType.MOUSE_UP, e => {
-            // Absorb clicks in menu dead space https://github.com/microsoft/vscode/issues/63575
             // We do this on the scroll element so the scroll bar doesn't dismiss the menu either
             e.preventDefault();
         }));
@@ -248,7 +247,6 @@ export class Menu extends ActionBar {
         super.updateFocus(fromRight, true, true);
         if (typeof this.focusedItem !== 'undefined') {
             // Workaround for #80047 caused by an issue in chromium
-            // https://bugs.chromium.org/p/chromium/issues/detail?id=414283
             // When that's fixed, just call this.scrollableElement.scanDomNode()
             this.scrollableElement.setScrollPosition({
                 scrollTop: Math.round(this.menuElement.scrollTop)
@@ -330,7 +328,6 @@ class BaseMenuActionViewItem extends BaseActionViewItem {
                 // with BaseActionViewItem #101537
                 // add back if issues arise and link new issue
                 EventHelper.stop(e, true);
-                // See https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Interact_with_the_clipboard
                 // > Writing to the clipboard
                 // > You can use the "cut" and "copy" commands without any special
                 // permission if you are using them in a short-lived event handler

@@ -149,7 +149,6 @@ export class PickerQuickAccessProvider extends Disposable {
                                 // fast results. This fixes an issue where the user might
                                 // have made a pick active before the additional results
                                 // kick in.
-                                // See https://github.com/microsoft/vscode/issues/102480
                                 let fallbackActivePick = undefined;
                                 if (!activePick && !additionalActivePick) {
                                     const fallbackActivePickCandidate = picker.activeItems[0];

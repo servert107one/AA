@@ -11,7 +11,6 @@ def rma(candles: np.ndarray, length: int = 14, source_type="close", sequential=F
     """
     Moving average used in RSI. It is the exponentially weighted moving average with alpha = 1 / length.
     RETURNS Exponential moving average of x with alpha = 1 / y.
-    https://www.tradingview.com/pine-script-reference/#fun_rma
 
     :param candles: np.ndarray
     :param length: int - default: 14

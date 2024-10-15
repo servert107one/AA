@@ -2,7 +2,6 @@
 /*!----------------------------------------------------------------
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Released under the MIT license
- * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
  *----------------------------------------------------------------*/
 
 export interface IWorkerDefinition {

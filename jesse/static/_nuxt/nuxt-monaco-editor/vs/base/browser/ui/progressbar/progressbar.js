@@ -96,7 +96,5 @@ export class ProgressBar extends Disposable {
  * to long-running mode and throttle animations to reduce
  * the pressure on the GPU process.
  *
- * https://github.com/microsoft/vscode/issues/97900
- * https://github.com/microsoft/vscode/issues/138396
  */
 ProgressBar.LONG_RUNNING_INFINITE_THRESHOLD = 10000;

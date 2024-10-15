@@ -70,7 +70,6 @@ def hurst_rs(x, min_chunksize, max_chunksize, num_chunksize):
     Hurst, H. E. (1951). Long term storage capacity of reservoirs. ASCE
     Transactions, 116(776), 770-808.
     Alessio, E., Carbone, A., Castelli, G. et al. Eur. Phys. J. B (2002) 27:
-    197. http://dx.doi.org/10.1140/epjb/e20020150
     """
     N = len(x)
     max_chunksize += 1
@@ -138,7 +137,6 @@ def hurst_dma(prices, min_chunksize=8, max_chunksize=200, num_chunksize=5):
     References
     ----------
     Alessio, E., Carbone, A., Castelli, G. et al. Eur. Phys. J. B (2002) 27:
-    197. https://dx.doi.org/10.1140/epjb/e20020150
 
     """
     max_chunksize += 1
@@ -165,7 +163,6 @@ def hurst_dsod(x):
     The estimation is based on the discrete second order derivative. Consists on
     get two different noise of the original series and calculate the standard
     deviation and calculate the slope of two point with that values.
-    source: https://gist.github.com/wmvanvliet/d883c3fe1402c7ced6fc
 
     Parameters
     ----------

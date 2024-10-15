@@ -6,7 +6,6 @@ It can be used to find ascending, descending, and symmetrical patterns.
 
 
 
-Source: https://www.youtube.com/watch?v=WVNB_6JRbl0
 """
 
 from mplfinance.original_flavor import candlestick_ohlc

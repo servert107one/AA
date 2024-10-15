@@ -13,7 +13,7 @@ class SuperTrendScan(Strategy):
     -----------------------------
     The code below was developed for detecting trends using the SuperTrend
     indicator. You can read more about it at:
-        https://kieran-mackle.github.io/AutoTrader/blog
+      
     """
 
     def __init__(

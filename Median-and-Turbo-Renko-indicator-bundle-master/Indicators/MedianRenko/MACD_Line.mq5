@@ -1,10 +1,8 @@
 //+------------------------------------------------------------------+
 //|                                                         MACD.mq5 |
 //|                        Copyright 2009, MetaQuotes Software Corp. |
-//|                                              http://www.mql5.com |
 //+------------------------------------------------------------------+
 #property copyright   "2009, MetaQuotes Software Corp."
-#property link        "http://www.mql5.com"
 #property description "Moving Average Convergence/Divergence"
 #include <MovingAverages.mqh>
 //--- indicator settings

@@ -16,7 +16,6 @@ class BitgetSpot(CandleExchange):
             backup_exchange_class=None
         )
 
-        self.endpoint = 'https://api.bitget.com/api/spot/v1/market/candles'
 
     def get_starting_time(self, symbol: str) -> int:
         payload = {

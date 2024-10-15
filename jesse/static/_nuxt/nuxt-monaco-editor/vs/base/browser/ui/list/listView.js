@@ -230,7 +230,6 @@ export class ListView {
         this.scrollableElement.onScroll(this.onScroll, this, this.disposables);
         this.disposables.add(addDisposableListener(this.rowsContainer, TouchEventType.Change, e => this.onTouchChange(e)));
         // Prevent the monaco-scrollable-element from scrolling
-        // https://github.com/microsoft/vscode/issues/44181
         this.disposables.add(addDisposableListener(this.scrollableElement.getDomNode(), 'scroll', e => e.target.scrollTop = 0));
         this.disposables.add(addDisposableListener(this.domNode, 'dragover', e => this.onDragOver(this.toDragEvent(e))));
         this.disposables.add(addDisposableListener(this.domNode, 'drop', e => this.onDrop(this.toDragEvent(e))));
@@ -722,7 +721,6 @@ export class ListView {
     }
     onDragOver(event) {
         var _a, _b;
-        event.browserEvent.preventDefault(); // needed so that the drop event fires (https://stackoverflow.com/questions/21339924/drop-event-not-firing-in-chrome)
         this.onDragLeaveTimeout.dispose();
         if (StaticDND.CurrentDragAndDropData && StaticDND.CurrentDragAndDropData.getData() === 'vscode-ui') {
             return false;
@@ -973,9 +971,6 @@ export class ListView {
                 if (typeof anchorElementIndex === 'number') {
                     // To compute a destination scroll top, we need to take into account the current smooth scrolling
                     // animation, and then reuse it with a new target (to avoid prolonging the scroll)
-                    // See https://github.com/microsoft/vscode/issues/104144
-                    // See https://github.com/microsoft/vscode/pull/104284
-                    // See https://github.com/microsoft/vscode/issues/107704
                     const deltaScrollTop = this.scrollable.getFutureScrollPosition().scrollTop - renderTop;
                     const newScrollTop = this.elementTop(anchorElementIndex) - anchorElementTopDelta + deltaScrollTop;
                     this.setScrollTop(newScrollTop, inSmoothScrolling);

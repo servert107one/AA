@@ -50,7 +50,6 @@ def pascals_triangle(n: int = None) -> np.ndarray:
 
 
 def combination(n, r) -> int:
-    """https://stackoverflow.com/questions/4941753/is-there-a-math-ncr-function-in-python"""
     n = int(np.fabs(n))
     r = int(np.fabs(r))
 

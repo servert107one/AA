@@ -55,13 +55,11 @@ import org.slf4j.LoggerFactory;
  * based security.
  * <strong>This is a thread safe class.</strong>
  *
- * @see <a href="https://square.github.io/okhttp/3.x/okhttp/">OKHttp3 from Square</a>
  */
 public class HttpTdaClient implements TdaClient {
 
   protected static final int LOGGING_BYTES = -1;
   protected static final DateTimeFormatter ISO_FORMATTER = DateTimeFormatter.BASIC_ISO_DATE;
-  protected static final String DEFAULT_PATH = "https://api.tdameritrade.com/v1";
   private static final String LOCATION_HEADER = "location";
   private static final Logger LOGGER = LoggerFactory.getLogger(HttpTdaClient.class);
 
@@ -77,7 +75,6 @@ public class HttpTdaClient implements TdaClient {
    * <ul>
    *   <li>tda.token.refresh</li>
    *   <li>tda.client_id (or sometimes referenced as <em>Consumer Key</em> and it should not have <em>@AMER.OAUTHAP</em> appended</li>
-   *   <li>tda.url=<em>https://api.tdameritrade.com/v1</em></li>
    *   <li>tda.debug.bytes.length=<em>-1</em> (How many bytes of logging interceptor debug to print, -1 is unlimited)</li>
    * </ul>
    *
@@ -100,7 +97,6 @@ public class HttpTdaClient implements TdaClient {
    * <ul>
    *   <li>tda.token.refresh</li>
    *   <li>tda.client_id</li>
-   *   <li>tda.url=<em>https://api.tdameritrade.com/v1</em></li>
    *   <li>tda.debug.bytes.length=<em>-1</em> (How many bytes of logging interceptor debug to print, -1 is unlimited)</li>
    * </ul>
    *

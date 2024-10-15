@@ -13,7 +13,6 @@ SqueezeMomentum = namedtuple('SqueezeMomentum', ['squeeze', 'momentum', 'momentu
 def squeeze_momentum(candles: np.ndarray, length: int = 20, mult: float = 2.0, length_kc: int = 20, mult_kc: float = 1.5, sequential: bool = True) -> SqueezeMomentum:
     """
     @author lazyBear
-    credits: https://www.tradingview.com/script/nqQ1DT5a-Squeeze-Momentum-Indicator-LazyBear/
 
     squeeze_momentum
 

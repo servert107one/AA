@@ -15,7 +15,6 @@ export class LanguageService extends Disposable {
         this.onDidRequestBasicLanguageFeatures = this._onDidRequestBasicLanguageFeatures.event;
         this._onDidRequestRichLanguageFeatures = this._register(new Emitter());
         this.onDidRequestRichLanguageFeatures = this._onDidRequestRichLanguageFeatures.event;
-        this._onDidChange = this._register(new Emitter({ leakWarningThreshold: 200 /* https://github.com/microsoft/vscode/issues/119968 */ }));
         this.onDidChange = this._onDidChange.event;
         this._requestedBasicLanguages = new Set();
         this._requestedRichLanguages = new Set();

@@ -11,7 +11,6 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 package exchanges
 
@@ -26,7 +25,6 @@ import (
 )
 
 //package github.com/toorop/go-bittrex
-//refer to https://github.com/toorop/go-bittrex/blob/master/examples/bittrex.go
 
 // BittrexWrapper provides a Generic wrapper of the Bittrex API.
 type BittrexWrapper struct {

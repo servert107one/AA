@@ -6,7 +6,6 @@ import { getWindowId, onDidUnregisterWindow } from './dom.js';
 import { Emitter, Event } from '../common/event.js';
 import { Disposable, markAsSingleton } from '../common/lifecycle.js';
 /**
- * See https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio#monitoring_screen_resolution_or_zoom_level_changes
  */
 class DevicePixelRatioMonitor extends Disposable {
     constructor(targetWindow) {

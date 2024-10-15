@@ -47,7 +47,6 @@ let BrowserClipboardService = BrowserClipboardService_1 = class BrowserClipboard
     // A call to clipboard.write or clipboard.writeText outside the scope of a user
     // gesture(such as "click" or "touch" event handlers) will result in the immediate
     // rejection of the promise returned by the API call."
-    // From: https://webkit.org/blog/10855/async-clipboard-api/
     //
     // Since extensions run in a web worker, and handle gestures in an asynchronous way,
     // they are not classified by Safari as "in response to a user gesture" and will reject.
@@ -64,7 +63,6 @@ let BrowserClipboardService = BrowserClipboardService_1 = class BrowserClipboard
             // The ctor of ClipboardItem allows you to pass in a promise that will resolve to a string.
             // This allows us to pass in a Promise that will either be cancelled by another event or
             // resolved with the contents of the first call to this.writeText.
-            // see https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/ClipboardItem#parameters
             getActiveWindow().navigator.clipboard.write([new ClipboardItem({
                     'text/plain': currentWritePromise.p,
                 })]).catch(async (err) => {

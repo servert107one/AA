@@ -1,7 +1,5 @@
 //
 // Copyright 2018, Artur Zas
-// https://www.az-invest.eu 
-// https://www.mql5.com/en/users/arturz
 //
 
 #ifdef __MQL5__
@@ -214,7 +212,6 @@ bool CTradingChecks::OkToModifyPosition(string _symbol, ulong ticket,double sl,d
 
 //////////////////////////////////////////////////////////////////
 //
-// Helper functions from https://www.mql5.com/en/articles/2555
 // 
 ///////////////////////////////////////////////////////////////////
 

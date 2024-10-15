@@ -1,11 +1,9 @@
 //+------------------------------------------------------------------+
 //|                                                   CArrayRing.mqh |
 //|                               Copyright 2012, Konstantin Gruzdev |
-//|                            https://login.mql5.com/ru/users/Lizar |
 //|                                             Revision 03 Dec 2012 |
 //+------------------------------------------------------------------+
 #property copyright   "Copyright 2012, Konstantin Gruzdev"
-#property link        "https://login.mql5.com/ru/users/Lizar"
 
 //+------------------------------------------------------------------+
 //| Class CArrayRing                                                 |
@@ -14,7 +12,6 @@
 //|    buffer element is replaced by the newest element. Herewith,   |
 //|    the specified number of end elements are always               |
 //|    available.                                                    |
-//| Link: http://www.mql5.com/ru/code/1340                           |
 //| Remark: it should also be kept in mind that the element indexing |
 //|    in the ring buffer is executed as in timeseries.              |
 //+------------------------------------------------------------------+

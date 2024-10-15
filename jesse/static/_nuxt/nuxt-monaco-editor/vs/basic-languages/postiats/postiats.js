@@ -2,7 +2,6 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Version: 0.50.0(c321d0fbecb50ab8a5365fa1965476b0ae63fc87)
  * Released under the MIT license
- * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
  *-----------------------------------------------------------------------------*/
 
 
@@ -32,7 +31,6 @@ var language = {
   // the punctuation (. and / and \) differently.
   // Set defaultToken to invalid to see what you do not tokenize yet
   defaultToken: "invalid",
-  // keyword reference: https://github.com/githwxi/ATS-Postiats/blob/master/src/pats_lexing_token.dats
   keywords: [
     //
     "abstype",
@@ -633,7 +631,6 @@ var language = {
   ESCHAR: /[ntvbrfa\\\?'"\(\[\{]/,
   start: "root",
   // The main tokenizer for ATS/Postiats
-  // reference: https://github.com/githwxi/ATS-Postiats/blob/master/src/pats_lexing.dats
   tokenizer: {
     root: [
       // lexing_blankseq0

@@ -377,7 +377,6 @@ class ViewLayerRenderer {
         }
         const lastChild = this.domNode.lastChild;
         if (domNodeIsEmpty || !lastChild) {
-            this.domNode.innerHTML = newLinesHTML; // explains the ugly casts -> https://github.com/microsoft/vscode/issues/106396#issuecomment-692625393;
         }
         else {
             lastChild.insertAdjacentHTML('afterend', newLinesHTML);

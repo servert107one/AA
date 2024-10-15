@@ -2,7 +2,6 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Version: 0.50.0(c321d0fbecb50ab8a5365fa1965476b0ae63fc87)
  * Released under the MIT license
- * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
  *-----------------------------------------------------------------------------*/
 
 
@@ -96,9 +95,7 @@ var language = {
   // Matches any of the operator names:
   // <<< >>> ||| &&& ^^^ ~~~ === !== ~>> <~> |~> <|> == != <= >= && || \\ <> ++ -- |> =~ -> <- ~> <~ :: .. = < > + - * / | . ^ & !
   operator: /-[->]?|!={0,2}|\*{1,2}|\/|\\\\|&{1,3}|\.\.?|\^(?:\^\^)?|\+\+?|<(?:-|<<|=|>|\|>|~>?)?|=~|={1,3}|>(?:=|>>)?|\|~>|\|>|\|{1,3}|~>>?|~~~|::/,
-  // See https://hexdocs.pm/elixir/syntax-reference.html#variables
   variableName: /[a-z_][a-zA-Z0-9_]*[?!]?/,
-  // See https://hexdocs.pm/elixir/syntax-reference.html#atoms
   atomName: /[a-zA-Z_][a-zA-Z0-9_@]*[?!]?|@specialAtomName|@operator/,
   specialAtomName: /\.\.\.|<<>>|%\{\}|%|\{\}/,
   aliasPart: /[A-Z][a-zA-Z0-9_]*/,
@@ -112,7 +109,6 @@ var language = {
   hex: /[0-9a-fA-F](_?[0-9a-fA-F])*/,
   octal: /[0-7](_?[0-7])*/,
   binary: /[01](_?[01])*/,
-  // See https://hexdocs.pm/elixir/master/String.html#module-escape-characters
   escape: /\\u[0-9a-fA-F]{4}|\\x[0-9a-fA-F]{2}|\\./,
   // The keys below correspond to tokenizer states.
   // We start from the root state and match against its rules
@@ -286,7 +282,6 @@ var language = {
       { include: "@stringConstantContentInterpol" }
     ],
     // Sigils
-    // See https://elixir-lang.org/getting-started/sigils.html
     // Sigils allow for typing values using their textual representation.
     // All sigils start with ~ followed by a letter or
     // multi-letter uppercase starting at Elixir v1.15.0, indicating sigil type

@@ -2,7 +2,6 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Version: 0.50.0(c321d0fbecb50ab8a5365fa1965476b0ae63fc87)
  * Released under the MIT license
- * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
  *-----------------------------------------------------------------------------*/
 
 var __defProp = Object.defineProperty;
@@ -93,7 +92,6 @@ var language = {
   tokenPostfix: ".ts",
   keywords: [
     // Should match the keys of textToKeywordObj in
-    // https://github.com/microsoft/TypeScript/blob/master/src/compiler/scanner.ts
     "abstract",
     "any",
     "as",

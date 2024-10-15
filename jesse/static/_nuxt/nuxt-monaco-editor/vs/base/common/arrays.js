@@ -235,7 +235,6 @@ export function range(arg, to) {
 }
 /**
  * Insert `insertArr` inside `target` at `insertIndex`.
- * Please don't touch unless you understand https://jsperf.com/inserting-an-array-within-an-array
  */
 export function arrayInsert(target, insertIndex, insertArr) {
     const before = target.slice(0, insertIndex);
@@ -301,7 +300,6 @@ export function splice(array, start, deleteCount, newItems) {
     const index = getActualStartIndex(array, start);
     let result = array.splice(index, deleteCount);
     if (result === undefined) {
-        // see https://bugs.webkit.org/show_bug.cgi?id=261140
         result = [];
     }
     insertInto(array, index, newItems);

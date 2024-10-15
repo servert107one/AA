@@ -570,7 +570,6 @@ export class MouseTargetFactory {
             return request.fulfillContentEmpty(new Position(lineCount, maxLineColumn), EMPTY_CONTENT_AFTER_LINES);
         }
         // Check if we are hitting a view-line (can happen in the case of inline decorations on empty lines)
-        // See https://github.com/microsoft/vscode/issues/46942
         if (ElementPath.isStrictChildOfViewLines(request.targetPath)) {
             const lineNumber = ctx.getLineNumberAtVerticalOffset(request.mouseVerticalOffset);
             if (ctx.viewModel.getLineLength(lineNumber) === 0) {
@@ -685,7 +684,6 @@ export class MouseTargetFactory {
             const curr = points[i];
             if (prev.offset <= request.mouseContentHorizontalOffset && request.mouseContentHorizontalOffset <= curr.offset) {
                 rng = new EditorRange(lineNumber, prev.column, lineNumber, curr.column);
-                // See https://github.com/microsoft/vscode/issues/152819
                 // Due to the use of zwj, the browser's hit test result is skewed towards the left
                 // Here we try to correct that if the mouse horizontal offset is closer to the right than the left
                 const prevDelta = Math.abs(prev.offset - request.mouseContentHorizontalOffset);

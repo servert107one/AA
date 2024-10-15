@@ -1,7 +1,6 @@
 /**
  * marked - a markdown parser
  * Copyright (c) 2011-2022, Christopher Jeffrey. (MIT Licensed)
- * https://github.com/markedjs/marked
  */
 
 /**
@@ -230,7 +229,6 @@ let __marked_exports = {};
     if (!baseUrls[' ' + base]) {
       // we can ignore everything in base after the last slash of its path component,
       // but we might need to add _that_
-      // https://tools.ietf.org/html/rfc3986#section-3
       if (justDomain.test(base)) {
         baseUrls[' ' + base] = base + '/';
       } else {
@@ -383,9 +381,7 @@ let __marked_exports = {};
   }
   function checkSanitizeDeprecation(opt) {
     if (opt && opt.sanitize && !opt.silent) {
-      console.warn('marked(): sanitize and sanitizer parameters are deprecated since version 0.7.0, should not be used and will be removed in the future. Read more here: https://marked.js.org/#/USING_ADVANCED.md#options');
     }
-  } // copied from https://stackoverflow.com/a/5450113/806777
 
   /**
    * @param {string} pattern
@@ -1186,7 +1182,6 @@ let __marked_exports = {};
           text = escape(cap[0]);
 
           if (cap[1] === 'www.') {
-            href = 'http://' + text;
           } else {
             href = text;
           }
@@ -2732,7 +2727,6 @@ let __marked_exports = {};
     }
 
     function onError(e) {
-      e.message += '\nPlease report this to https://github.com/markedjs/marked.';
 
       if (opt.silent) {
         return '<p>An error occurred:</p><pre>' + escape(e.message + '', true) + '</pre>';
@@ -3026,7 +3020,6 @@ let __marked_exports = {};
 
       return Parser.parseInline(tokens, opt);
     } catch (e) {
-      e.message += '\nPlease report this to https://github.com/markedjs/marked.';
 
       if (opt.silent) {
         return '<p>An error occurred:</p><pre>' + escape(e.message + '', true) + '</pre>';

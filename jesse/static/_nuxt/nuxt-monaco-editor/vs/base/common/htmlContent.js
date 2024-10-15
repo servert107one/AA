@@ -101,11 +101,9 @@ export function markdownStringEqual(a, b) {
     }
 }
 export function escapeMarkdownSyntaxTokens(text) {
-    // escape markdown syntax tokens: http://daringfireball.net/projects/markdown/syntax#backslash
     return text.replace(/[\\`*_{}[\]()#+\-!~]/g, '\\$&'); // CodeQL [SM02383] Backslash is escaped in the character class
 }
 /**
- * @see https://github.com/microsoft/vscode/issues/193746
  */
 export function appendEscapedMarkdownCodeBlockFence(code, langId) {
     var _a, _b;

@@ -2,7 +2,6 @@
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Version: 0.50.0(c321d0fbecb50ab8a5365fa1965476b0ae63fc87)
  * Released under the MIT license
- * https://github.com/microsoft/monaco-editor/blob/main/LICENSE.txt
  *-----------------------------------------------------------------------------*/
 
 
@@ -83,7 +82,6 @@ var language = {
   operators: ["=", "!", "?", ":", "&", "|"],
   // we include these common regular expressions
   symbols: /[=!?:&|]+/,
-  // https://facebook.github.io/graphql/draft/#sec-String-Value
   escapes: /\\(?:["\\\/bfnrt]|u[0-9A-Fa-f]{4})/,
   // The main tokenizer for our languages
   tokenizer: {

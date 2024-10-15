@@ -84,7 +84,6 @@ pub async fn run_collection(
     let mut prev_u_map = HashMap::new();
     let (ws_tx, mut ws_rx) = unbounded_channel();
     let h = tokio::spawn(keep_connection(streams, symbols, ws_tx.clone()));
-    // https://www.binance.com/en/support/faq/rate-limits-on-binance-futures-281596e222414cdd9051664ea621cdc3
     // The default rate limit per IP is 2,400/min and the weight is 20 at a depth of 1000.
     // The maximum request rate for fetching snapshots is 120 per minute.
     // Sets the rate limit with a margin to account for connection requests.

@@ -187,7 +187,6 @@ public interface TdaClient {
    *
    * @param accountId the account under which the order is to be placed
    * @param order the order to place
-   * @see <a href="https://developer.tdameritrade.com/content/place-order-samples">Place Order
    * Samples</a>
    */
   void placeOrder(String accountId, Order order);
@@ -216,7 +215,6 @@ public interface TdaClient {
    * @param order the order to place
    * @return the order ID wrapped in an Optional which will be empty if the order ID was not returned by TDA, but the call otherwise returned
    * a successful response. It's likely the order will eventually be placed, and users will need to poll for that ordeer ID using existing methods.
-   * @see <a href="https://developer.tdameritrade.com/content/place-order-samples">Place Order
    * Samples</a>
    */
   Optional<Long> placeOrderReturnId(String accountId, Order order);
@@ -290,7 +288,6 @@ public interface TdaClient {
    * @param cusip (committee on uniform securities identification procedures numbers).
    * @return Basic data using a security's CUSIP. The {@link Instrument#getBondPrice()} will return
    * null unless the {@code cusip} parameter references a bond.
-   * @see <a href="https://www.sec.gov/answers/cusip.htm">CUSIP Number</a>
    */
   Instrument getInstrumentByCUSIP(String cusip);
 
@@ -299,7 +296,6 @@ public interface TdaClient {
    *
    * @param cusip (committee on uniform securities identification procedures numbers).
    * @return Basic data of the bond including the price.
-   * @see <a href="https://www.sec.gov/answers/cusip.htm">CUSIP Number</a>
    */
   Instrument getBond(String cusip);
 
@@ -340,7 +336,6 @@ public interface TdaClient {
    * @param id CUSIP number or symbol (e.g. <em>MSFT</em>)
    * @return full fundamentals of an instrument using a CUSIP or symbol. The {@link
    * Instrument#getBondPrice()} will be empty unless it is a bond referenced by {@code cusip}.
-   * @see <a href="https://www.sec.gov/answers/cusip.htm">CUSIP Number</a>
    */
   FullInstrument getFundamentalData(String id);
 

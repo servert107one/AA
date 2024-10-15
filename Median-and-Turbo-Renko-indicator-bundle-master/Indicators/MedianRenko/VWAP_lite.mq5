@@ -1,10 +1,8 @@
 //+------------------------------------------------------------------+
 //|                                                    VWAP_Lite.mq5 |
 //|                     Copyright 2016, SOL Digital Consultoria LTDA |
-//|                          http://www.soldigitalconsultoria.com.br |
 //+------------------------------------------------------------------+
 #property copyright         "Copyright 2016, SOL Digital Consultoria LTDA"
-#property link              "http://www.soldigitalconsultoria.com.br"
 #property version           "1.49"
 
 #property indicator_chart_window

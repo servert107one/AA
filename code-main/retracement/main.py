@@ -1,7 +1,6 @@
 """
 This file programs different ways of capturing a retracement 
 
-Source: https://www.youtube.com/watch?v=3rmw0UFgYmQ  
 Date  : 2023-07-19
 """
 

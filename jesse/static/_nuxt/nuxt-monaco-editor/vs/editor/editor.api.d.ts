@@ -117,9 +117,7 @@ export interface CancellationToken {
     readonly onCancellationRequested: (listener: (e: any) => any, thisArgs?: any, disposables?: IDisposable[]) => IDisposable;
 }
 /**
- * Uniform Resource Identifier (Uri) http://tools.ietf.org/html/rfc3986.
  * This class is a simple parser which creates the basic component parts
- * (http://tools.ietf.org/html/rfc3986#section-3) with minimal validation
  * and encoding.
  *
  * ```txt
@@ -135,25 +133,20 @@ export interface CancellationToken {
 export class Uri implements UriComponents {
     static isUri(thing: any): thing is Uri;
     /**
-     * scheme is the 'http' part of 'http://www.example.com/some/path?query#fragment'.
      * The part before the first colon.
      */
     readonly scheme: string;
     /**
-     * authority is the 'www.example.com' part of 'http://www.example.com/some/path?query#fragment'.
      * The part between the first double slashes and the next slash.
      */
     readonly authority: string;
     /**
-     * path is the '/some/path' part of 'http://www.example.com/some/path?query#fragment'.
      */
     readonly path: string;
     /**
-     * query is the 'query' part of 'http://www.example.com/some/path?query#fragment'.
      */
     readonly query: string;
     /**
-     * fragment is the 'fragment' part of 'http://www.example.com/some/path?query#fragment'.
      */
     readonly fragment: string;
     /**
@@ -189,7 +182,6 @@ export class Uri implements UriComponents {
         fragment?: string | null;
     }): Uri;
     /**
-     * Creates a new Uri from a string, e.g. `http://www.example.com/some/path`,
      * `file:///usr/home`, or `scheme:with/path`.
      *
      * @param value A string which represents an Uri (see `Uri#toString`).
@@ -271,7 +263,6 @@ export interface UriComponents {
 }
 /**
  * Virtual Key Codes, the value does not hold any inherent meaning.
- * Inspired somewhat from https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
  * But these are "more general", as they should work across browsers & OS`s.
  */
 export enum KeyCode {
@@ -1258,7 +1249,6 @@ export namespace editor {
          */
         label: string;
         /**
-         * Precondition rule. The value should be a [context key expression](https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts).
          */
         precondition?: string;
         /**
@@ -1398,7 +1388,6 @@ export namespace editor {
          * An URL to open when Ctrl+H (Windows and Linux) or Cmd+H (OSX) is pressed in
          * the accessibility help dialog in the editor.
          *
-         * Defaults to "https://go.microsoft.com/fwlink/?linkid=852450"
          */
         accessibilityHelpUrl?: string;
         /**
@@ -6576,7 +6565,6 @@ export namespace languages {
 
     /**
      * The code action interface defines the contract between extensions and
-     * the [light bulb](https://code.visualstudio.com/docs/editor/editingevolved#_code-action) feature.
      */
     export interface CodeActionProvider {
         /**
@@ -6728,7 +6716,6 @@ export namespace languages {
         /**
          * Used by the indentation based strategy to decide whether empty lines belong to the previous or the next block.
          * A language adheres to the off-side rule if blocks in that language are expressed by their indentation.
-         * See [wikipedia](https://en.wikipedia.org/wiki/Off-side_rule) for more information.
          * If not set, `false` is used and empty lines belong to the previous block.
          */
         offSide?: boolean;
@@ -6876,7 +6863,6 @@ export namespace languages {
 
     /**
      * The hover provider interface defines the contract between extensions and
-     * the [hover](https://code.visualstudio.com/docs/editor/intellisense)-feature.
      */
     export interface HoverProvider<THover = Hover> {
         /**
@@ -7111,7 +7097,6 @@ export namespace languages {
 
     /**
      * The completion item provider interface defines the contract between extensions and
-     * the [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense).
      *
      * When computing *complete* completion items is expensive, providers can optionally implement
      * the `resolveCompletionItem`-function. In that case it is enough to return completion
@@ -7352,7 +7337,6 @@ export namespace languages {
 
     /**
      * The signature help provider interface defines the contract between extensions and
-     * the [parameter hints](https://code.visualstudio.com/docs/editor/intellisense)-feature.
      */
     export interface SignatureHelpProvider {
         readonly signatureHelpTriggerCharacters?: ReadonlyArray<string>;
@@ -7484,7 +7468,6 @@ export namespace languages {
 
     /**
      * The reference provider interface defines the contract between extensions and
-     * the [find references](https://code.visualstudio.com/docs/editor/editingevolved#_peek)-feature.
      */
     export interface ReferenceProvider {
         /**
@@ -7532,7 +7515,6 @@ export namespace languages {
 
     /**
      * The definition provider interface defines the contract between extensions and
-     * the [go to definition](https://code.visualstudio.com/docs/editor/editingevolved#_go-to-definition)
      * and peek definition features.
      */
     export interface DefinitionProvider {
@@ -7544,7 +7526,6 @@ export namespace languages {
 
     /**
      * The definition provider interface defines the contract between extensions and
-     * the [go to definition](https://code.visualstudio.com/docs/editor/editingevolved#_go-to-definition)
      * and peek definition features.
      */
     export interface DeclarationProvider {
@@ -7625,7 +7606,6 @@ export namespace languages {
 
     /**
      * The document symbol provider interface defines the contract between extensions and
-     * the [go to symbol](https://code.visualstudio.com/docs/editor/editingevolved#_go-to-symbol)-feature.
      */
     export interface DocumentSymbolProvider {
         displayName?: string;
@@ -8401,7 +8381,6 @@ export namespace languages.css {
     }
     /**
      * Custom CSS properties, at-directives, pseudoClasses and pseudoElements
-     * https://github.com/microsoft/vscode-css-languageservice/blob/main/docs/customData.md
      */
     export interface CSSDataV1 {
         version: 1 | 1.1;
@@ -8587,7 +8566,6 @@ export namespace languages.html {
     }
     /**
      * Custom HTML tags attributes and attribute values
-     * https://github.com/microsoft/vscode-html-languageservice/blob/main/docs/customData.md
      */
     export interface HTMLDataV1 {
         readonly version: 1 | 1.1;

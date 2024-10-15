@@ -9,6 +9,5 @@ class FTXPerpetualFutures(FTXMain):
 
         super().__init__(
             name=exchanges.FTX_PERPETUAL_FUTURES,
-            rest_endpoint='https://ftx.com',
             backup_exchange_class=FTXSpot
         )

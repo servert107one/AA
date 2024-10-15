@@ -270,7 +270,6 @@ let ContentHoverWidget = ContentHoverWidget_1 = class ContentHoverWidget extends
         const widgetHeight = dom.getTotalHeight(this._hover.containerDomNode);
         const widgetPosition = hoverData.showAtPosition;
         this._positionPreference = (_a = this._findPositionPreference(widgetHeight, widgetPosition)) !== null && _a !== void 0 ? _a : 1 /* ContentWidgetPositionPreference.ABOVE */;
-        // See https://github.com/microsoft/vscode/issues/140339
         // TODO: Doing a second layout of the hover after force rendering the editor
         this.onContentsChanged();
         if (hoverData.stoleFocus) {

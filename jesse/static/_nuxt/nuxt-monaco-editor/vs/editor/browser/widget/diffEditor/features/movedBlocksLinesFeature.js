@@ -78,19 +78,15 @@ export class MovedBlocksLinesFeature extends Disposable {
                 const right = width;
                 const rectWidth = infoMod.glyphMarginWidth + infoMod.lineNumbersWidth;
                 const rectHeight = 18;
-                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
                 rect.classList.add('arrow-rectangle');
                 rect.setAttribute('x', `${right - rectWidth}`);
                 rect.setAttribute('y', `${line.to - rectHeight / 2}`);
                 rect.setAttribute('width', `${rectWidth}`);
                 rect.setAttribute('height', `${rectHeight}`);
                 this._element.appendChild(rect);
-                const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                 path.setAttribute('d', `M ${0} ${line.from} L ${verticalY} ${line.from} L ${verticalY} ${line.to} L ${right - arrowWidth} ${line.to}`);
                 path.setAttribute('fill', 'none');
                 g.appendChild(path);
-                const arrowRight = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
                 arrowRight.classList.add('arrow');
                 store.add(autorun(reader => {
                     path.classList.toggle('currentMove', line.move === model.activeMovedText.read(reader));
@@ -111,7 +107,6 @@ export class MovedBlocksLinesFeature extends Disposable {
             }
             this.width.set(lineAreaWidth, undefined);
         });
-        this._element = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         this._element.setAttribute('class', 'moved-blocks-lines');
         this._rootElement.appendChild(this._element);
         this._register(toDisposable(() => this._element.remove()));

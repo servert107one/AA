@@ -9,6 +9,5 @@ class FTXUSSpot(FTXMain):
 
         super().__init__(
             name=exchanges.FTX_US_SPOT,
-            rest_endpoint='https://ftx.us',
             backup_exchange_class=FTXSpot
         )

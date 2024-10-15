@@ -111,7 +111,6 @@ class Position:
     def roi(self) -> float:
         """
         Return on Investment in percentage
-        More at: https://www.binance.com/en/support/faq/5b9ad93cb4854f5990b9fb97c03cfbeb
         """
         if self.pnl == 0:
             return 0
@@ -220,7 +219,6 @@ class Position:
     def liquidation_price(self) -> Union[float, np.float64]:
         """
         The price at which the position gets liquidated. formulas are taken from:
-        https://help.bybit.com/hc/en-us/articles/900000181046-Liquidation-Price-USDT-Contract-
         """
         if self.is_close:
             return np.nan

@@ -1,11 +1,9 @@
 //+------------------------------------------------------------------+
 //|                                             CADXOnRingBuffer.mqh |
 //|                               Copyright 2012, Konstantin Gruzdev |
-//|                            https://login.mql5.com/ru/users/Lizar |
 //|                                             Revision 01 Dec 2012 |
 //+------------------------------------------------------------------+
 #property copyright   "Copyright 2012, Konstantin Gruzdev"
-#property link        "https://login.mql5.com/ru/users/Lizar"
 
 //--- Class to calculate the MA using the ring buffer:
 #include <IncOnRingBuffer\CMAOnRingBuffer.mqh>
@@ -15,7 +13,6 @@
 //|              ADX indicator (Average Directional Movement Index,  |
 //|              ADX) using the class for working with the ring      |
 //|              buffer.                                             |
-//| Link: http://www.mql5.com/ru/code/1343                           |
 //+------------------------------------------------------------------+
 class CADXOnRingBuffer
   {

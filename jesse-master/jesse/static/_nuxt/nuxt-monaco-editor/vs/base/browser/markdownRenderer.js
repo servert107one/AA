@@ -49,7 +49,6 @@ const defaultMarkedRenderers = Object.freeze({
         if (typeof href !== 'string') {
             return '';
         }
-        // Remove markdown escapes. Workaround for https://github.com/chjj/marked/issues/829
         if (href === text) { // raw link case
             text = removeMarkdownEscapes(text);
         }
@@ -466,8 +465,6 @@ function getSanitizerOptions(options) {
         config: {
             // allowedTags should included everything that markdown renders to.
             // Since we have our own sanitize function for marked, it's possible we missed some tag so let dompurify make sure.
-            // HTML tags that can result from markdown are from reading https://spec.commonmark.org/0.29/
-            // HTML table tags that can result from markdown are from https://github.github.com/gfm/#tables-extension-
             ALLOWED_TAGS: (_a = options.allowedTags) !== null && _a !== void 0 ? _a : [...DOM.basicMarkupHtmlTags],
             ALLOWED_ATTR: allowedMarkdownAttr,
             ALLOW_UNKNOWN_PROTOCOLS: true,
@@ -613,7 +610,6 @@ function completeSingleLinePattern(token) {
                 hasStartOfLinkTargetAndNoLinkText(lastLine) && token.tokens.slice(0, i).some(t => t.type === 'text' && t.raw.match(/\[[^\]]*$/))) {
                 const nextTwoSubTokens = token.tokens.slice(i + 1);
                 // A markdown link can look like
-                // [link text](https://microsoft.com "more text")
                 // Where "more text" is a title for the link or an argument to a vscode command link
                 if (
                 // If the link was parsed as a link, then look for a link token and a text token with a quote
@@ -772,7 +768,6 @@ function completeLinkTargetArg(tokens) {
     return completeWithString(tokens, '")');
 }
 function completeLinkText(tokens) {
-    return completeWithString(tokens, '](https://microsoft.com)');
 }
 function completeDoublestar(tokens) {
     return completeWithString(tokens, '**');

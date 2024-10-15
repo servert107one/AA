@@ -1,10 +1,8 @@
 //+------------------------------------------------------------------+
 //|                                     Gann_Hi_Lo_Activator_SSL.mq5 |
 //|                                                        avoitenko |
-//|                        https://login.mql5.com/en/users/avoitenko |
 //+------------------------------------------------------------------+
 #property copyright     ""
-#property link          "https://login.mql5.com/en/users/avoitenko"
 #property version       "1.00"
 #property description   "Author: Kalenzo"
 

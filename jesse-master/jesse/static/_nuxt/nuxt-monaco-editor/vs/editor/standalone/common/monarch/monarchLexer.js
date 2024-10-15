@@ -462,7 +462,6 @@ let MonarchTokenizer = MonarchTokenizer_1 = class MonarchTokenizer extends Dispo
         let stack = lineState.stack;
         let pos = 0;
         let groupMatching = null;
-        // See https://github.com/microsoft/monaco-editor/issues/1235
         // Evaluate rules at least once for an empty line
         let forceEvaluation = true;
         while (forceEvaluation || pos < lineLength) {

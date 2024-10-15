@@ -17,9 +17,6 @@ def market_making_algo(hbt):
 
         """
         You can find the core ideas from the following articles.
-        https://ieor.columbia.edu/files/seasdepts/industrial-engineering-operations-research/pdf-files/Borden_D_FESeminar_Sp10.pdf (page 5)
-        https://arxiv.org/abs/1105.3115 (the last three equations on page 13 and 7 Backtests)
-        https://blog.bitmex.com/wp-content/uploads/2019/11/Algo-Trading-and-Market-Making.pdf
 
         Also see my other repo.
         """
@@ -110,7 +107,6 @@ def market_making_algo(hbt):
 
 if __name__ == '__main__':
     # This backtest assumes market maker rebates.
-    # https://www.binance.com/en/support/announcement/binance-upgrades-usd%E2%93%A2-margined-futures-liquidity-provider-program-2023-04-04-01007356e6514df3811b0c80ab8c83bf
     asset = (
         BacktestAsset()
             .data([

@@ -459,9 +459,6 @@ export class RunOnceScheduler {
  * callback but queue it on the regular event loop (like setTimeout). Typically
  * this should not be used.
  *
- * [IdleDeadline]: https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline
- * [requestIdleCallback]: https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback
- * [setTimeout]: https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout
  *
  * **Note** that there is `dom.ts#runWhenWindowIdle` which is better suited when running inside a browser
  * context

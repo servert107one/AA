@@ -14,7 +14,6 @@ Stiffness = namedtuple('Stiffness', ['stiffness', 'threshold'])
 def stiffness(candles: np.ndarray, ma_length: int = 100, stiff_length: int = 60, stiff_smooth: int = 3, threshold: int = 90, source_type: str = "close") -> Stiffness:
     """
     @author daviddtech
-    credits: https://www.tradingview.com/script/MOw6mUQl-Stiffness-Indicator-DaviddTech
 
     STIFNESS - Stifness
 

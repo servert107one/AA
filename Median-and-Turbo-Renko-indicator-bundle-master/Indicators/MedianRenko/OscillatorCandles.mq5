@@ -1,10 +1,8 @@
 //+------------------------------------------------------------------+
 //|                                           Oscillator Candles.mq5 |
 //|                        Copyright 2015, MetaQuotes Software Corp. |
-//|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 #property copyright  "Copyright 2015, MetaQuotes Software Corp."
-#property link       "https://www.mql5.com"
 #property description"Oscillator Candles by pipPod"
 #property version    "1.00"
 #property indicator_separate_window

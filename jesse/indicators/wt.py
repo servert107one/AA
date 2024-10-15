@@ -8,13 +8,10 @@ from jesse.helpers import get_candle_source, slice_candles
 Wavetrend = namedtuple('Wavetrend', ['wt1', 'wt2', 'wtCrossUp', 'wtCrossDown', 'wtOversold', 'wtOverbought', 'wtVwap'])
 
 
-# Wavetrend indicator ported from:  https://www.tradingview.com/script/Msm4SjwI-VuManChu-Cipher-B-Divergences/
-#                                   https://www.tradingview.com/script/2KE8wTuF-Indicator-WaveTrend-Oscillator-WT/
 #
 # buySignal = wtCross and wtCrossUp and wtOversold
 # sellSignal = wtCross and wtCrossDown and wtOverbought
 #
-# See https://github.com/ysdede/lazarus3/blob/partialexit/strategies/lazarus3/__init__.py for working jesse.ai example.
 
 
 def wt(candles: np.ndarray,

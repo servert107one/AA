@@ -66,7 +66,6 @@ let GotoDefinitionAtPositionEditorContribution = GotoDefinitionAtPositionEditorC
         return editor.getContribution(GotoDefinitionAtPositionEditorContribution_1.ID);
     }
     async startFindDefinitionFromCursor(position) {
-        // For issue: https://github.com/microsoft/vscode/issues/46257
         // equivalent to mouse move with meta/ctrl key
         // First find the definition and add decorations
         // to the editor to be shown with the content hover widget

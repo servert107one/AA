@@ -1,7 +1,6 @@
 """
 Date: 2023-02-23
 
-Visit our YouTube Channel: https://www.youtube.com/@zetratrading
 
 License    : MIT
 Disclaimer : This program is not an investment advice and is for educational and entertainment purposes only!  

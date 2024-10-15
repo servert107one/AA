@@ -7,7 +7,6 @@ import numpy as np
 def ttm_squeeze(candles: np.ndarray, length_ttms: int = 20, bb_mult_ttms: float = 2.0, kc_mult_low_ttms: float = 2.0) -> bool:
     """
     @author daviddtech
-    credits: https://www.tradingview.com/script/Mh3EmxF5-TTM-Squeeze-DaviddTech/
 
     TTMSQUEEZE - TTMSqueeze
 

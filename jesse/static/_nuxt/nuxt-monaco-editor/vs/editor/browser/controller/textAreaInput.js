@@ -139,7 +139,6 @@ let TextAreaInput = class TextAreaInput extends Disposable {
             }
             if (e.equals(9 /* KeyCode.Escape */)) {
                 // Prevent default always for `Esc`, otherwise it will generate a keypress
-                // See https://msdn.microsoft.com/en-us/library/ie/ms536939(v=vs.85).aspx
                 e.preventDefault();
             }
             lastKeyDown = e;
@@ -216,7 +215,6 @@ let TextAreaInput = class TextAreaInput extends Disposable {
             }
             const currentComposition = this._currentComposition;
             if (!currentComposition) {
-                // https://github.com/microsoft/monaco-editor/issues/1663
                 // On iOS 13.2, Chinese system IME randomly trigger an additional compositionend event with empty data
                 return;
             }
@@ -310,7 +308,6 @@ let TextAreaInput = class TextAreaInput extends Disposable {
         }));
         this._register(this._textArea.onBlur(() => {
             if (this._currentComposition) {
-                // See https://github.com/microsoft/vscode/issues/112621
                 // where compositionend is not triggered when the editor
                 // is taken off-dom during a composition
                 // Clear the flag to be able to write to the textarea
@@ -336,7 +333,6 @@ let TextAreaInput = class TextAreaInput extends Disposable {
         }));
     }
     _installSelectionChangeListener() {
-        // See https://github.com/microsoft/vscode/issues/27216 and https://github.com/microsoft/vscode/issues/98256
         // When using a Braille display, it is possible for users to reposition the
         // system caret. This is reflected in Chrome as a `selectionchange` event.
         //
@@ -602,7 +598,6 @@ export class TextAreaWrapper extends Disposable {
         const currentSelectionEnd = textArea.selectionEnd;
         if (currentIsFocused && currentSelectionStart === selectionStart && currentSelectionEnd === selectionEnd) {
             // No change
-            // Firefox iframe bug https://github.com/microsoft/monaco-editor/issues/643#issuecomment-367871377
             if (browser.isFirefox && activeWindow.parent !== activeWindow) {
                 textArea.focus();
             }

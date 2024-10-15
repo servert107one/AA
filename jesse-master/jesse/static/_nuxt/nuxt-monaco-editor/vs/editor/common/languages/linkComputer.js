@@ -53,7 +53,6 @@ export class StateMachine {
         return this._states.get(currentState, chCode);
     }
 }
-// State machine for http:// or https:// or file://
 let _stateMachine = null;
 function getStateMachine() {
     if (_stateMachine === null) {
