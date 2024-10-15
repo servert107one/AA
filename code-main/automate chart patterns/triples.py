@@ -1,6 +1,4 @@
 """
-Date 20230119
-
 This scripts get the Triple Top and Bottom Chart Patterns
 """
 

@@ -253,27 +253,3 @@ if __name__ == "__main__":
 
     asyncio.run(get_binance_prices2(11))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
